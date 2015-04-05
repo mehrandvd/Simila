@@ -39,7 +39,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Levenstein\Mistakes\CharacterMistake.cs" />
+    <Compile Include="Levenstein\Mistakes\ICharacterMistakeRepository.cs" />
+    <Compile Include="Levenstein\Mistakes\MistakesFactory.cs" />
+    <Compile Include="Levenstein\Mistakes\XmlFileCharacterMistakeRepository.cs" />
+    <Compile Include="Levenstein\CostResolvers\CharacterCostResolver.cs" />
+    <Compile Include="Levenstein\CostResolvers\CostResolverFactory.cs" />
+    <Compile Include="Levenstein\CostResolvers\ICostResolver.cs" />
+    <Compile Include="Levenstein\ILevenshteinExpression.cs" />
+    <Compile Include="Levenstein\LevenshteinAlgorithm.cs" />
+    <Compile Include="Levenstein\Phrase.cs" />
+    <Compile Include="Levenstein\CostResolvers\PhraseCostResolver.cs" />
+    <Compile Include="Levenstein\PhraseLevenshteinAlgorithm.cs" />
+    <Compile Include="Levenstein\Word.cs" />
+    <Compile Include="Levenstein\CostResolvers\WordCostResolver.cs" />
+    <Compile Include="Levenstein\WordLevenshteinAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CommonEnglishCharacterMistakes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

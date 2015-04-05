@@ -1,0 +1,4 @@
+﻿<CommonCharacterMistakes>
+  <CommonMistake Left="c" Right="k" Cost="0.5"/>
+  <CommonMistake Left="o" Right="u" Cost="0.5"/>
+</CommonCharacterMistakes>

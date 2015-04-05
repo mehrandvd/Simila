@@ -1,14 +1,20 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Simila.Core.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class SimpleTests
     {
-        [TestMethod]
-        public void SimpleSimilaritiesMustWork()
+        [Test]
+        public void SimpleDemoMustWork()
         {
+            
+            //var similaComparer = new SimilaComparer();
+            //similaComparer.Treshold = 0.7;
+
+            //Assert.IsTrue(similaComparer.IsSimilar("Mehran", "Nehran"));
+
         }
     }
 }
