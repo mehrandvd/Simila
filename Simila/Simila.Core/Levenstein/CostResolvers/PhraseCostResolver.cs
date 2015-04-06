@@ -9,7 +9,7 @@ namespace LevenshtienAlgorithm
 {
     public class PhraseCostResolver : ICostResolver<Phrase>
     {
-        public Dictionary<Phrase, Dictionary<Phrase, double>> CostGroups { get; set; }
+        public Dictionary<Phrase, Dictionary<Phrase, double>> MistakeCosts { get; set; }
 
         public double GetInsertOrDeleteCost(Phrase character)
         {

@@ -39,10 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levenstein\Mistakes\CharacterMistake.cs" />
+    <Compile Include="Levenstein\CostResolvers\WordCostResolverFactory.cs" />
+    <Compile Include="Levenstein\CostResolvers\CharacterCostResolverFactory.cs" />
+    <Compile Include="Levenstein\CostResolvers\CostResolverMistakyBase.cs" />
+    <Compile Include="Levenstein\Mistakes\Mistake.cs" />
     <Compile Include="Levenstein\Mistakes\ICharacterMistakeRepository.cs" />
     <Compile Include="Levenstein\Mistakes\MistakesFactory.cs" />
-    <Compile Include="Levenstein\Mistakes\XmlFileCharacterMistakeRepository.cs" />
+    <Compile Include="Levenstein\Mistakes\XmlFileMistakeRepository.cs" />
     <Compile Include="Levenstein\CostResolvers\CharacterCostResolver.cs" />
     <Compile Include="Levenstein\CostResolvers\CostResolverFactory.cs" />
     <Compile Include="Levenstein\CostResolvers\ICostResolver.cs" />
@@ -58,6 +61,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CommonEnglishCharacterMistakes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CommonPersianCharacterMistakes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CommonPersianWordMistakes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CommonEnglishWordMistakes.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

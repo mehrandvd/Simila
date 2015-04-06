@@ -8,9 +8,9 @@ namespace Simila.Core.Levenstein.Mistakes
 {
     class MistakesFactory
     {
-        public static ICharacterMistakeRepository FromXml(string filename)
+        public static IMistakeRepository<T> FromXml<T>(string filename)
         {
-            var mistakesRepo = new XmlFileCharacterMistakeRepository(filename);
+            var mistakesRepo = new XmlFileMistakeRepository<T>(filename);
 
             return mistakesRepo;
         }

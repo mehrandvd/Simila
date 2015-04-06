@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using LevenshtienAlgorithm;
 
-namespace LevenshtienAlgorithm
+namespace Simila.Core.Levenstein
 {
-    public class Word : ILevenshteinExpression<char>
+    public class Word : ILevenshteinExpression<char>, IEquatable<Word>
     {
         public Word(string innerText)
         {
@@ -23,5 +22,28 @@ namespace LevenshtienAlgorithm
         }
 
         public int Length { get { return InnerText.Length; } }
+
+        public static implicit operator Word(string text)
+        {
+            return new Word(text);
+        }
+
+        public bool Equals(Word other)
+        {
+            if (other == null)
+                return false;
+
+            return InnerText == other.InnerText;
+        }
+
+        public override int GetHashCode()
+        {
+            return InnerText.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return InnerText;
+        }
     }
 }

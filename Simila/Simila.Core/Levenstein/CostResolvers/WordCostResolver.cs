@@ -1,67 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using LevenshtienAlgorithm;
 
-namespace LevenshtienAlgorithm
+namespace Simila.Core.Levenstein.CostResolvers
 {
-    class WordCostResolver  : ICostResolver<Word>
+    public class WordCostResolver  : CostResolverMistakyBase<Word>
     {
-        public Dictionary<Word, Dictionary<Word, double>> CostGroups { get; set; }
-
         public WordCostResolver()
         {
-            CostGroups = new Dictionary<Word, Dictionary<Word, double>>();
+            MistakeCosts = new Dictionary<Word, Dictionary<Word, double>>();
         }
-        public double GetInsertOrDeleteCost(Word character)
+        public override double GetInsertOrDeleteCost(Word character)
         {
-
             return 1;
-
         }
 
-        public double GetUpdateCost(Word left, Word right)
+        public override double GetUpdateCost(Word left, Word right)
         {
+            var mistakeCost = GetMistakeCost(left, right);
+
+            if (mistakeCost.HasValue)
+            {
+                return mistakeCost.Value;
+            }
+            
             var algorithm = new WordLevenshteinAlgorithm();
-            double? costValue = algorithm.GetDistance(left, right);
-            if (costValue == 0.0)
-                return 0;
-            if (CostGroups.ContainsKey(left))
-            {
-                var internaldict = CostGroups[left];
-                if (internaldict.ContainsKey(right))
-                {
-                    costValue = internaldict[right];
-                }
-            }
-
-            else if (CostGroups.ContainsKey(right))
-            {
-                var internaldict = CostGroups[right];
-                if (internaldict.ContainsKey(left))
-                {
-
-                    costValue = internaldict[left];
-                }
-            }
-            else
-            {
-                costValue = 1 - algorithm.GetSimilarity(left, right);
-            }
-
-            return costValue.Value;
+            return 1 - algorithm.GetSimilarity(left, right);
         }
-
-        public void SetCost(Word inputT, Word replacementT, double cost)
-        {
-            var internaldict = new Dictionary<Word, double>();
-
-            internaldict.Add(replacementT, cost);
-
-
-            CostGroups.Add(inputT, internaldict);
-        }
-
-        public bool IsCaseSensitive { get; set; }
     }
 }

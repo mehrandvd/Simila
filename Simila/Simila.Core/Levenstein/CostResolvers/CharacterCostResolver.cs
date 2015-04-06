@@ -2,55 +2,37 @@
 using System.Globalization;
 using LevenshtienAlgorithm;
 
-namespace Simila.Core.Levenstein
+namespace Simila.Core.Levenstein.CostResolvers
 {
 
-    public class CharacterCostResolver : ICostResolver<char>
+    public class CharacterCostResolver : CostResolverMistakyBase<char>
     {
         public CharacterCostResolver(double numericInsertionCost=0.5, bool isCaseSensitive = false, Dictionary<char, Dictionary<char, double>> costGroups = null)
         {
-            CostGroups = costGroups ?? new Dictionary<char, Dictionary<char, double>>();
+            MistakeCosts = costGroups ?? new Dictionary<char, Dictionary<char, double>>();
             NumericInsertionCost = numericInsertionCost;
             IsCaseSensitive = isCaseSensitive;
         }
 
-        public Dictionary<char, Dictionary<char, double>> CostGroups { get; private set; }
         private double NumericInsertionCost { get; set; }
 
-        public double GetUpdateCost(char char1, char char2)
+        public override double GetUpdateCost(char left, char right)
         {
             if (!IsCaseSensitive)
             {
-                char1 = char1.ToString(CultureInfo.InvariantCulture).ToUpper()[0];
-                char2 = char2.ToString(CultureInfo.InvariantCulture).ToUpper()[0];
+                left = left.ToString(CultureInfo.InvariantCulture).ToUpper()[0];
+                right = right.ToString(CultureInfo.InvariantCulture).ToUpper()[0];
             }
 
-            if (char1 == char2)
+            if (left == right)
                 return 0;
 
-            if (CostGroups.ContainsKey(char1))
-            {
-                var internaldict = CostGroups[char1];
-                if (internaldict.ContainsKey(char2))
-                {
+            var mistakeCost = GetMistakeCost(left, right);
 
-                    return internaldict[char2];
-                }
-            }
-
-            if (CostGroups.ContainsKey(char2))
-            {
-                var internaldict = CostGroups[char2];
-                if (internaldict.ContainsKey(char1))
-                {
-                    return internaldict[char1];
-                }
-            }
-
-            return 1;
+            return mistakeCost ?? 1;
         }
 
-        public double GetInsertOrDeleteCost(char character)
+        public override double GetInsertOrDeleteCost(char character)
         {
             double num;
             if(double.TryParse(character.ToString(CultureInfo.InvariantCulture),out num))
@@ -60,25 +42,5 @@ namespace Simila.Core.Levenstein
                 return 1;
             }
         }
-
-        public void SetCost(char inputT, char replacementT, double cost)
-        {
-            var internaldict = new Dictionary<char, double>();
-            if (CostGroups.ContainsKey(inputT))
-                internaldict = CostGroups[inputT];
-            else
-                CostGroups.Add(inputT, internaldict);
-            var replacementChar = replacementT;
-
-            if (!internaldict.ContainsKey(replacementChar))
-                internaldict.Add(replacementChar, cost);
-            else
-                internaldict[replacementChar] = cost;
-        }
-
-        public bool IsCaseSensitive { get; set; }
-
-        
     }
-   
 }

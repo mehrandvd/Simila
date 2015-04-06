@@ -2,16 +2,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using LevenshtienAlgorithm;
 
 namespace Simila.Core.Levenstein.Mistakes
 {
-    public class XmlFileCharacterMistakeRepository : ICharacterMistakeRepository
+    public class XmlFileMistakeRepository<T> : IMistakeRepository<T>
     {
         public string Filename { get; set; }
         private XElement _root;
-        private List<CharacterMistake> _mistakes;
+        private List<Mistake<T>> _mistakes;
 
-        public XmlFileCharacterMistakeRepository(string filename)
+        public XmlFileMistakeRepository(string filename)
         {
             Filename = filename;
             Populate();
@@ -23,7 +24,7 @@ namespace Simila.Core.Levenstein.Mistakes
 
             var result = from el in _root.Elements()
                         select
-                            new CharacterMistake(
+                            new Mistake<T>(
                                 el.Attribute("Left").Value,
                                 el.Attribute("Right").Value,
                                 double.Parse(el.Attribute("Cost").Value));
@@ -31,7 +32,7 @@ namespace Simila.Core.Levenstein.Mistakes
             _mistakes = result.ToList();
         }
 
-        public List<CharacterMistake> GetMistakes()
+        public List<Mistake<T>> GetMistakes()
         {
             return _mistakes;
         }

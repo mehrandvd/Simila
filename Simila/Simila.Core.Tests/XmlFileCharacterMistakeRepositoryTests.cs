@@ -12,10 +12,18 @@ namespace Simila.Core.Tests
     public class XmlFileCharacterMistakeRepositoryTests
     {
         [Test]
-        public void CommonEnglighMistakesShouldLoadFromXml()
+        public void CommonEnglishMistakesShouldLoadFromXml()
         {
-            var mistakesRepo = new XmlFileCharacterMistakeRepository("CommonEnglishCharacterMistakes.xml");
+            var mistakesRepo = new XmlFileMistakeRepository<char>("CommonEnglishCharacterMistakes.xml");
             
+            CollectionAssert.IsNotEmpty(mistakesRepo.GetMistakes());
+        }
+
+        [Test]
+        public void CommonPersianMistakesShouldLoadFromXml()
+        {
+            var mistakesRepo = new XmlFileMistakeRepository<char>("CommonPersianCharacterMistakes.xml");
+
             CollectionAssert.IsNotEmpty(mistakesRepo.GetMistakes());
         }
     }

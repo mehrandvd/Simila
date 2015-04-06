@@ -2,8 +2,8 @@
 
 namespace Simila.Core.Levenstein.Mistakes
 {
-    public interface ICharacterMistakeRepository
+    public interface IMistakeRepository<T>
     {
-        List<CharacterMistake> GetMistakes();
+        List<Mistake<T>> GetMistakes();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Simila.Core.Levenstein;
+using Simila.Core.Levenstein.CostResolvers;
 
 namespace LevenshtienAlgorithm
 {
