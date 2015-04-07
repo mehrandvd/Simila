@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using LevenshtienAlgorithm;
+using Simila.Core.Levenstein;
 
 namespace LevenshtienAlgorithm
 {

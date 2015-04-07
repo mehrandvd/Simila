@@ -23,7 +23,7 @@ namespace Simila.Core.Levenstein.CostResolvers
                 return mistakeCost.Value;
             }
             
-            var algorithm = new WordLevenshteinAlgorithm();
+            var algorithm = new WordLevensteinAlgorithm();
             return 1 - algorithm.GetSimilarity(left, right);
         }
     }

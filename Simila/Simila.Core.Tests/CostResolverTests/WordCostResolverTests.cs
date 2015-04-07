@@ -11,7 +11,7 @@ namespace Simila.Core.Tests
         [Test(Description = "Raw CharacterCostResolver should work simply.")]
         public void RawResolverShouldWorkForBasicActions()
         {
-            var leven = new WordLevenshteinAlgorithm();
+            var leven = new WordLevensteinAlgorithm();
 
             var cr = CostResolverFactory.CreateForWord().Build();
 

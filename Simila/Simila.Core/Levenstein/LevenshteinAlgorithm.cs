@@ -3,7 +3,8 @@ using LevenshtienAlgorithm;
 
 namespace Simila.Core.Levenstein
 {
-    public abstract class LevenshteinAlgorithm<T, TElement> where T : ILevenshteinExpression<TElement>
+    public abstract class LevenshteinAlgorithm<T, TElement>
+        where T : ILevenshteinExpression<TElement>
     {
         protected LevenshteinAlgorithm(ICostResolver<TElement> costResolver )
         {

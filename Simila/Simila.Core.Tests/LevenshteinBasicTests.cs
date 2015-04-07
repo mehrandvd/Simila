@@ -8,13 +8,13 @@ namespace Simila.Core.Tests {
         [Test(Description = "Testig the basic computations")]
         public void BasicComputations()
         {
-        //    var levenshteinAlgorithmWord = new WordLevenshteinAlgorithm();
+        //    var levenshteinAlgorithmWord = new WordLevensteinAlgorithm();
         //    var costResolverWord = levenshteinAlgorithmWord.CostResolver;
 
-        //    var levenshteinAlgorithmPhrase = new PhraseLevenshteinAlgorithm();
+        //    var levenshteinAlgorithmPhrase = new PhraseLevensteinAlgorithm();
         //    var costResolverPhrase = levenshteinAlgorithmPhrase.CostResolver;
 
-        //    var levPhraseCaseSensitive = new PhraseLevenshteinAlgorithm();
+        //    var levPhraseCaseSensitive = new PhraseLevensteinAlgorithm();
         //    var costResolverPhraseCaseSensitive = levPhraseCaseSensitive.CostResolver;
 
         //    Assert.AreEqual(levenshteinAlgorithmWord.GetDistance(new Word("AAA"), new Word("BBBBB")), 5);

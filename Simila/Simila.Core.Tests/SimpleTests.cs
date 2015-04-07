@@ -9,11 +9,10 @@ namespace Simila.Core.Tests
         [Test]
         public void SimpleDemoMustWork()
         {
-            
-            //var similaComparer = new SimilaComparer();
-            //similaComparer.Treshold = 0.7;
 
-            //Assert.IsTrue(similaComparer.IsSimilar("Mehran", "Nehran"));
+            var similaComparer = new Simila {Treshold = 0.7};
+
+            Assert.IsTrue(similaComparer.IsSimilar("Mehran", "Nehran"));
 
         }
     }

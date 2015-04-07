@@ -39,25 +39,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levenstein\CostResolvers\WordCostResolverFactory.cs" />
-    <Compile Include="Levenstein\CostResolvers\CharacterCostResolverFactory.cs" />
-    <Compile Include="Levenstein\CostResolvers\CostResolverMistakyBase.cs" />
-    <Compile Include="Levenstein\Mistakes\Mistake.cs" />
-    <Compile Include="Levenstein\Mistakes\ICharacterMistakeRepository.cs" />
-    <Compile Include="Levenstein\Mistakes\MistakesFactory.cs" />
-    <Compile Include="Levenstein\Mistakes\XmlFileMistakeRepository.cs" />
-    <Compile Include="Levenstein\CostResolvers\CharacterCostResolver.cs" />
-    <Compile Include="Levenstein\CostResolvers\CostResolverFactory.cs" />
-    <Compile Include="Levenstein\CostResolvers\ICostResolver.cs" />
+    <Compile Include="CatalySoft\CatalySoftAlgorithm.cs" />
+    <Compile Include="CostResolvers\WordCostResolverFactory.cs" />
+    <Compile Include="CostResolvers\CharacterCostResolverFactory.cs" />
+    <Compile Include="CostResolvers\CostResolverMistakyBase.cs" />
+    <Compile Include="Mistakes\Mistake.cs" />
+    <Compile Include="Mistakes\ICharacterMistakeRepository.cs" />
+    <Compile Include="Mistakes\MistakesFactory.cs" />
+    <Compile Include="Mistakes\XmlFileMistakeRepository.cs" />
+    <Compile Include="CostResolvers\CharacterCostResolver.cs" />
+    <Compile Include="CostResolvers\CostResolverFactory.cs" />
+    <Compile Include="CostResolvers\ICostResolver.cs" />
     <Compile Include="Levenstein\ILevenshteinExpression.cs" />
     <Compile Include="Levenstein\LevenshteinAlgorithm.cs" />
     <Compile Include="Levenstein\Phrase.cs" />
-    <Compile Include="Levenstein\CostResolvers\PhraseCostResolver.cs" />
-    <Compile Include="Levenstein\PhraseLevenshteinAlgorithm.cs" />
+    <Compile Include="CostResolvers\PhraseCostResolver.cs" />
+    <Compile Include="Levenstein\PhraseLevensteinAlgorithm.cs" />
     <Compile Include="Levenstein\Word.cs" />
-    <Compile Include="Levenstein\CostResolvers\WordCostResolver.cs" />
-    <Compile Include="Levenstein\WordLevenshteinAlgorithm.cs" />
+    <Compile Include="CostResolvers\WordCostResolver.cs" />
+    <Compile Include="Levenstein\WordLevensteinAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simila\ISimilarityAlgorithm.cs" />
+    <Compile Include="Simila\Simila.cs" />
+    <Compile Include="Simila\SimilarityMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CommonEnglishCharacterMistakes.xml">

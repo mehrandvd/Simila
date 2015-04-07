@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Simila.Core.Levenstein;
+using LevenshtienAlgorithm;
 
-namespace LevenshtienAlgorithm
+namespace Simila.Core.Levenstein
 {
-    public class Phrase : ILevenshteinExpression<Word>
+    public class Phrase : ILevenshteinExpression<Word>, IEquatable<Phrase>
     {
         private Word[] _elements;
 
@@ -49,5 +46,29 @@ namespace LevenshtienAlgorithm
         }
 
         public int Length { get { return Elements.Length; } }
+
+
+        public static implicit operator Phrase(string text)
+        {
+            return new Phrase(text);
+        }
+
+        public bool Equals(Phrase other)
+        {
+            if (other == null)
+                return false;
+
+            return InnerText == other.InnerText;
+        }
+
+        public override int GetHashCode()
+        {
+            return InnerText.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return InnerText;
+        }
     }
 }

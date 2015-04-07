@@ -7,14 +7,14 @@ using Simila.Core.Levenstein.CostResolvers;
 
 namespace LevenshtienAlgorithm
 {
-    public class WordLevenshteinAlgorithm : LevenshteinAlgorithm<Word, char>
+    public class WordLevensteinAlgorithm : LevenshteinAlgorithm<Word, char>
     {
-        public WordLevenshteinAlgorithm()
+        public WordLevensteinAlgorithm()
             : base(new CharacterCostResolver())
         {
         }
 
-        public WordLevenshteinAlgorithm(CharacterCostResolver costResolver)
+        public WordLevensteinAlgorithm(CharacterCostResolver costResolver)
             : base(costResolver)
         {
         }
