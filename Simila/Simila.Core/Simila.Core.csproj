@@ -43,6 +43,9 @@
     <Compile Include="CostResolvers\WordCostResolverFactory.cs" />
     <Compile Include="CostResolvers\CharacterCostResolverFactory.cs" />
     <Compile Include="CostResolvers\CostResolverMistakyBase.cs" />
+    <Compile Include="Levenstein\PhraseLevensteinAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Mistakes\Mistake.cs" />
     <Compile Include="Mistakes\ICharacterMistakeRepository.cs" />
     <Compile Include="Mistakes\MistakesFactory.cs" />
@@ -54,7 +57,6 @@
     <Compile Include="Levenstein\LevenshteinAlgorithm.cs" />
     <Compile Include="Levenstein\Phrase.cs" />
     <Compile Include="CostResolvers\PhraseCostResolver.cs" />
-    <Compile Include="Levenstein\PhraseLevensteinAlgorithm.cs" />
     <Compile Include="Levenstein\Word.cs" />
     <Compile Include="CostResolvers\WordCostResolver.cs" />
     <Compile Include="Levenstein\WordLevensteinAlgorithm.cs" />
