@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{86B2CC
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simila.TypeScript", "Simila.TypeScript\Simila.TypeScript.csproj", "{C686EC60-FFE4-406B-AC9A-283903668120}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{66A5F3C9-0085-4CC3-AA95-1E3396AED9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66A5F3C9-0085-4CC3-AA95-1E3396AED9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66A5F3C9-0085-4CC3-AA95-1E3396AED9B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C686EC60-FFE4-406B-AC9A-283903668120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C686EC60-FFE4-406B-AC9A-283903668120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C686EC60-FFE4-406B-AC9A-283903668120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C686EC60-FFE4-406B-AC9A-283903668120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
