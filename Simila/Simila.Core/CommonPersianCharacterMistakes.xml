@@ -1,9 +1,0 @@
-﻿<CommonCharacterMistakes>
-  <CommonMistake Left="ر" Right="ز" Cost="0.5"/>
-  <CommonMistake Left="س" Right="ش" Cost="0.5"/>
-  <CommonMistake Left="ی" Right="ي" Cost="0"/>
-  <CommonMistake Left="ک" Right="ك" Cost="0"/>
-  <CommonMistake Left="ک" Right="گ" Cost="0.5"/>
-  <CommonMistake Left="ا" Right="ل" Cost="0.75"/>
-  <CommonMistake Left="د" Right="ذ" Cost="0.5"/>
-</CommonCharacterMistakes>
