@@ -5,16 +5,16 @@ using Simila.Core.Levenstein.Mistakes;
 
 namespace Simila.Core.Levenstein.CostResolvers
 {
-    public class WordCostResolverFactory
+    public class WordSimilaritytResolverFactory
     {
-        private readonly WordCostResolver _resolver;
+        private readonly LevensteinWordSimilarityResolver _resolver;
 
-        public WordCostResolverFactory(WordCostResolver resolver)
+        public WordSimilaritytResolverFactory(LevensteinWordSimilarityResolver resolver)
         {
             _resolver = resolver;
         }
 
-        public WordCostResolverFactory AddEnglishCommonMistakes()
+        public WordSimilaritytResolverFactory AddEnglishCommonMistakes()
         {
             if (File.Exists("CommonEnglishWordMistakes.xml"))
             {
@@ -23,14 +23,14 @@ namespace Simila.Core.Levenstein.CostResolvers
 
                 foreach (var mistake in mistakes)
                 {
-                    _resolver.SetCost(mistake.Left, mistake.Right, mistake.Cost);
+                    _resolver.SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
                 }
             }
                 
             return this;
         }
 
-        public WordCostResolverFactory AddPersianCommonMistakes()
+        public WordSimilaritytResolverFactory AddPersianCommonMistakes()
         {
             if (File.Exists("CommonPersianWordMistakes.xml"))
             {
@@ -39,19 +39,19 @@ namespace Simila.Core.Levenstein.CostResolvers
 
                 foreach (var mistake in mistakes)
                 {
-                    _resolver.SetCost(mistake.Left, mistake.Right, mistake.Cost);
+                    _resolver.SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
                 }
             }
 
             return this;
         }
 
-        public WordCostResolver Build()
+        public LevensteinWordSimilarityResolver Build()
         {
             return _resolver;
         }
 
-        public WordCostResolver Default()
+        public LevensteinWordSimilarityResolver Default()
         {
             return AddEnglishCommonMistakes()
                 .AddPersianCommonMistakes()

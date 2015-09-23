@@ -11,7 +11,7 @@ namespace Simila.Core.Tests
     [TestFixture]
     class WordLevensteinAlgorithmTests
     {
-        readonly WordLevensteinAlgorithm _leven = new WordLevensteinAlgorithm();
+        readonly DefaultWordLevensteinAlgorithm _leven = new DefaultWordLevensteinAlgorithm();
 
         [Test]
         public void SimpleSimilarityMustWork()

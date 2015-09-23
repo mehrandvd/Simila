@@ -27,7 +27,7 @@ namespace Simila.Core.Levenstein.Mistakes
                             new Mistake<T>(
                                 el.Attribute("Left").Value,
                                 el.Attribute("Right").Value,
-                                double.Parse(el.Attribute("Cost").Value));
+                                float.Parse(el.Attribute("Similarity").Value));
 
             _mistakes = result.ToList();
         }

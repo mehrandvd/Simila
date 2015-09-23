@@ -1,9 +1,9 @@
 ﻿namespace Simila.Core.Levenstein
 {
-    public interface ILevenshteinExpression<T>
+    public interface ILevenshteinExpression<TElement>//<TExpression, TElement>// : ISimilarable<TExpression>
     {
-        T[] GetElements();
-        T this[int index] { get;}
+        TElement[] GetElements();
+        TElement this[int index] { get;}
         int Length { get; }
     }
 }

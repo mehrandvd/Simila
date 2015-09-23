@@ -8,14 +8,14 @@ namespace Simila.Core.Tests {
         [Test(Description = "Testig the basic computations")]
         public void BasicComputations()
         {
-        //    var levenshteinAlgorithmWord = new WordLevensteinAlgorithm();
-        //    var costResolverWord = levenshteinAlgorithmWord.CostResolver;
+        //    var levenshteinAlgorithmWord = new DefaultWordLevensteinAlgorithm();
+        //    var costResolverWord = levenshteinAlgorithmWord.similarityResolver;
 
         //    var levenshteinAlgorithmPhrase = new PhraseLevensteinAlgorithm();
-        //    var costResolverPhrase = levenshteinAlgorithmPhrase.CostResolver;
+        //    var costResolverPhrase = levenshteinAlgorithmPhrase.similarityResolver;
 
         //    var levPhraseCaseSensitive = new PhraseLevensteinAlgorithm();
-        //    var costResolverPhraseCaseSensitive = levPhraseCaseSensitive.CostResolver;
+        //    var costResolverPhraseCaseSensitive = levPhraseCaseSensitive.similarityResolver;
 
         //    Assert.AreEqual(levenshteinAlgorithmWord.GetDistance(new Word("AAA"), new Word("BBBBB")), 5);
 
@@ -38,9 +38,9 @@ namespace Simila.Core.Tests {
         //    Assert.AreEqual((decimal)levenshteinAlgorithmPhrase.GetDistance(new Phrase("AAaaAAbBB"), new Phrase("aaaaaabbb")), 0);
         //    Assert.AreEqual((decimal)levPhraseCaseSensitive.GetDistance(new Phrase("AAaaAAbBB"), new Phrase("aaaaaabbb")), 0.666666666666667);
 
-        //    costResolverWord.SetCost('C', 'K', 0.5);
-        //    costResolverWord.SetCost('c', 'k', 0.5);
-        //    costResolverWord.SetCost('N', 'M', 0.5);
+        //    costResolverWord.SetMistakeSimilarity('C', 'K', 0.5);
+        //    costResolverWord.SetMistakeSimilarity('c', 'k', 0.5);
+        //    costResolverWord.SetMistakeSimilarity('N', 'M', 0.5);
 
         //    Assert.AreEqual(levenshteinAlgorithmWord.GetDistance(new Word("Cat"), new Word("Kat")), 0.5);
 
@@ -55,56 +55,56 @@ namespace Simila.Core.Tests {
         //[Test(Description = "Testing the similarity function")]
         //public void BasicSimilarities()
         //{
-        //    //var levenshteinAlgorithm = new LevenshteinAlgorithm();
-        //    //levenshteinAlgorithm.GetDistance("asdfasf", "asdfasf");
+        //    //var LevensteinAlgorithm = new LevensteinAlgorithm();
+        //    //LevensteinAlgorithm.GetDistance("asdfasf", "asdfasf");
             
-        //    //var costResolver = new CharacterCostResolver();
-        //    //costResolver.SetCost('C', 'K', 0.5);
-        //    //costResolver.SetCost('c', 'k', 0.5);
-        //    //costResolver.SetCost('N', 'M', 0.5);
+        //    //var costResolver = new CharacterMistakeBasedSimilarityResolver();
+        //    //costResolver.SetMistakeSimilarity('C', 'K', 0.5);
+        //    //costResolver.SetMistakeSimilarity('c', 'k', 0.5);
+        //    //costResolver.SetMistakeSimilarity('N', 'M', 0.5);
 
 
         //    //Assert.GreaterOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("AAAAA", "AAABB"), .5,
+        //    //    LevensteinAlgorithm.GetSimilarity("AAAAA", "AAABB"), .5,
         //    //    "AAAAA is similar to AAABB");
 
         //    //Assert.GreaterOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("Cat", "Kat"), .5,
+        //    //    LevensteinAlgorithm.GetSimilarity("Cat", "Kat"), .5,
         //    //    "Cat is similar to Kat");
 
         //    //Assert.GreaterOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("Mehran", "Nehran"), .5,
+        //    //    LevensteinAlgorithm.GetSimilarity("Mehran", "Nehran"), .5,
         //    //    "Mehran is similar to Nehran");
 
         //    //Assert.GreaterOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("Ali", "Aly"), .5,
+        //    //    LevensteinAlgorithm.GetSimilarity("Ali", "Aly"), .5,
         //    //    "Ali is similar to Aly");
             
         //    //Assert.GreaterOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("Monica", "Noxica"), .5,
+        //    //    LevensteinAlgorithm.GetSimilarity("Monica", "Noxica"), .5,
         //    //    "Monica is similar to Noxica");
             
         //    //Assert.GreaterOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("Monica", "Noxika"), .5, 
+        //    //    LevensteinAlgorithm.GetSimilarity("Monica", "Noxika"), .5, 
         //    //    "Monica is similar to Noxika");
 
 
 
         //    //Assert.LessOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("AAAAA", "BBBBB"), .5,
+        //    //    LevensteinAlgorithm.GetSimilarity("AAAAA", "BBBBB"), .5,
         //    //    "AAAAA is not similar BBBBB");
 
         //    //Assert.LessOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("AAAAA", "ABBBB"), .5,
+        //    //    LevensteinAlgorithm.GetSimilarity("AAAAA", "ABBBB"), .5,
         //    //    "AAAAA is not similar ABBBB");
             
             
         //    //Assert.LessOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("AAAAA", "AABBB"), .5, 
+        //    //    LevensteinAlgorithm.GetSimilarity("AAAAA", "AABBB"), .5, 
         //    //    "AAAAA is not similar AABBB");
             
         //    //Assert.LessOrEqual(
-        //    //    levenshteinAlgorithm.GetSimilarity("AABBB", "AAAAA"), .5, 
+        //    //    LevensteinAlgorithm.GetSimilarity("AABBB", "AAAAA"), .5, 
         //    //    "AAAAA is not similar AABBB");
 
 

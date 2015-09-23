@@ -17,12 +17,12 @@ namespace Simila.Core
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns>The percentage match from 0.0 to 1.0 where 1.0 is 100%</returns>
-        public double GetSimilarity(string left, string right)
+        public float GetSimilarity(string left, string right)
         {
             List<string> pairsLeft = GetPhrasePairs(left.ToUpper());
             List<string> pairsRight = GetPhrasePairs(right.ToUpper());
 
-            var costResolver = CostResolverFactory.CreateForWord().Default();
+            var costResolver = SimilarityResolverFactory.CreateForWord().Default();
 
             int intersection = 0;
             int union = pairsLeft.Count + pairsRight.Count;
@@ -32,7 +32,7 @@ namespace Simila.Core
                 for (int j = 0; j < pairsRight.Count; j++)
                 {
                     //if (pairLeft == pairsRight[j])
-                    if (costResolver.GetUpdateCost(pairLeft, pairsRight[j]) < 0.5)
+                    if (costResolver.GetSimilarity(pairLeft, pairsRight[j]) > 0.5)
                     {
                         intersection++;
                         pairsRight.RemoveAt(j);//Must remove the match to prevent "GGGG" from appearing to match "GG" with 100% success
@@ -42,7 +42,7 @@ namespace Simila.Core
                 }
             }
 
-            return (2.0 * intersection) / union;
+            return (2.0f * intersection) / union;
         }
 
         /// <summary>

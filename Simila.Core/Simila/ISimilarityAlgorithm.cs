@@ -2,6 +2,6 @@
 {
     public interface ISimilarityAlgorithm
     {
-        double GetSimilarity(string left, string right);
+        float GetSimilarity(string left, string right);
     }
 }

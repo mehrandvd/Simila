@@ -5,14 +5,14 @@ namespace Simila.Core.Levenstein.Mistakes
 {
     public class Mistake<T>
     {
-        public Mistake(T left, T right, double cost)
+        public Mistake(T left, T right, float similarity)
         {
             Left = left;
             Right = right;
-            Cost = cost;
+            Similarity = similarity;
         }
 
-        public Mistake(string left, string right, double cost)
+        public Mistake(string left, string right, float similarity)
         {
             if (typeof (T) == typeof (char))
             {
@@ -34,11 +34,11 @@ namespace Simila.Core.Levenstein.Mistakes
                 throw new Exception(string.Format("{0} is not available for mistakes.", typeof(T)));
             }
 
-            Cost = cost;
+            Similarity = similarity;
         }
 
         public T Left { get; set; }
         public T Right { get; set; }
-        public double Cost { get; set; }
+        public float Similarity { get; set; }
     }
 }

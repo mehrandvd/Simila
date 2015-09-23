@@ -9,13 +9,13 @@ using Simila.Core.Levenstein.CostResolvers;
 
 namespace LevenshtienAlgorithm
 {
-    public class PhraseLevensteinAlgorithm : LevenshteinAlgorithm<Phrase, Word>,  ISimilarityAlgorithm
+    public class PhraseLevensteinAlgorithm : LevensteinAlgorithm<Phrase, Word>,  ISimilarityAlgorithm
     {
-        public PhraseLevensteinAlgorithm(): base(new WordCostResolver())
+        public PhraseLevensteinAlgorithm(): base(new LevensteinWordSimilarityResolver())
         {
         }
 
-        public double GetSimilarity(string left, string right)
+        public float GetSimilarity(string left, string right)
         {
             return GetSimilarity((Phrase) left, right);
         }
