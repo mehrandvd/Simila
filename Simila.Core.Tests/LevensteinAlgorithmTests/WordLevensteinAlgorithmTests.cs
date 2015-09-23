@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Simila.Core.CostResolvers;
 using Simila.Core.Levenstein;
 using Simila.Core.SimilarityResolvers;
 

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using LevenshtienAlgorithm;
 
 namespace Simila.Core.Levenstein
 {

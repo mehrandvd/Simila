@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace LevenshtienAlgorithm
+﻿namespace Simila.Core.SimilarityResolvers
 {
     public interface IMistakeBasedSimilarityResolver<T> : ISimilarityResolver<T>
     {

@@ -1,6 +1,4 @@
-﻿using LevenshtienAlgorithm;
-using Simila.Core.CostResolvers;
-using Simila.Core.SimilarityResolvers;
+﻿using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Levenstein
 {

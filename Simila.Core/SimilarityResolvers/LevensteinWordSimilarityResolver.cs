@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using LevenshtienAlgorithm;
 using Simila.Core.Levenstein;
 
-namespace Simila.Core.CostResolvers
+namespace Simila.Core.SimilarityResolvers
 {
     public class LevensteinWordSimilarityResolver  : MistakeBasedSimilarityResolver<Word>
     {

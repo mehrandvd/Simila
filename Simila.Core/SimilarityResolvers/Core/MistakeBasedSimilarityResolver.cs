@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using LevenshtienAlgorithm;
 
-namespace Simila.Core.CostResolvers
+namespace Simila.Core.SimilarityResolvers
 {
     public class MistakeBasedSimilarityResolver<T> : IMistakeBasedSimilarityResolver<T>
     {

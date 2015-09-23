@@ -1,9 +1,7 @@
 ﻿using System.IO;
-using LevenshtienAlgorithm;
-using Simila.Core.CostResolvers;
-using Simila.Core.Levenstein.Mistakes;
+using Simila.Core.Levenstein;
 
-namespace Simila.Core.Levenstein.CostResolvers
+namespace Simila.Core.SimilarityResolvers
 {
     public class WordSimilaritytResolverFactory
     {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Simila.Core.CostResolvers
+﻿namespace Simila.Core.SimilarityResolvers
 {
 
     public class DefaultCharacterSimilarityResolver : MistakeBasedSimilarityResolver<char>

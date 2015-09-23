@@ -1,5 +1,4 @@
 ﻿using System;
-using LevenshtienAlgorithm;
 
 namespace Simila.Core.Levenstein
 {

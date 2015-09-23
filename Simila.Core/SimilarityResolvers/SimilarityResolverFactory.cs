@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LevenshtienAlgorithm;
-using Simila.Core.CostResolvers;
-using Simila.Core.SimilarityResolvers;
-
-namespace Simila.Core.Levenstein.CostResolvers
+﻿namespace Simila.Core.SimilarityResolvers
 {
     public class SimilarityResolverFactory
     {

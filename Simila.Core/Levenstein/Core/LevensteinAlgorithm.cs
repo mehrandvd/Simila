@@ -1,5 +1,5 @@
 ﻿using System;
-using LevenshtienAlgorithm;
+using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Levenstein
 {

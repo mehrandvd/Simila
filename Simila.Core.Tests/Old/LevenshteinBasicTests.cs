@@ -1,11 +1,10 @@
-﻿using LevenshtienAlgorithm;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Simila.Core.Tests {
     [TestFixture]
     public class LevenshteinBasicTests {
 
-        [Test(Description = "Testig the basic computations")]
+        //[Test(Description = "Testig the basic computations")]
         public void BasicComputations()
         {
         //    var levenshteinAlgorithmWord = new DefaultWordLevensteinAlgorithm();

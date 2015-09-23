@@ -1,8 +1,7 @@
 ﻿using System;
-using LevenshtienAlgorithm;
 using NUnit.Framework;
 using Simila.Core.Levenstein;
-using Simila.Core.Levenstein.CostResolvers;
+using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Tests
 {

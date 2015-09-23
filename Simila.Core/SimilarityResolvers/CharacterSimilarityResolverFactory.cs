@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using LevenshtienAlgorithm;
-using Simila.Core.Levenstein.Mistakes;
 
 namespace Simila.Core.SimilarityResolvers
 {

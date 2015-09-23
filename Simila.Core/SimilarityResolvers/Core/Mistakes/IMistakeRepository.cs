@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Simila.Core.Levenstein.Mistakes
+namespace Simila.Core.SimilarityResolvers
 {
     public interface IMistakeRepository<T>
     {

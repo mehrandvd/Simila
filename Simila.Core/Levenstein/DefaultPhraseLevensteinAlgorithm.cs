@@ -1,4 +1,4 @@
-﻿using Simila.Core.CostResolvers;
+﻿using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Levenstein
 {

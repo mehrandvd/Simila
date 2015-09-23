@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Simila.Core.Levenstein.Mistakes;
+using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Tests
 {

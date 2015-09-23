@@ -1,4 +1,4 @@
-﻿namespace LevenshtienAlgorithm
+﻿namespace Simila.Core.SimilarityResolvers
 {
     public interface ISimilarityResolver<T>
     {

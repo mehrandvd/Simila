@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using LevenshtienAlgorithm;
 
-namespace Simila.Core.Levenstein.Mistakes
+namespace Simila.Core.SimilarityResolvers
 {
     public class XmlFileMistakeRepository<T> : IMistakeRepository<T>
     {
