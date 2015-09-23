@@ -1,3 +1,3 @@
 ﻿<CommonCharacterMistakes>
-  <CommonMistake Left="color" Right="colour" Similarity="0.2"/>
+  <CommonMistake Left="color" Right="colour" Similarity="0.8"/>
 </CommonCharacterMistakes>

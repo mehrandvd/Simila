@@ -3,9 +3,9 @@
 namespace Simila.Core.CostResolvers
 {
 
-    public class CharacterMistakeBasedSimilarityResolver : MistakeBasedSimilarityResolver<char>
+    public class DefaultCharacterSimilarityResolver : MistakeBasedSimilarityResolver<char>
     {
-        public CharacterMistakeBasedSimilarityResolver()
+        public DefaultCharacterSimilarityResolver()
         {
             CostOfNumeric = 0.5f;
             IsCaseSensitive = true;

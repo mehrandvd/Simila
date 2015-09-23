@@ -1,9 +1,9 @@
 ﻿<CommonCharacterMistakes>
   <CommonMistake Left="ر" Right="ز" Similarity="0.5"/>
   <CommonMistake Left="س" Right="ش" Similarity="0.5"/>
-  <CommonMistake Left="ی" Right="ي" Similarity="0"/>
-  <CommonMistake Left="ک" Right="ك" Similarity="0"/>
+  <CommonMistake Left="ی" Right="ي" Similarity="1"/>
+  <CommonMistake Left="ک" Right="ك" Similarity="1"/>
   <CommonMistake Left="ک" Right="گ" Similarity="0.5"/>
-  <CommonMistake Left="ا" Right="ل" Similarity="0.75"/>
+  <CommonMistake Left="ا" Right="ل" Similarity="0.25"/>
   <CommonMistake Left="د" Right="ذ" Similarity="0.5"/>
 </CommonCharacterMistakes>

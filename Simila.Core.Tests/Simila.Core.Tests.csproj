@@ -68,14 +68,13 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="LevensteinAlgorithmTests\BasicLevensteinAlgorithmTests.cs" />
+    <Compile Include="LevensteinAlgorithmTests\WordLevensteinAlgorithmTests.cs" />
     <Compile Include="Old\CatalySoftTests.cs" />
     <Compile Include="SimilarityResolverTests\WordCostResolverTests.cs" />
     <Compile Include="Old\LevenshteinBasicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimilarityResolverTests\CharacterMistakeBasedSimilarityResolverTests.cs" />
-    <Compile Include="Old\LevensteinAlgorithmTests\PhraseLevensteinAlgorithmTests.cs" />
-    <Compile Include="Old\LevensteinAlgorithmTests\WordLevensteinAlgorithmTests.cs" />
+    <Compile Include="LevensteinAlgorithmTests\PhraseLevensteinAlgorithmTests.cs" />
     <Compile Include="Old\XmlFileCharacterMistakeRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>

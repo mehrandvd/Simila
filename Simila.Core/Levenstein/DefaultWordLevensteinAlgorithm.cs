@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using LevenshtienAlgorithm;
 using Simila.Core.CostResolvers;
-using Simila.Core.Levenstein;
-using Simila.Core.Levenstein.CostResolvers;
+using Simila.Core.SimilarityResolvers;
 
-namespace LevenshtienAlgorithm
+namespace Simila.Core.Levenstein
 {
     public class DefaultWordLevensteinAlgorithm : LevensteinAlgorithm<Word, char>
     {
         public DefaultWordLevensteinAlgorithm()
-            : base(new CharacterMistakeBasedSimilarityResolver())
+            : base(new DefaultCharacterSimilarityResolver())
         {
         }
 

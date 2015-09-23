@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using LevenshtienAlgorithm;
+using Simila.Core.Levenstein;
 
 namespace Simila.Core
 {
@@ -21,7 +22,7 @@ namespace Simila.Core
             switch (method)
             {
                 case SimilarityMethod.CatalySoft:
-                    _algorithm = new PhraseLevensteinAlgorithm();
+                    _algorithm = new DefaultPhraseLevensteinAlgorithm();
                     break;
 
                 case SimilarityMethod.ExtendedLevenstein:

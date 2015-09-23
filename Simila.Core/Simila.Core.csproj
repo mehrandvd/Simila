@@ -42,23 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CatalySoft\CatalySoftAlgorithm.cs" />
-    <Compile Include="SimilarityResolvers\ISimilarityResolver.cs" />
+    <Compile Include="Levenstein\Core\ILevensteinAlgorithm.cs" />
+    <Compile Include="Levenstein\DefaultPhraseLevensteinAlgorithm.cs" />
+    <Compile Include="SimilarityResolvers\Core\ISimilarityResolver.cs" />
     <Compile Include="SimilarityResolvers\WordSimilaritytResolverFactory.cs" />
     <Compile Include="SimilarityResolvers\CharacterSimilarityResolverFactory.cs" />
-    <Compile Include="SimilarityResolvers\MistakeBasedSimilarityResolver.cs" />
-    <Compile Include="Levenstein\ISimilarable.cs" />
-    <Compile Include="Levenstein\PhraseLevensteinAlgorithm.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="SimilarityResolvers\Core\MistakeBasedSimilarityResolver.cs" />
+    <Compile Include="Levenstein\Core\ISimilarable.cs" />
     <Compile Include="Mistakes\Mistake.cs" />
     <Compile Include="Mistakes\ICharacterMistakeRepository.cs" />
     <Compile Include="Mistakes\MistakesFactory.cs" />
     <Compile Include="Mistakes\XmlFileMistakeRepository.cs" />
-    <Compile Include="SimilarityResolvers\CharacterMistakeBasedSimilarityResolver.cs" />
+    <Compile Include="SimilarityResolvers\DefaultCharacterSimilarityResolver.cs" />
     <Compile Include="SimilarityResolvers\SimilarityResolverFactory.cs" />
-    <Compile Include="SimilarityResolvers\IMistakeBasedSimilarityResolver.cs" />
-    <Compile Include="Levenstein\ILevenshteinExpression.cs" />
-    <Compile Include="Levenstein\LevensteinAlgorithm.cs" />
+    <Compile Include="SimilarityResolvers\Core\IMistakeBasedSimilarityResolver.cs" />
+    <Compile Include="Levenstein\Core\ILevenshteinExpression.cs" />
+    <Compile Include="Levenstein\Core\LevensteinAlgorithm.cs" />
     <Compile Include="Levenstein\Phrase.cs" />
     <Compile Include="SimilarityResolvers\PhraseCostResolver.cs" />
     <Compile Include="Levenstein\Word.cs" />

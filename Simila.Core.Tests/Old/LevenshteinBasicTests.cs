@@ -58,7 +58,7 @@ namespace Simila.Core.Tests {
         //    //var LevensteinAlgorithm = new LevensteinAlgorithm();
         //    //LevensteinAlgorithm.GetDistance("asdfasf", "asdfasf");
             
-        //    //var costResolver = new CharacterMistakeBasedSimilarityResolver();
+        //    //var costResolver = new DefaultCharacterSimilarityResolver();
         //    //costResolver.SetMistakeSimilarity('C', 'K', 0.5);
         //    //costResolver.SetMistakeSimilarity('c', 'k', 0.5);
         //    //costResolver.SetMistakeSimilarity('N', 'M', 0.5);

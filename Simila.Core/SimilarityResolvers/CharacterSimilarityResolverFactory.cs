@@ -1,14 +1,14 @@
 ﻿using System.IO;
-using Simila.Core.CostResolvers;
+using LevenshtienAlgorithm;
 using Simila.Core.Levenstein.Mistakes;
 
-namespace Simila.Core.Levenstein.CostResolvers
+namespace Simila.Core.SimilarityResolvers
 {
     public class CharacterSimilarityResolverFactory
     {
-        private readonly CharacterMistakeBasedSimilarityResolver _resolver;
+        private readonly IMistakeBasedSimilarityResolver<char> _resolver;
 
-        public CharacterSimilarityResolverFactory(CharacterMistakeBasedSimilarityResolver resolver)
+        public CharacterSimilarityResolverFactory(IMistakeBasedSimilarityResolver<char> resolver)
         {
             _resolver = resolver;
         }
@@ -45,12 +45,12 @@ namespace Simila.Core.Levenstein.CostResolvers
             return this;
         }
 
-        public CharacterMistakeBasedSimilarityResolver Build()
+        public ISimilarityResolver<char> Build()
         {
             return _resolver;
         }
 
-        public CharacterMistakeBasedSimilarityResolver Default()
+        public ISimilarityResolver<char> Default()
         {
 
             return AddEnglishCommonMistakes()
