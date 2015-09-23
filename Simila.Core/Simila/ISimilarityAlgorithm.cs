@@ -1,7 +1,7 @@
 ﻿namespace Simila.Core
 {
-    public interface ISimilarityAlgorithm
+    public interface ISimilarityAlgorithm<T>
     {
-        float GetSimilarity(string left, string right);
+        float GetSimilarity(T left, T right);
     }
 }

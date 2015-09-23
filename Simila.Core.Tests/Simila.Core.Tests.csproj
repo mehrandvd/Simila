@@ -76,6 +76,7 @@
     <Compile Include="SimilarityResolverTests\CharacterMistakeBasedSimilarityResolverTests.cs" />
     <Compile Include="LevensteinAlgorithmTests\PhraseLevensteinAlgorithmTests.cs" />
     <Compile Include="Old\XmlFileCharacterMistakeRepositoryTests.cs" />
+    <Compile Include="SimilaStringTests\SimpleSimilaTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

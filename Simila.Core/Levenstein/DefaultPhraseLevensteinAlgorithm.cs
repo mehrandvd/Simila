@@ -2,7 +2,7 @@
 
 namespace Simila.Core.Levenstein
 {
-    public class DefaultPhraseLevensteinAlgorithm : LevensteinAlgorithm<Phrase, Word>,  ISimilarityAlgorithm
+    public class DefaultPhraseLevensteinAlgorithm : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
     {
         public DefaultPhraseLevensteinAlgorithm(): base(new LevensteinWordSimilarityResolver())
         {

@@ -2,40 +2,26 @@
 
 namespace Simila.Core
 {
-    public class Simila
+    public class Simila : SimilaBase<string>
     {
-        public Simila()
-            : this(SimilarityMethod.ExtendedLevenstein)
+        public Simila() : this(new DefaultPhraseLevensteinAlgorithm())
         {
 
         }
 
-        public Simila(SimilarityMethod method)
+        public Simila(ISimilarityAlgorithm<string> algorithm) : base(algorithm)
         {
-            switch (method)
-            {
-                case SimilarityMethod.CatalySoft:
-                    _algorithm = new DefaultPhraseLevensteinAlgorithm();
-                    break;
-
-                case SimilarityMethod.ExtendedLevenstein:
-                    _algorithm = new CatalySoftAlgorithm();
-                    break;
-            }
+           
         }
 
-        private readonly ISimilarityAlgorithm _algorithm;
-
-        public double Treshold { get; set; }
-
-        public bool IsSimilar(string left, string right)
+        public float GetSimilarityPercent(object left, object right)
         {
-            return GetSimilarityPercent(left, right) >= Treshold;
+            return base.GetSimilarityPercent(left.ToString(), right.ToString());
         }
 
-        public double GetSimilarityPercent(string left, string right)
+        public bool IsSimilar(object left, object right)
         {
-            return _algorithm.GetSimilarity(left, right);
+            return base.IsSimilar(left.ToString(), right.ToString());
         }
     }
 }

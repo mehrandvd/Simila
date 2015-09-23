@@ -63,6 +63,9 @@
     <Compile Include="Levenstein\DefaultWordLevensteinAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simila\ISimilarityAlgorithm.cs" />
+    <Compile Include="Simila\IStringSimilarityAlgorithm.cs" />
+    <Compile Include="Simila\ISimila.cs" />
+    <Compile Include="Simila\SimilaBase.cs" />
     <Compile Include="Simila\Simila.cs" />
     <Compile Include="Simila\SimilarityMethod.cs" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core
 {
-    public class CatalySoftAlgorithm : ISimilarityAlgorithm
+    public class CatalySoftAlgorithm : IStringSimilarityAlgorithm
     {
         /// <summary>
         /// Compares the two strings based on letter pair matches
