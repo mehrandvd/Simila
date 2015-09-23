@@ -44,7 +44,7 @@
     <Compile Include="CatalySoft\CatalySoftAlgorithm.cs" />
     <Compile Include="CostResolvers\WordCostResolverFactory.cs" />
     <Compile Include="CostResolvers\CharacterCostResolverFactory.cs" />
-    <Compile Include="CostResolvers\CostResolverMistakyBase.cs" />
+    <Compile Include="CostResolvers\MistakeBasedCostResolver.cs" />
     <Compile Include="Levenstein\PhraseLevensteinAlgorithm.cs">
       <SubType>Code</SubType>
     </Compile>

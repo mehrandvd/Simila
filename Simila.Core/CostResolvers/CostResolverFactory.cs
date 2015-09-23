@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LevenshtienAlgorithm;
+using Simila.Core.CostResolvers;
 
 namespace Simila.Core.Levenstein.CostResolvers
 {
@@ -12,7 +13,7 @@ namespace Simila.Core.Levenstein.CostResolvers
     {
         public static CharacterCostResolverFactory CreateForCharacter()
         {
-            return new CharacterCostResolverFactory(new CharacterCostResolver(numericInsertionCost: .5, isCaseSensitive: false));
+            return new CharacterCostResolverFactory(new CharacterCostResolver());
         }
 
         public static WordCostResolverFactory CreateForWord()

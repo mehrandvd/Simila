@@ -22,7 +22,7 @@ namespace LevenshtienAlgorithm
             throw new NotImplementedException();
         }
 
-        public void SetCost(Phrase inputT, Phrase replacementT, double cost)
+        public void SetCost(Phrase left, Phrase right, double cost)
         {
             throw new NotImplementedException();
         }

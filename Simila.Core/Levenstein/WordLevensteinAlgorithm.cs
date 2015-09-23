@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Simila.Core.CostResolvers;
 using Simila.Core.Levenstein;
 using Simila.Core.Levenstein.CostResolvers;
 

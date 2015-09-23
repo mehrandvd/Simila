@@ -7,10 +7,8 @@ namespace LevenshtienAlgorithm
 {
     public interface ICostResolver<T>
     {
-        Dictionary<T, Dictionary<T, double>> MistakeCosts { get;  }
         double GetInsertOrDeleteCost(T character);
         double GetUpdateCost(T left, T right);
-        void SetCost(T inputT,T replacementT,double cost);
-        bool IsCaseSensitive { get; set; }
+        void SetCost(T left,T right,double cost);
     }
 }

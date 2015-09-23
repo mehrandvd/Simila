@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Simila.Core.CostResolvers;
 using Simila.Core.Levenstein.Mistakes;
 
 namespace Simila.Core.Levenstein.CostResolvers

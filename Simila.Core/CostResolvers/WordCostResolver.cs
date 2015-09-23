@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using LevenshtienAlgorithm;
+using Simila.Core.Levenstein;
 
-namespace Simila.Core.Levenstein.CostResolvers
+namespace Simila.Core.CostResolvers
 {
-    public class WordCostResolver  : CostResolverMistakyBase<Word>
+    public class WordCostResolver  : MistakeBasedCostResolver<Word>
     {
         public WordCostResolver()
         {
@@ -16,15 +17,17 @@ namespace Simila.Core.Levenstein.CostResolvers
 
         public override double GetUpdateCost(Word left, Word right)
         {
-            var mistakeCost = GetMistakeCost(left, right);
+            var mistakeBasedCost = base.GetUpdateCost(left, right);
 
-            if (mistakeCost.HasValue)
+            if (mistakeBasedCost < 1)
             {
-                return mistakeCost.Value;
+                return mistakeBasedCost;
             }
-            
-            var algorithm = new WordLevensteinAlgorithm();
-            return 1 - algorithm.GetSimilarity(left, right);
+            else
+            {
+                var algorithm = new WordLevensteinAlgorithm();
+                return 1 - algorithm.GetSimilarity(left, right);
+            }
         }
     }
 }
