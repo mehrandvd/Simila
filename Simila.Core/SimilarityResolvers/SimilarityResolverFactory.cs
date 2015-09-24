@@ -4,12 +4,12 @@
     {
         public static CharacterSimilarityResolverFactory CreateForCharacter()
         {
-            return new CharacterSimilarityResolverFactory(new DefaultCharacterSimilarityResolver());
+            return new CharacterSimilarityResolverFactory(new CharacterSimilarityResolverDefault());
         }
 
-        public static WordSimilaritytResolverFactory CreateForWord()
+        public static WordSimilaritytResolverFactory CreateForWordMistakeBased()
         {
-            return new WordSimilaritytResolverFactory(new LevensteinWordSimilarityResolver());
+            return new WordSimilaritytResolverFactory(new WordSimilarityResolverMistake());
         }
     }
 }

@@ -43,8 +43,9 @@
   <ItemGroup>
     <Compile Include="CatalySoft\CatalySoftAlgorithm.cs" />
     <Compile Include="Levenstein\Core\ILevensteinAlgorithm.cs" />
-    <Compile Include="Levenstein\DefaultPhraseLevensteinAlgorithm.cs" />
+    <Compile Include="Levenstein\PhraseSimilarityResolverLevenstein.cs" />
     <Compile Include="SimilarityResolvers\Core\ISimilarityResolver.cs" />
+    <Compile Include="SimilarityResolvers\Core\MultiSimilarityResolver.cs" />
     <Compile Include="SimilarityResolvers\WordSimilaritytResolverFactory.cs" />
     <Compile Include="SimilarityResolvers\CharacterSimilarityResolverFactory.cs" />
     <Compile Include="SimilarityResolvers\Core\MistakeBasedSimilarityResolver.cs" />
@@ -52,16 +53,17 @@
     <Compile Include="SimilarityResolvers\Core\Mistakes\IMistakeRepository.cs" />
     <Compile Include="SimilarityResolvers\Core\Mistakes\MistakesFactory.cs" />
     <Compile Include="SimilarityResolvers\Core\Mistakes\XmlFileMistakeRepository.cs" />
-    <Compile Include="SimilarityResolvers\DefaultCharacterSimilarityResolver.cs" />
+    <Compile Include="SimilarityResolvers\CharacterSimilarityResolverDefault.cs" />
     <Compile Include="SimilarityResolvers\SimilarityResolverFactory.cs" />
     <Compile Include="SimilarityResolvers\Core\IMistakeBasedSimilarityResolver.cs" />
     <Compile Include="Levenstein\Core\ILevenshteinExpression.cs" />
     <Compile Include="Levenstein\Core\LevensteinAlgorithm.cs" />
     <Compile Include="Levenstein\Phrase.cs" />
     <Compile Include="Levenstein\Word.cs" />
-    <Compile Include="SimilarityResolvers\LevensteinWordSimilarityResolver.cs" />
-    <Compile Include="Levenstein\DefaultWordLevensteinAlgorithm.cs" />
+    <Compile Include="SimilarityResolvers\WordSimilarityResolverMistake.cs" />
+    <Compile Include="Levenstein\WordSimilarityResolverLevenstein.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimilarityResolvers\WordSimilarityResolverDefault.cs" />
     <Compile Include="Simila\ISimilarityAlgorithm.cs" />
     <Compile Include="Simila\IStringSimilarityAlgorithm.cs" />
     <Compile Include="Simila\ISimila.cs" />

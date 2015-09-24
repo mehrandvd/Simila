@@ -70,7 +70,7 @@
   <ItemGroup>
     <Compile Include="LevensteinAlgorithmTests\WordLevensteinAlgorithmTests.cs" />
     <Compile Include="Old\CatalySoftTests.cs" />
-    <Compile Include="SimilarityResolverTests\WordCostResolverTests.cs" />
+    <Compile Include="Old\WordCostResolverTests.cs" />
     <Compile Include="Old\LevenshteinBasicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimilarityResolverTests\CharacterMistakeBasedSimilarityResolverTests.cs" />

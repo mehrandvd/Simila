@@ -1,15 +1,17 @@
 ﻿using Simila.Core.Levenstein;
+using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core
 {
     public class Simila : SimilaBase<string>
     {
-        public Simila() : this(new DefaultPhraseLevensteinAlgorithm())
+        public Simila() : this(new PhraseSimilarityResolverLevenstein())
         {
 
         }
 
-        public Simila(ISimilarityAlgorithm<string> algorithm) : base(algorithm)
+        public Simila(ISimilarityResolver<string> algorithm)
+            : base(algorithm)
         {
            
         }

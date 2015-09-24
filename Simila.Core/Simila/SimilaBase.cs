@@ -1,10 +1,12 @@
-﻿namespace Simila.Core
+﻿using Simila.Core.SimilarityResolvers;
+
+namespace Simila.Core
 {
     public class SimilaBase<T> : ISimila<T>
     {
-        public ISimilarityAlgorithm<T> Algorithm { get; set; }
+        public ISimilarityResolver<T> Algorithm { get; set; }
 
-        public SimilaBase(ISimilarityAlgorithm<T> algorithm)
+        public SimilaBase(ISimilarityResolver<T> algorithm)
         {
             Algorithm = algorithm;
             Treshold = 0.6f;

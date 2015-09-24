@@ -7,7 +7,7 @@ namespace Simila.Core.Tests {
         //[Test(Description = "Testig the basic computations")]
         public void BasicComputations()
         {
-        //    var levenshteinAlgorithmWord = new DefaultWordLevensteinAlgorithm();
+        //    var levenshteinAlgorithmWord = new WordSimilarityResolverLevenstein();
         //    var costResolverWord = levenshteinAlgorithmWord.similarityResolver;
 
         //    var levenshteinAlgorithmPhrase = new PhraseLevensteinAlgorithm();
@@ -57,7 +57,7 @@ namespace Simila.Core.Tests {
         //    //var LevensteinAlgorithm = new LevensteinAlgorithm();
         //    //LevensteinAlgorithm.GetDistance("asdfasf", "asdfasf");
             
-        //    //var costResolver = new DefaultCharacterSimilarityResolver();
+        //    //var costResolver = new CharacterSimilarityResolverDefault();
         //    //costResolver.SetMistakeSimilarity('C', 'K', 0.5);
         //    //costResolver.SetMistakeSimilarity('c', 'k', 0.5);
         //    //costResolver.SetMistakeSimilarity('N', 'M', 0.5);

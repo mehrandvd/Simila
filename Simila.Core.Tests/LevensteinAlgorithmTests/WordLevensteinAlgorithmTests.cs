@@ -15,7 +15,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_NotCaseSensitive()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new DefaultCharacterSimilarityResolver(){IsCaseSensitive = false});
+            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault(){IsCaseSensitive = false});
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             AreSimilar(algorithm, "MEHRAN", "mehran");
@@ -32,7 +32,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CaseSensitive()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new DefaultCharacterSimilarityResolver() { IsCaseSensitive = true });
+            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault() { IsCaseSensitive = true });
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             NotSimilar(algorithm, "MEHRAN", "mehran");
@@ -50,7 +50,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver()
         {
-            var resolver = new DefaultCharacterSimilarityResolver() {IsCaseSensitive = true};
+            var resolver = new CharacterSimilarityResolverDefault() {IsCaseSensitive = true};
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);
@@ -78,7 +78,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver_NotCaseSensitive()
         {
-            var resolver = new DefaultCharacterSimilarityResolver() { IsCaseSensitive = false };
+            var resolver = new CharacterSimilarityResolverDefault() { IsCaseSensitive = false };
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);

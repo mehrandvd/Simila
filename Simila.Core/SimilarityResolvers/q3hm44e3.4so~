@@ -23,7 +23,7 @@
         public override float GetSimilarity(char left, char right)
         {
             if ((left == default(char)) ^ (right == default(char)))
-                return char.IsNumber((char)(left + right)) ? CostOfNumeric : 0f;
+                return char.IsNumber((char)(left + right)) ? CostOfNumeric : 1;
 
             if (!IsCaseSensitive)
             {

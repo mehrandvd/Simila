@@ -4,7 +4,7 @@ namespace Simila.Core.SimilarityResolvers
 {
     public class MistakeBasedSimilarityResolver<T> : IMistakeBasedSimilarityResolver<T>
     {
-        protected MistakeBasedSimilarityResolver()
+        public MistakeBasedSimilarityResolver()
         {
             MistakesRepository = new Dictionary<T, Dictionary<T, float>>();
         }

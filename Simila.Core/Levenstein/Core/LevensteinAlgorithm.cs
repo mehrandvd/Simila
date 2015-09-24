@@ -6,9 +6,9 @@ namespace Simila.Core.Levenstein
     public class LevensteinAlgorithm<TExpression, TElement> : ILevensteinAlgorithm<TExpression, TElement>
         where TExpression : ILevenshteinExpression<TElement>
     {
-        public LevensteinAlgorithm(ISimilarityResolver<TElement> similarityResolver)
+        public LevensteinAlgorithm(ISimilarityResolver<TElement> elementSimilarityResolver)
         {
-            SimilarityResolver = similarityResolver;
+            ElementSimilarityResolver = elementSimilarityResolver;
         }
 
         /// <summary>
@@ -65,10 +65,10 @@ namespace Simila.Core.Levenstein
 
                 for (int j = 1; j <= m; j++)
                 {
-                    float cost = 1 - SimilarityResolver.GetSimilarity(right[j - 1], left[i - 1]);
+                    float cost = 1 - ElementSimilarityResolver.GetSimilarity(right[j - 1], left[i - 1]);
 
                     d[newrow, j] = Math.Min(
-                    Math.Min(d[oldrow, j] + 1, d[newrow, j - 1] + 1 - SimilarityResolver.GetSimilarity(left[i - 1], default(TElement))),
+                    Math.Min(d[oldrow, j] + 1, d[newrow, j - 1] + 1 - ElementSimilarityResolver.GetSimilarity(left[i - 1], default(TElement))),
                     d[oldrow, j - 1] + cost);
 
                 }
@@ -104,8 +104,8 @@ namespace Simila.Core.Levenstein
         }
 
         /// <summary>
-        /// Gets or sets the similarityResolver to use in the instance of the algorithm.
+        /// Gets or sets the elementSimilarityResolver to use in the instance of the algorithm.
         /// </summary>
-        public ISimilarityResolver<TElement> SimilarityResolver { get; private set; }
+        public ISimilarityResolver<TElement> ElementSimilarityResolver { get; private set; }
     }
 }

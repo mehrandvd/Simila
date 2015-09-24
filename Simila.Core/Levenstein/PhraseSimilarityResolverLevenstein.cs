@@ -2,9 +2,10 @@
 
 namespace Simila.Core.Levenstein
 {
-    public class DefaultPhraseLevensteinAlgorithm : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
+    public class PhraseSimilarityResolverLevenstein : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
     {
-        public DefaultPhraseLevensteinAlgorithm(): base(new LevensteinWordSimilarityResolver())
+        public PhraseSimilarityResolverLevenstein()
+            : base(new WordSimilarityResolverDefault())
         {
         }
 
