@@ -18,13 +18,18 @@ namespace Simila.Core.SimilarityResolvers
             MistakesRepository = new Dictionary<Word, Dictionary<Word, float>>();
         }
 
-        public override float GetSimilarityWithNull(Word character)
-        {
-            return 0;
-        }
+        //public override float GetSimilarityWithNull(Word character)
+        //{
+        //    return 0;
+        //}
 
         public override float GetSimilarity(Word left, Word right)
         {
+            //if ((left == null) ^ (right == null))
+            //{
+            //    return 0f;
+            //}
+
             var similarityByReposiroty = base.GetSimilarity(left, right);
 
             if (similarityByReposiroty > 0)

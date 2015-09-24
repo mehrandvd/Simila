@@ -2,7 +2,7 @@
 {
     public interface ISimilarityResolver<T>
     {
-        float GetSimilarityWithNull(T character);
+        //float GetSimilarityWithNull(T character);
         float GetSimilarity(T left, T right);
     }
 }

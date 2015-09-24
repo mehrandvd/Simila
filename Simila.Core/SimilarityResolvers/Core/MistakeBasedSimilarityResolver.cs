@@ -11,15 +11,25 @@ namespace Simila.Core.SimilarityResolvers
         
         protected Dictionary<T, Dictionary<T, float>> MistakesRepository { get; set; }
 
-        public virtual float GetSimilarityWithNull(T character)
-        {
-            return 0f;
-        }
+        //public virtual float GetSimilarityWithNull(T character)
+        //{
+        //    return 0f;
+        //}
         
         public virtual float GetSimilarity(T left, T right)
         {
             if (left.Equals(right))
                 return 1;
+
+            var Null = default (T);
+
+            if (
+                (left == null || left.Equals(Null)) ^
+                (right == null || right.Equals(Null))
+                )
+            {
+                return 0f;
+            }
 
             var similarityByReposiroty = GetMistakeSimlarityFromRepository(left, right);
 

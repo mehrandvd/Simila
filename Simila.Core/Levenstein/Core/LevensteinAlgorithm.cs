@@ -6,7 +6,7 @@ namespace Simila.Core.Levenstein
     public class LevensteinAlgorithm<TExpression, TElement> : ILevensteinAlgorithm<TExpression, TElement>
         where TExpression : ILevenshteinExpression<TElement>
     {
-        public LevensteinAlgorithm(ISimilarityResolver<TElement> similarityResolver )
+        public LevensteinAlgorithm(ISimilarityResolver<TElement> similarityResolver)
         {
             SimilarityResolver = similarityResolver;
         }
@@ -19,6 +19,19 @@ namespace Simila.Core.Levenstein
         /// <returns></returns>
         public virtual float GetDistance(TExpression left, TExpression right)
         {
+            if (left == null)
+            {
+                if (right != null)
+                {
+                    return right.Length;
+                }
+                return 0;
+            }
+            else if (right == null)
+            {
+                return left.Length;
+            }
+
             int n = left.Length;
             int m = right.Length;
             var d = new float[2, m + 1];
@@ -52,10 +65,10 @@ namespace Simila.Core.Levenstein
 
                 for (int j = 1; j <= m; j++)
                 {
-                    float cost = 1- SimilarityResolver.GetSimilarity(right[j - 1], left[i - 1]);
+                    float cost = 1 - SimilarityResolver.GetSimilarity(right[j - 1], left[i - 1]);
 
                     d[newrow, j] = Math.Min(
-                    Math.Min(d[oldrow, j] + 1, d[newrow, j - 1] + 1 - SimilarityResolver.GetSimilarityWithNull(left[i - 1])),
+                    Math.Min(d[oldrow, j] + 1, d[newrow, j - 1] + 1 - SimilarityResolver.GetSimilarity(left[i - 1], default(TElement))),
                     d[oldrow, j - 1] + cost);
 
                 }
@@ -80,7 +93,9 @@ namespace Simila.Core.Levenstein
         public virtual float GetSimilarity(TExpression left, TExpression right)
         {
             var levenshtiendistance = GetDistance(left, right);
-            int maxlength = Math.Max(left.Length, right.Length);
+            int maxlength = Math.Max(
+                left != null ? left.Length : 0,
+                right != null ? right.Length : 0);
 
             float ratio = levenshtiendistance / maxlength;
             var similarityRatio = (1 - (ratio));
