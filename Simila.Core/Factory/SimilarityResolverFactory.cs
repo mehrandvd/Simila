@@ -1,4 +1,7 @@
-﻿namespace Simila.Core.SimilarityResolvers
+﻿using Simila.Core.Levenstein;
+using Simila.Core.SimilarityResolvers;
+
+namespace Simila.Core
 {
     public class SimilarityResolverFactory
     {
@@ -9,7 +12,7 @@
 
         public static WordSimilaritytResolverFactory CreateForWordMistakeBased()
         {
-            return new WordSimilaritytResolverFactory(new WordSimilarityResolverMistake());
+            return new WordSimilaritytResolverFactory(new MistakeBasedSimilarityResolver<Word>());
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Linq;
 using Simila.Core.Levenstein;
 
-namespace Simila.Core.SimilarityResolvers
+namespace Simila.Core
 {
     public class MultiSimilarityResolver : ISimilarityResolver<Word>
     {

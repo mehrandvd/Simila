@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using Simila.Core.Levenstein;
+﻿using Simila.Core.Levenstein;
+using Simila.Core.SimilarityResolvers;
 
-namespace Simila.Core.SimilarityResolvers
+namespace Simila.Core
 {
     public class WordSimilarityResolverDefault : MultiSimilarityResolver
     {
         public WordSimilarityResolverDefault()
-            : this(new WordSimilarityResolverMistake(), new WordSimilarityResolverLevenstein())
+            : this(new MistakeBasedSimilarityResolver<Word>(), new WordSimilarityResolverLevenstein())
         {
             
         }
