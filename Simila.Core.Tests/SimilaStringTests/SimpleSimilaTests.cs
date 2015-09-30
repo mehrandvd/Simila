@@ -15,19 +15,19 @@ namespace Simila.Core.Tests.SimilaStringTests
         {
             var simila = new Simila();
 
-            Assert.IsTrue(simila.IsSimilar("AAAAA", "AABAA"));
-            Assert.IsTrue(simila.IsSimilar("ABC DEFGH IJKLM", "ABD DFFGH LJKIM"));
+            Assert.IsTrue(simila.AreSimilar("AAAAA", "AABAA"));
+            Assert.IsTrue(simila.AreSimilar("ABC DEFGH IJKLM", "ABD DFFGH LJKIM"));
 
-            Assert.IsTrue(simila.IsSimilar("Cat", "Kat"));
-            Assert.IsTrue(simila.IsSimilar("Afshin", "Afsoon"));
-            Assert.IsTrue(simila.IsSimilar("Monitor", "Monitoring"));
-            Assert.IsTrue(simila.IsSimilar("Monica", "Nonica"));
-            Assert.IsTrue(simila.IsSimilar("Monica", "Noxica"));
+            Assert.IsTrue(simila.AreSimilar("Cat", "Kat"));
+            Assert.IsTrue(simila.AreSimilar("Afshin", "Afsoon"));
+            Assert.IsTrue(simila.AreSimilar("Monitor", "Monitoring"));
+            Assert.IsTrue(simila.AreSimilar("Monica", "Nonica"));
+            Assert.IsTrue(simila.AreSimilar("Monica", "Noxica"));
 
 
 
-            Assert.IsFalse(simila.IsSimilar("AAAAA", "AXYBAA"));
-            Assert.IsFalse(simila.IsSimilar("ABC DEFGH IJKLM", "XTD DDDGF LAKIN"));
+            Assert.IsFalse(simila.AreSimilar("AAAAA", "AXYBAA"));
+            Assert.IsFalse(simila.AreSimilar("ABC DEFGH IJKLM", "XTD DDDGF LAKIN"));
         }
     }
 }

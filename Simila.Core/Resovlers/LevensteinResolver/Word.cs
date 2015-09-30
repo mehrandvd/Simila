@@ -39,11 +39,6 @@ namespace Simila.Core.Levenstein
             return InnerText.GetHashCode();
         }
 
-        //public float GetSimilarity(Word other)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public override string ToString()
         {
             return InnerText;

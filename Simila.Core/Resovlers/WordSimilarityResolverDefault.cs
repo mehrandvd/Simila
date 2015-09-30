@@ -5,15 +5,12 @@ namespace Simila.Core
 {
     public class WordSimilarityResolverDefault : MultiSimilarityResolver
     {
-        public WordSimilarityResolverDefault()
-            : this(new MistakeBasedSimilarityResolver<Word>(), new WordSimilarityResolverLevenstein())
+        public WordSimilarityResolverDefault(ISimilarityResolver<char> charSimilarityResolver)
+            : base(new MistakeBasedSimilarityResolver<Word>(),
+                new WordSimilarityResolverLevenstein(charSimilarityResolver))
         {
-            
+
         }
 
-        public WordSimilarityResolverDefault(params ISimilarityResolver<Word>[] resolvers) 
-            : base(resolvers)
-        {
-        }
     }
 }

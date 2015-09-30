@@ -2,9 +2,9 @@
 {
     public interface ISimila<T>
     {
-        double Treshold { get; set; }
+        float Treshold { get; set; }
 
-        bool IsSimilar(T left, T right);
+        bool AreSimilar(T left, T right);
 
         float GetSimilarityPercent(T left, T right);
     }

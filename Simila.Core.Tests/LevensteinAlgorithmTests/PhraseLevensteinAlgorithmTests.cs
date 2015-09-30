@@ -12,7 +12,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         {
             var algorithm = 
                 new LevensteinAlgorithm<Phrase, Word>(
-                    new WordSimilarityResolverDefault()
+                    new WordSimilarityResolverDefault(new CharacterSimilarityResolverDefault())
                 );
 
             AreSimilar(algorithm, "Mehran Davoudi", "Nehran Dawoody");
@@ -34,37 +34,5 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
             var similarity = algorithm.GetSimilarity(left, right);
             Assert.Less(similarity, 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
         }
-
-
-
-
-
-
-
-
-
-        //readonly PhraseSimilarityResolverLevenstein _leven = new PhraseSimilarityResolverLevenstein();
-
-        //[Test]
-        //public void SimpleSimilarityMustWork()
-        //{
-        //    AreSimilar("Mehran Davoudi", "Nehran Dawoody");
-        //    AreSimilar("Afshin Alizadeh", "Aphshin Alizade");
-
-        //    NotSimilar("Lilian Alpha", "Lamborghini Beta");
-        //    NotSimilar("Crash the world", "Clash of clawns");
-        //}
-
-
-        //private void AreSimilar(string left, string right)
-        //{
-        //    Assert.IsTrue(_leven.GetSimilarity(left, right) > 0.7, string.Format("{0}-{1} should be similar,", left, right));
-        //}
-
-        //private void NotSimilar(string left, string right)
-        //{
-        //    Assert.IsTrue(_leven.GetSimilarity(left, right) < 0.3, string.Format("{0}-{1} should NOT be similar,", left, right));
-        //}
-        
     }
 }

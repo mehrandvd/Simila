@@ -11,14 +11,6 @@
         public float CostOfNumeric { get; set; }
         public bool IsCaseSensitive { get; set; }
 
-        //public override float GetSimilarityWithNull(char character)
-        //{
-        //    if(char.IsNumber(character))
-        //        return CostOfNumeric;
-            
-        //    return 0;
-        //}
-
         public override float GetSimilarity(char left, char right)
         {
             if ((left == default(char)) ^ (right == default(char)))

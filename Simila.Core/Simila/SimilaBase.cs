@@ -2,19 +2,18 @@
 
 namespace Simila.Core
 {
-    public class SimilaBase<T> : ISimila<T>
+    public abstract class SimilaBase<T> : ISimila<T>
     {
-        public ISimilarityResolver<T> Algorithm { get; set; }
+        public abstract ISimilarityResolver<T> Algorithm { get; }
 
-        public SimilaBase(ISimilarityResolver<T> algorithm)
+        protected SimilaBase()
         {
-            Algorithm = algorithm;
-            Treshold = 0.6f;
+            Treshold = (int)SimilarityRate.Similar * .1f;
         }
 
-        public double Treshold { get; set; }
+        public float Treshold { get; set; }
 
-        public virtual bool IsSimilar(T left, T right)
+        public virtual bool AreSimilar(T left, T right)
         {
             return GetSimilarityPercent(left, right) >= Treshold;
         }

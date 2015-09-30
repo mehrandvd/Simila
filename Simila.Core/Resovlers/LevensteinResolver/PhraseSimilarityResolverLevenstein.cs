@@ -4,8 +4,8 @@ namespace Simila.Core.Levenstein
 {
     public class PhraseSimilarityResolverLevenstein : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
     {
-        public PhraseSimilarityResolverLevenstein()
-            : base(new WordSimilarityResolverDefault())
+        public PhraseSimilarityResolverLevenstein(ISimilarityResolver<Word> wordSimilarityResolver)
+            : base(wordSimilarityResolver)
         {
         }
 
@@ -13,5 +13,7 @@ namespace Simila.Core.Levenstein
         {
             return GetSimilarity((Phrase) left, right);
         }
+
+        
     }
 }
