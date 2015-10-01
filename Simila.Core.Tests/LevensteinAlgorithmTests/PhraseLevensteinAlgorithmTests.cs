@@ -1,37 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LevenshtienAlgorithm;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Simila.Core.Levenstein;
 
-namespace Simila.Core.Tests
+namespace Simila.Core.Tests.LevensteinAlgorithmTests
 {
     [TestFixture]
     class PhraseLevensteinAlgorithmTests
     {
-        readonly PhraseLevensteinAlgorithm _leven = new PhraseLevensteinAlgorithm();
-
         [Test]
-        public void SimpleSimilarityMustWork()
+        public void PhraseLevensteinAlgorithm_ShouldWork_Default()
         {
-            AreSimilar("Mehran Davoudi", "Nehran Dawoody");
-            AreSimilar("Afshin Alizadeh", "Aphshin Alizade");
+            var algorithm = 
+                new LevensteinAlgorithm<Phrase, Word>(
+                    new WordSimilarityResolverDefault()
+                );
 
-            NotSimilar("Lilian Alpha", "Lamborghini Beta");
-            NotSimilar("Crash the world", "Clash of clawns");
+            AreSimilar(algorithm, "Mehran Davoudi", "Nehran Dawoody");
+            AreSimilar(algorithm, "Afshin Alizadeh", "Aphshin Alizade");
+
+            NotSimilar(algorithm, "Lilian Alpha", "Lamborghini Beta");
+            NotSimilar(algorithm, "Crash the world", "Clash of clawns");
         }
 
 
-        private void AreSimilar(string left, string right)
+        private void AreSimilar(LevensteinAlgorithm<Phrase, Word> algorithm, string left, string right)
         {
-            Assert.IsTrue(_leven.GetSimilarity(left, right) > 0.7, string.Format("{0}-{1} should be similar,", left, right));
+            var similarity = algorithm.GetSimilarity(left, right);
+            Assert.Greater(similarity, 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
         }
 
-        private void NotSimilar(string left, string right)
+        private void NotSimilar(LevensteinAlgorithm<Phrase, Word> algorithm, string left, string right)
         {
-            Assert.IsTrue(_leven.GetSimilarity(left, right) < 0.3, string.Format("{0}-{1} should NOT be similar,", left, right));
+            var similarity = algorithm.GetSimilarity(left, right);
+            Assert.Less(similarity, 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
         }
     }
 }

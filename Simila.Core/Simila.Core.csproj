@@ -32,6 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,36 +50,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatalySoft\CatalySoftAlgorithm.cs" />
-    <Compile Include="CostResolvers\WordCostResolverFactory.cs" />
-    <Compile Include="CostResolvers\CharacterCostResolverFactory.cs" />
-    <Compile Include="CostResolvers\CostResolverMistakyBase.cs" />
-    <Compile Include="Levenstein\PhraseLevensteinAlgorithm.cs">
+    <Compile Include="CatalySoftResolver\CatalySoftAlgorithm.cs" />
+    <Compile Include="Resovlers\LevensteinResolver\Core\ILevensteinAlgorithm.cs" />
+    <Compile Include="Resovlers\LevensteinResolver\PhraseSimilarityResolverLevenstein.cs" />
+    <Compile Include="Resovlers\CharacterSimilarityResolverDefault.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Mistakes\Mistake.cs" />
-    <Compile Include="Mistakes\ICharacterMistakeRepository.cs" />
-    <Compile Include="Mistakes\MistakesFactory.cs" />
-    <Compile Include="Mistakes\XmlFileMistakeRepository.cs" />
-    <Compile Include="CostResolvers\CharacterCostResolver.cs" />
-    <Compile Include="CostResolvers\CostResolverFactory.cs" />
-    <Compile Include="CostResolvers\ICostResolver.cs" />
-    <Compile Include="Levenstein\ILevenshteinExpression.cs" />
-    <Compile Include="Levenstein\LevenshteinAlgorithm.cs" />
-    <Compile Include="Levenstein\Phrase.cs" />
-    <Compile Include="CostResolvers\PhraseCostResolver.cs" />
-    <Compile Include="Levenstein\Word.cs" />
-    <Compile Include="CostResolvers\WordCostResolver.cs" />
-    <Compile Include="Levenstein\WordLevensteinAlgorithm.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\BuiltInMistakeRepository.cs" />
+    <Compile Include="Simila\ISimilarityResolver.cs" />
+    <Compile Include="Simila\MultiSimilarityResolver.cs" />
+    <Compile Include="Factory\WordSimilaritytResolverFactory.cs" />
+    <Compile Include="Factory\CharacterSimilarityResolverFactory.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\MistakeBasedSimilarityResolver.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\Mistake.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\IMistakeRepository.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\MistakesFactory.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\XmlFileMistakeRepository.cs" />
+    <Compile Include="Factory\SimilarityResolverFactory.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\IMistakeBasedSimilarityResolver.cs" />
+    <Compile Include="Resovlers\LevensteinResolver\Core\ILevenshteinExpression.cs" />
+    <Compile Include="Resovlers\LevensteinResolver\Core\LevensteinAlgorithm.cs" />
+    <Compile Include="Resovlers\LevensteinResolver\Phrase.cs" />
+    <Compile Include="Resovlers\LevensteinResolver\Word.cs" />
+    <Compile Include="Resovlers\LevensteinResolver\WordSimilarityResolverLevenstein.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simila\ISimilarityAlgorithm.cs" />
+    <Compile Include="Resovlers\WordSimilarityResolverDefault.cs" />
+    <Compile Include="Simila\IStringSimilarityAlgorithm.cs" />
+    <Compile Include="Simila\ISimila.cs" />
+    <Compile Include="Simila\SimilaBase.cs" />
     <Compile Include="Simila\Simila.cs" />
-    <Compile Include="Simila\SimilarityMethod.cs" />
+    <Compile Include="Simila\SimilarityRate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CommonEnglishCharacterMistakes.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CommonPersianCharacterMistakes.xml">
@@ -85,6 +100,7 @@
   <ItemGroup>
     <None Include="CommonEnglishWordMistakes.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

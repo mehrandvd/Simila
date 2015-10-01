@@ -1,47 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using LevenshtienAlgorithm;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.Practices.Unity;
+using Simila.Core.Levenstein;
 
 namespace Simila.Core
 {
-    public class Simila
+    public class Simila : SimilaBase<string>
     {
         public Simila()
-            : this(SimilarityMethod.ExtendedLevenstein)
         {
-
+            Init();
         }
 
-        public Simila(SimilarityMethod method)
+        public Simila(float treshold)
+            : this()
         {
-            switch (method)
-            {
-                case SimilarityMethod.CatalySoft:
-                    _algorithm = new PhraseLevensteinAlgorithm();
-                    break;
+            Treshold = treshold;
+        }
 
-                case SimilarityMethod.ExtendedLevenstein:
-                    _algorithm = new CatalySoftAlgorithm();
-                    break;
+        public Simila(SimilarityRate similarityRate)
+            : this()
+        {
+            Treshold = (int)similarityRate * .1f;
+        }
+
+        public Simila(IUnityContainer container)
+            : this()
+        {
+            Container = container;
+        }
+
+        public IUnityContainer Container { get; set; }
+
+        private void Init()
+        {
+            if (Container == null)
+            {
+                Container = new UnityContainer();
+                Container.RegisterType<ISimilarityResolver<string>, PhraseSimilarityResolverLevenstein>();
+                Container.RegisterType<ISimilarityResolver<Word>, WordSimilarityResolverDefault>();
+                Container.RegisterType<ISimilarityResolver<char>, CharacterSimilarityResolverDefault>();
+                Container.RegisterType<IMistakeBasedSimilarityResolver<Word>, MistakeBasedSimilarityResolver<Word>>();
+                Container.RegisterType<IMistakeRepository<char>, BuiltInCharacterMistakeRepository>();
+                Container.RegisterType<IMistakeRepository<Word>, BuiltInWordMistakeRepository>();
             }
         }
 
-        private readonly ISimilarityAlgorithm _algorithm;
-
-        public double Treshold { get; set; }
-
-        public bool IsSimilar(string left, string right)
+        public float GetSimilarityPercent(object left, object right)
         {
-            return GetSimilarityPercent(left, right) >= Treshold;
+            return base.GetSimilarityPercent(left.ToString(), right.ToString());
         }
 
-        public double GetSimilarityPercent(string left, string right)
+        public bool AreSimilar(object left, object right)
         {
-            return _algorithm.GetSimilarity(left, right);
+            return base.AreSimilar(left.ToString(), right.ToString());
+        }
+
+        public override ISimilarityResolver<string> Algorithm
+        {
+            get { return Container.Resolve<ISimilarityResolver<string>>(); }
         }
     }
 }

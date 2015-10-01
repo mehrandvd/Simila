@@ -68,15 +68,17 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="CatalySoftTests.cs" />
-    <Compile Include="CostResolverTests\WordCostResolverTests.cs" />
-    <Compile Include="LevenshteinBasicTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimilaTests.cs" />
-    <Compile Include="CostResolverTests\CharacterCostResolverTests.cs" />
-    <Compile Include="LevensteinAlgorithmTests\PhraseLevensteinAlgorithmTests.cs" />
+    <Compile Include="LevensteinAlgorithmTests\PhraseLevensteinAlgorithmTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="LevensteinAlgorithmTests\WordLevensteinAlgorithmTests.cs" />
-    <Compile Include="XmlFileCharacterMistakeRepositoryTests.cs" />
+    <Compile Include="Misc\CatalySoftTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Mistakes\XmlFileCharacterMistakeRepositoryTests.cs" />
+    <Compile Include="SimilarityResolverTests\CharacterMistakeBasedSimilarityResolverTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimilaStringTests\SimpleSimilaTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
