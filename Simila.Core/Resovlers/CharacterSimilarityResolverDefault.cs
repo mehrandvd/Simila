@@ -1,7 +1,16 @@
-﻿namespace Simila.Core
+﻿using Microsoft.Practices.Unity;
+
+namespace Simila.Core
 {
     public class CharacterSimilarityResolverDefault : MistakeBasedSimilarityResolver<char>
     {
+        public CharacterSimilarityResolverDefault()
+            : this(new BuiltInCharacterMistakeRepository())
+        {
+            
+        }
+
+        [InjectionConstructor]
         public CharacterSimilarityResolverDefault(IMistakeRepository<char> mistakesRepository)
             : base(mistakesRepository)
         {

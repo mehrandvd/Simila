@@ -1,7 +1,16 @@
-﻿namespace Simila.Core.Levenstein
+﻿using Microsoft.Practices.Unity;
+
+namespace Simila.Core.Levenstein
 {
     public class PhraseSimilarityResolverLevenstein : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
     {
+        public PhraseSimilarityResolverLevenstein()
+            : this(new WordSimilarityResolverDefault())
+        {
+            
+        }
+
+        [InjectionConstructor]
         public PhraseSimilarityResolverLevenstein(ISimilarityResolver<Word> wordSimilarityResolver)
             : base(wordSimilarityResolver)
         {

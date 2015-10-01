@@ -72,11 +72,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LevensteinAlgorithmTests\WordLevensteinAlgorithmTests.cs" />
-    <Compile Include="Old\CatalySoftTests.cs" />
-    <Compile Include="Old\LevenshteinBasicTests.cs" />
-    <Compile Include="Old\WordCostResolverTests.cs" />
+    <Compile Include="Misc\CatalySoftTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Old\XmlFileCharacterMistakeRepositoryTests.cs" />
+    <Compile Include="Mistakes\XmlFileCharacterMistakeRepositoryTests.cs" />
     <Compile Include="SimilarityResolverTests\CharacterMistakeBasedSimilarityResolverTests.cs">
       <SubType>Code</SubType>
     </Compile>

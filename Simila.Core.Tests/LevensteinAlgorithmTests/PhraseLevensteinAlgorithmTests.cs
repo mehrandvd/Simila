@@ -7,11 +7,11 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
     class PhraseLevensteinAlgorithmTests
     {
         [Test]
-        public void PhraseLevensteinAlgorithm_ShouldWork_NotCaseSensitive()
+        public void PhraseLevensteinAlgorithm_ShouldWork_Default()
         {
             var algorithm = 
                 new LevensteinAlgorithm<Phrase, Word>(
-                    new WordSimilarityResolverDefault(new CharacterSimilarityResolverDefault(null), null)
+                    new WordSimilarityResolverDefault()
                 );
 
             AreSimilar(algorithm, "Mehran Davoudi", "Nehran Dawoody");
