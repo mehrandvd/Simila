@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.IO;
+using System.Runtime.CompilerServices;
 using Microsoft.Practices.Unity;
 using Simila.Core.Levenstein;
 
@@ -6,43 +8,59 @@ namespace Simila.Core
 {
     public class Simila : SimilaBase<string>
     {
-        public Simila()
+        public Simila(SimilaType constructionType, float? treshold)
         {
-            Init();
+            if (treshold.HasValue)
+            {
+                Treshold = treshold.Value;
+            }
+
+            switch (constructionType)
+            {
+                case SimilaType.Automatic:
+                    Resolver = GetDefalutResolver();
+                    break;
+                case SimilaType.Manual:
+                    Resolver = new UnityContainer();
+                    break;
+                default:
+                    throw new Exception(string.Format("Unknown SimilaType: {0}", constructionType.ToString()));
+            }
+        }
+
+        public Simila()
+            : this(SimilaType.Automatic, null)
+        {
         }
 
         public Simila(float treshold)
-            : this()
+            : this(SimilaType.Automatic, treshold)
         {
-            Treshold = treshold;
+        }
+
+        public Simila(SimilaType constructionType)
+            : this(constructionType, null)
+        {
         }
 
         public Simila(SimilarityRate similarityRate)
-            : this()
+            : this((int)similarityRate * .1f)
         {
-            Treshold = (int)similarityRate * .1f;
         }
 
-        public Simila(IUnityContainer container)
-            : this()
-        {
-            Container = container;
-        }
+        public IUnityContainer Resolver { get; set; }
 
-        public IUnityContainer Container { get; set; }
-
-        private void Init()
+        private static UnityContainer GetDefalutResolver()
         {
-            if (Container == null)
-            {
-                Container = new UnityContainer();
-                Container.RegisterType<ISimilarityResolver<string>, PhraseSimilarityResolverLevenstein>();
-                Container.RegisterType<ISimilarityResolver<Word>, WordSimilarityResolverDefault>();
-                Container.RegisterType<ISimilarityResolver<char>, CharacterSimilarityResolverDefault>();
-                Container.RegisterType<IMistakeBasedSimilarityResolver<Word>, MistakeBasedSimilarityResolver<Word>>();
-                Container.RegisterType<IMistakeRepository<char>, BuiltInCharacterMistakeRepository>();
-                Container.RegisterType<IMistakeRepository<Word>, BuiltInWordMistakeRepository>();
-            }
+            var resolver = new UnityContainer();
+            resolver.RegisterType<ISimilarityResolver<string>, PhraseSimilarityResolverLevenstein>();
+            resolver.RegisterType<ISimilarityResolver<Word>, WordSimilarityResolverDefault>();
+            resolver.RegisterType<ISimilarityResolver<char>, CharacterSimilarityResolverDefault>();
+            resolver.RegisterType<IMistakeBasedSimilarityResolver<Word>, MistakeBasedSimilarityResolver<Word>>();
+            resolver.RegisterType<IMistakeRepository<char>, BuiltInCharacterMistakeRepository>();
+            resolver.RegisterType<IMistakeRepository<Word>, BuiltInWordMistakeRepository>();
+
+            return resolver;
         }
 
         public float GetSimilarityPercent(object left, object right)
@@ -57,7 +75,7 @@ namespace Simila.Core
 
         public override ISimilarityResolver<string> Algorithm
         {
-            get { return Container.Resolve<ISimilarityResolver<string>>(); }
+            get { return Resolver.Resolve<ISimilarityResolver<string>>(); }
         }
     }
 }

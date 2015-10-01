@@ -80,6 +80,7 @@
     <Compile Include="Simila\SimilaBase.cs" />
     <Compile Include="Simila\Simila.cs" />
     <Compile Include="Simila\SimilarityRate.cs" />
+    <Compile Include="Simila\SimilaType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CommonEnglishCharacterMistakes.xml">
