@@ -18,7 +18,7 @@ namespace Simila.Core
             List<string> pairsRight = GetPhrasePairs(right.ToUpper());
 
             var costResolver = new WordSimilarityResolverDefault(
-                new CharacterSimilarityResolverDefault(new BuiltInCharacterMistakeRepository()),
+                new CharacterSimilarityResolverDefault(new BuiltInCharacterMistakeRepository(), StringComparisonOptions.None),
                 new MistakeBasedSimilarityResolver<Word>(
                     new BuiltInWordMistakeRepository()));
 

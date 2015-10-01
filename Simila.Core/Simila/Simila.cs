@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using Microsoft.Practices.Unity;
 using Simila.Core.Levenstein;
 
@@ -15,6 +16,7 @@ namespace Simila.Core
                 Treshold = treshold.Value;
             }
 
+
             switch (constructionType)
             {
                 case SimilaType.Automatic:
@@ -26,6 +28,8 @@ namespace Simila.Core
                 default:
                     throw new Exception(string.Format("Unknown SimilaType: {0}", constructionType.ToString()));
             }
+
+            SetStringComparisonOptions(StringComparisonOptions.None);
         }
 
         public Simila()
@@ -59,7 +63,6 @@ namespace Simila.Core
             resolver.RegisterType<IMistakeBasedSimilarityResolver<Word>, MistakeBasedSimilarityResolver<Word>>();
             resolver.RegisterType<IMistakeRepository<char>, BuiltInCharacterMistakeRepository>();
             resolver.RegisterType<IMistakeRepository<Word>, BuiltInWordMistakeRepository>();
-
             return resolver;
         }
 
@@ -77,5 +80,21 @@ namespace Simila.Core
         {
             get { return Resolver.Resolve<ISimilarityResolver<string>>(); }
         }
+
+        public StringComparisonOptions StringComparisonOptions { get; private set; }
+
+        public void SetStringComparisonOptions(StringComparisonOptions options)
+        {
+            StringComparisonOptions = options;
+            Resolver.RegisterInstance(typeof(StringComparisonOptions), StringComparisonOptions);
+        }
+
+    }
+
+    [Flags]
+    public enum StringComparisonOptions
+    {
+        None = 0,
+        CaseSensitive,    
     }
 }

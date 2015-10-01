@@ -5,21 +5,27 @@ namespace Simila.Core
     public class CharacterSimilarityResolverDefault : MistakeBasedSimilarityResolver<char>
     {
         public CharacterSimilarityResolverDefault()
-            : this(new BuiltInCharacterMistakeRepository())
+            : this(new BuiltInCharacterMistakeRepository(), StringComparisonOptions.None)
         {
-            
+
         }
 
         [InjectionConstructor]
-        public CharacterSimilarityResolverDefault(IMistakeRepository<char> mistakesRepository)
+        public CharacterSimilarityResolverDefault(IMistakeRepository<char> mistakesRepository, StringComparisonOptions stringComparisonOptions)
             : base(mistakesRepository)
         {
             CostOfNumeric = 0.5f;
-            IsCaseSensitive = true;
+            StringComparisonOptions = stringComparisonOptions;
         }
 
         public float CostOfNumeric { get; set; }
-        public bool IsCaseSensitive { get; set; }
+
+        public StringComparisonOptions StringComparisonOptions { get; set; }
+
+        public bool IsCaseSensitive
+        {
+            get { return StringComparisonOptions.HasFlag(StringComparisonOptions.CaseSensitive); }
+        }
 
         public override float GetSimilarity(char left, char right)
         {
