@@ -1,13 +1,14 @@
 ﻿using Simila.Core.Levenstein;
-using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core
 {
     public class WordSimilarityResolverDefault : MultiSimilarityResolver
     {
-        public WordSimilarityResolverDefault(ISimilarityResolver<char> charSimilarityResolver)
-            : base(new MistakeBasedSimilarityResolver<Word>(),
-                new WordSimilarityResolverLevenstein(charSimilarityResolver))
+        public WordSimilarityResolverDefault(
+            ISimilarityResolver<char> characterSimilarityResolverForLevenstein,
+            IMistakeBasedSimilarityResolver<Word> mistakeBasedResolver)
+            : base(mistakeBasedResolver,
+                new WordSimilarityResolverLevenstein(characterSimilarityResolverForLevenstein))
         {
 
         }

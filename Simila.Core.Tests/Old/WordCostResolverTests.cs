@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Tests.Old
 {

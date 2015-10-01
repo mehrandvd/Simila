@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Simila.Core.Levenstein;
-using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core
 {

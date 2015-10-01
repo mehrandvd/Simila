@@ -1,7 +1,7 @@
 ﻿using System;
 using Simila.Core.Levenstein;
 
-namespace Simila.Core.SimilarityResolvers
+namespace Simila.Core
 {
     public class Mistake<T>
     {

@@ -10,7 +10,7 @@ namespace Simila.Core
 
         public MultiSimilarityResolver(params ISimilarityResolver<Word>[] resolvers)
         {
-            _resolvers = resolvers.ToList();
+            _resolvers = resolvers.Where(r => r != null).ToList();
         }
 
         public float GetSimilarity(Word left, Word right)

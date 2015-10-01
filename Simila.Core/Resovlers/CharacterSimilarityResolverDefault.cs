@@ -2,7 +2,8 @@
 {
     public class CharacterSimilarityResolverDefault : MistakeBasedSimilarityResolver<char>
     {
-        public CharacterSimilarityResolverDefault()
+        public CharacterSimilarityResolverDefault(IMistakeRepository<char> mistakesRepository)
+            : base(mistakesRepository)
         {
             CostOfNumeric = 0.5f;
             IsCaseSensitive = true;

@@ -1,5 +1,3 @@
-using Simila.Core.SimilarityResolvers;
-
 namespace Simila.Core.Levenstein
 {
     public interface ILevensteinAlgorithm<TExpression, TElement> : ISimilarityResolver<TExpression>

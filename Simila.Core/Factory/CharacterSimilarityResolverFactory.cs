@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core
 {

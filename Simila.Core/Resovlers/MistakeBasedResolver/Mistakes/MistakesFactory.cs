@@ -1,4 +1,4 @@
-﻿namespace Simila.Core.SimilarityResolvers
+﻿namespace Simila.Core
 {
     class MistakesFactory
     {

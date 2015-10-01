@@ -1,6 +1,4 @@
-﻿using Simila.Core.SimilarityResolvers;
-
-namespace Simila.Core.Levenstein
+﻿namespace Simila.Core.Levenstein
 {
     public class PhraseSimilarityResolverLevenstein : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
     {

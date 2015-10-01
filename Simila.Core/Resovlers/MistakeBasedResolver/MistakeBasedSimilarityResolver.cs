@@ -4,11 +4,19 @@ namespace Simila.Core
 {
     public class MistakeBasedSimilarityResolver<T> : IMistakeBasedSimilarityResolver<T>
     {
-        public MistakeBasedSimilarityResolver()
+        public MistakeBasedSimilarityResolver(IMistakeRepository<T> mistakeRepository)
         {
             MistakesRepository = new Dictionary<T, Dictionary<T, float>>();
+
+            if (mistakeRepository != null)
+            {
+                foreach (var mistake in mistakeRepository.GetMistakes())
+                {
+                    SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
+                }
+            }
         }
-        
+
         protected Dictionary<T, Dictionary<T, float>> MistakesRepository { get; set; }
 
         public virtual float GetSimilarity(T left, T right)
@@ -16,7 +24,7 @@ namespace Simila.Core
             if (left.Equals(right))
                 return 1;
 
-            var Null = default (T);
+            var Null = default(T);
 
             if (
                 (left == null || left.Equals(Null)) ^
@@ -62,7 +70,7 @@ namespace Simila.Core
 
             return null;
         }
-        
+
         private Dictionary<T, float> GetRegisteredMistakes(T left)
         {
             Dictionary<T, float> dictionary = null;

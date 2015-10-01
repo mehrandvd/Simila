@@ -1,7 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Microsoft.Practices.Unity;
 using Simila.Core.Levenstein;
-using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core
 {
@@ -40,6 +39,9 @@ namespace Simila.Core
                 Container.RegisterType<ISimilarityResolver<string>, PhraseSimilarityResolverLevenstein>();
                 Container.RegisterType<ISimilarityResolver<Word>, WordSimilarityResolverDefault>();
                 Container.RegisterType<ISimilarityResolver<char>, CharacterSimilarityResolverDefault>();
+                Container.RegisterType<IMistakeBasedSimilarityResolver<Word>, MistakeBasedSimilarityResolver<Word>>();
+                Container.RegisterType<IMistakeRepository<char>, BuiltInCharacterMistakeRepository>();
+                Container.RegisterType<IMistakeRepository<Word>, BuiltInWordMistakeRepository>();
             }
         }
 

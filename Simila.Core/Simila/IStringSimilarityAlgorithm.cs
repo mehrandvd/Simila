@@ -1,6 +1,4 @@
-﻿using Simila.Core.SimilarityResolvers;
-
-namespace Simila.Core
+﻿namespace Simila.Core
 {
     public interface IStringSimilarityAlgorithm : ISimilarityResolver<string>
     {

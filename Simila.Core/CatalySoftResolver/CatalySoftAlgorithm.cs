@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Simila.Core.SimilarityResolvers;
+using Simila.Core.Levenstein;
 
 namespace Simila.Core
 {
@@ -17,7 +17,10 @@ namespace Simila.Core
             List<string> pairsLeft = GetPhrasePairs(left.ToUpper());
             List<string> pairsRight = GetPhrasePairs(right.ToUpper());
 
-            var costResolver = new WordSimilarityResolverDefault(new CharacterSimilarityResolverDefault());
+            var costResolver = new WordSimilarityResolverDefault(
+                new CharacterSimilarityResolverDefault(new BuiltInCharacterMistakeRepository()),
+                new MistakeBasedSimilarityResolver<Word>(
+                    new BuiltInWordMistakeRepository()));
 
             int intersection = 0;
             int union = pairsLeft.Count + pairsRight.Count;

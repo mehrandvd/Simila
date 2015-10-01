@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using Simila.Core.Levenstein;
-using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Tests.LevensteinAlgorithmTests
 {
@@ -12,7 +11,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         {
             var algorithm = 
                 new LevensteinAlgorithm<Phrase, Word>(
-                    new WordSimilarityResolverDefault(new CharacterSimilarityResolverDefault())
+                    new WordSimilarityResolverDefault(new CharacterSimilarityResolverDefault(null), null)
                 );
 
             AreSimilar(algorithm, "Mehran Davoudi", "Nehran Dawoody");

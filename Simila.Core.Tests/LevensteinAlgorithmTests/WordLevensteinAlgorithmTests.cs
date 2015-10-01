@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Simila.Core.Levenstein;
-using Simila.Core.SimilarityResolvers;
 
 namespace Simila.Core.Tests.LevensteinAlgorithmTests
 {
@@ -15,7 +14,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_NotCaseSensitive()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault(){IsCaseSensitive = false});
+            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault(null){IsCaseSensitive = false});
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             AreSimilar(algorithm, "MEHRAN", "mehran");
@@ -32,7 +31,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CaseSensitive()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault() { IsCaseSensitive = true });
+            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault(null) { IsCaseSensitive = true });
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             NotSimilar(algorithm, "MEHRAN", "mehran");
@@ -50,7 +49,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver()
         {
-            var resolver = new CharacterSimilarityResolverDefault() {IsCaseSensitive = true};
+            var resolver = new CharacterSimilarityResolverDefault(null) {IsCaseSensitive = true};
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);
@@ -78,7 +77,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver_NotCaseSensitive()
         {
-            var resolver = new CharacterSimilarityResolverDefault() { IsCaseSensitive = false };
+            var resolver = new CharacterSimilarityResolverDefault(null) { IsCaseSensitive = false };
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);
