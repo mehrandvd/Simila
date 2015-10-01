@@ -14,7 +14,10 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_Default_NotCaseSensitive()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault(){IsCaseSensitive = false});
+            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault()
+            {
+                StringComparisonOptions = StringComparisonOptions.None
+            });
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             AreSimilar(algorithm, "MEHRAN", "mehran");
@@ -27,17 +30,20 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
 
             NotSimilar(algorithm, "Mehran", "RamMeh");
             NotSimilar(algorithm, "Penalty", "People");
-            
+
         }
 
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_Default_CaseSensitive()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault() { IsCaseSensitive = true });
+            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault()
+            {
+                StringComparisonOptions = StringComparisonOptions.CaseSensitive
+            });
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             NotSimilar(algorithm, "MEHRAN", "mehran");
-            
+
             AreSimilar(algorithm, "Afshin", "Aphshin");
             AreSimilar(algorithm, "Mehran", "Nahran");
             AreSimilar(algorithm, "Monica", "Monika");
@@ -51,20 +57,20 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
             NotSimilar(algorithm, "Mehran", "RamMeh");
             NotSimilar(algorithm, "Penalty", "People");
             NotSimilar(algorithm, "Monica", "Numyka");
-            
+
 
         }
 
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver()
         {
-            var resolver = new CharacterSimilarityResolverDefault(null) {IsCaseSensitive = true};
+            var resolver = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.CaseSensitive);
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);
             resolver.SetMistakeSimilarity('i', 'y', 0.8f);
             resolver.SetMistakeSimilarity('c', 'k', 0.6f);
-            
+
             resolver.SetMistakeSimilarity('X', 'A', 0.9f);
 
             var algorithm = new LevensteinAlgorithm<Word, char>(resolver);
@@ -72,7 +78,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
             AreSimilar(algorithm, "XXXXX", "AAAAA");
             NotSimilar(algorithm, "xxxxx", "aaaaa");
 
-            
+
             AreSimilar(algorithm, "Mehran", "Nehran");
             NotSimilar(algorithm, "MEHRAN", "mehran");
             AreSimilar(algorithm, "Afshin", "Aphshin");
@@ -82,8 +88,8 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
             AreSimilar(algorithm, "Crespo", "Krespo");
             NotSimilar(algorithm, "Mehran", "RamMeh");
             NotSimilar(algorithm, "Penalty", "People");
-            
-            
+
+
             AreSimilar(algorithm, "Monica", "Numyka");
             NotSimilar(algorithm, "Monica", "NUmYkA");
 
@@ -92,7 +98,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [Test]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver_NotCaseSensitive()
         {
-            var resolver = new CharacterSimilarityResolverDefault(null) { IsCaseSensitive = false };
+            var resolver = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None);
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);
