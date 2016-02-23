@@ -34,5 +34,23 @@ namespace Simila.Core.Tests.SimilaStringTests
             Assert.IsFalse(simila.AreSimilar("Cat", "Kat"));
             Assert.IsTrue(simila.AreSimilar("color", "colour"));
         }
+
+        [Test]
+        public void Simila_ShouldWork_WithOverridingIntroducingMistakes()
+        {
+            var simila = new Simila();
+
+            Assert.IsFalse(simila.AreSimilar("War", "Fight"));
+
+            var mistakeRepository = new DefaultMistakeRepository<Word>();
+            mistakeRepository.AddMistake("War", "Fight", .9f);
+
+            // Overriding Word similarity resolver method.
+            simila.Resolver.RegisterInstance<IMistakeRepository<Word>>(mistakeRepository);
+
+            Assert.IsTrue(simila.AreSimilar("Cat", "Kat"));
+
+            Assert.IsTrue(simila.AreSimilar("color", "colour"));
+        }
     }
 }
