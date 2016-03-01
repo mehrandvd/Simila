@@ -1,6 +1,4 @@
-﻿using System;
 using System.Collections.Generic;
-using Simila.Core.Levenstein;
 
 namespace Simila.Core
 {
@@ -24,32 +22,6 @@ namespace Simila.Core
                 new Mistake<char>('a', 'e', .30f),
 
             };
-        }
-    }
-
-    public class BuiltInWordMistakeRepository : IMistakeRepository<Word>
-    {
-        public List<Mistake<Word>> GetMistakes()
-        {
-            return new List<Mistake<Word>>()
-            {
-                new Mistake<Word>("color", "colour", 0.90f),
-            };
-        }
-    }
-
-    public class DefaultMistakeRepository<TElement> : IMistakeRepository<TElement>
-    {
-        private List<Mistake<TElement>> _mistakes = new List<Mistake<TElement>>();
-
-        public void AddMistake(TElement left, TElement right, float similarity)
-        {
-            _mistakes.Add(new Mistake<TElement>(left, right, similarity));
-        }
-
-        public List<Mistake<TElement>> GetMistakes()
-        {
-            return _mistakes;
         }
     }
 }

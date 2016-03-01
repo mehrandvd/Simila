@@ -11,6 +11,9 @@ namespace Simila.Core
     {
         public Simila(SimilaType constructionType, float? treshold)
         {
+            WordMistakeRepository = new BuiltInWordMistakeRepository();
+            CharacterMistakeRepository = new BuiltInCharacterMistakeRepository();
+
             if (treshold.HasValue)
             {
                 Treshold = treshold.Value;
@@ -89,6 +92,8 @@ namespace Simila.Core
             Resolver.RegisterInstance(typeof(StringComparisonOptions), StringComparisonOptions);
         }
 
+        public IMistakeRepository<Word> WordMistakeRepository { get; set; }
+        public IMistakeRepository<char> CharacterMistakeRepository { get; set; }
     }
 
     [Flags]

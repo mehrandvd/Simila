@@ -56,7 +56,9 @@
     <Compile Include="Resovlers\CharacterSimilarityResolverDefault.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\BuiltInMistakeRepository.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\BuiltInCharacterMistakeRepository.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\BuiltInWordMistakeRepository.cs" />
+    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\DefaultMistakeRepository.cs" />
     <Compile Include="Simila\ISimilarityResolver.cs" />
     <Compile Include="Simila\MultiSimilarityResolver.cs" />
     <Compile Include="Factory\WordSimilaritytResolverFactory.cs" />
