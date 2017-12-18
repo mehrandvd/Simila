@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using Simila.Core.Levenstein;
+using Unity.Attributes;
 
 namespace Simila.Core
 {

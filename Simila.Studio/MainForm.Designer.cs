@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPageProfile = new System.Windows.Forms.TabPage();
             this.groupBoxCommonWordMistakes = new System.Windows.Forms.GroupBox();
             this.dataGridViewWordMistakeInstance = new System.Windows.Forms.DataGridView();
@@ -296,9 +296,9 @@
             // 
             // tabPageFindSimilars
             // 
+            this.tabPageFindSimilars.Controls.Add(this.panel2);
             this.tabPageFindSimilars.Controls.Add(this.progressBarCalcStatus);
             this.tabPageFindSimilars.Controls.Add(this.toolStrip2);
-            this.tabPageFindSimilars.Controls.Add(this.panel2);
             this.tabPageFindSimilars.Location = new System.Drawing.Point(4, 22);
             this.tabPageFindSimilars.Name = "tabPageFindSimilars";
             this.tabPageFindSimilars.Padding = new System.Windows.Forms.Padding(3);
@@ -312,7 +312,7 @@
             this.progressBarCalcStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBarCalcStatus.Location = new System.Drawing.Point(3, 28);
             this.progressBarCalcStatus.Name = "progressBarCalcStatus";
-            this.progressBarCalcStatus.Size = new System.Drawing.Size(1049, 23);
+            this.progressBarCalcStatus.Size = new System.Drawing.Size(1049, 17);
             this.progressBarCalcStatus.TabIndex = 4;
             // 
             // toolStrip2
@@ -363,14 +363,12 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.splitContainer1);
-            this.panel2.Location = new System.Drawing.Point(3, 55);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 45);
             this.panel2.Name = "panel2";
             this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.panel2.Size = new System.Drawing.Size(1046, 673);
+            this.panel2.Size = new System.Drawing.Size(1049, 683);
             this.panel2.TabIndex = 3;
             // 
             // splitContainer1
@@ -388,8 +386,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView2);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer1.Size = new System.Drawing.Size(1046, 673);
-            this.splitContainer1.SplitterDistance = 712;
+            this.splitContainer1.Size = new System.Drawing.Size(1049, 683);
+            this.splitContainer1.SplitterDistance = 714;
             this.splitContainer1.TabIndex = 3;
             // 
             // dataGridView1
@@ -408,7 +406,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(712, 673);
+            this.dataGridView1.Size = new System.Drawing.Size(714, 683);
             this.dataGridView1.TabIndex = 2;
             // 
             // Column2
@@ -430,9 +428,9 @@
             // similarityRateDataGridViewTextBoxColumn
             // 
             this.similarityRateDataGridViewTextBoxColumn.DataPropertyName = "SimilarityRate";
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.similarityRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.similarityRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.similarityRateDataGridViewTextBoxColumn.HeaderText = "SimilarityRate";
             this.similarityRateDataGridViewTextBoxColumn.Name = "similarityRateDataGridViewTextBoxColumn";
             // 
@@ -468,7 +466,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dataGridView2.Size = new System.Drawing.Size(330, 673);
+            this.dataGridView2.Size = new System.Drawing.Size(331, 683);
             this.dataGridView2.TabIndex = 0;
             // 
             // similarTextDataGridViewTextBoxColumn1
@@ -482,9 +480,9 @@
             // similarityRateDataGridViewTextBoxColumn1
             // 
             this.similarityRateDataGridViewTextBoxColumn1.DataPropertyName = "SimilarityRate";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.similarityRateDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.similarityRateDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
             this.similarityRateDataGridViewTextBoxColumn1.HeaderText = "Similarity";
             this.similarityRateDataGridViewTextBoxColumn1.Name = "similarityRateDataGridViewTextBoxColumn1";
             this.similarityRateDataGridViewTextBoxColumn1.Width = 70;

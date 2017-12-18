@@ -17,6 +17,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simila.TypeScript", "Simila.TypeScript\Simila.TypeScript.csproj", "{C686EC60-FFE4-406B-AC9A-283903668120}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simila.Studio", "Simila.Studio\Simila.Studio.csproj", "{320B7100-A6FA-46EA-AAB3-64B42B5A6814}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0F1F661E-D742-42DD-AA7E-8B60A3445DF8} = {0F1F661E-D742-42DD-AA7E-8B60A3445DF8}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

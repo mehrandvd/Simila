@@ -75,7 +75,7 @@ namespace Simila.Studio
 
 
                 similarityResultBindingSource.DataSource = similarityResults;
-
+                progressBarCalcStatus.Visible = true;
                 PopulateSimilarities(similarityResults);
             }
 
@@ -229,6 +229,11 @@ namespace Simila.Studio
         {
             progressBarCalcStatus.Maximum = _allRowsCount;
             progressBarCalcStatus.Value = _doneRowsCount;
+            if (_doneRowsCount == _allRowsCount)
+                progressBarCalcStatus.Visible = false;
+            else
+                progressBarCalcStatus.Visible = true;
+
             Application.DoEvents();
         }
     }

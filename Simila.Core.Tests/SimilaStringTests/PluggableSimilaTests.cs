@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using NUnit.Framework;
 using Simila.Core.Levenstein;
+using Unity;
+using Unity.Exceptions;
 
 namespace Simila.Core.Tests.SimilaStringTests
 {
