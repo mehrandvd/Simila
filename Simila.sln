@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simila.Core", "Simila.Core\Simila.Core.csproj", "{0F1F661E-D742-42DD-AA7E-8B60A3445DF8}"
 EndProject
@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{86B2CC
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simila.TypeScript", "Simila.TypeScript\Simila.TypeScript.csproj", "{C686EC60-FFE4-406B-AC9A-283903668120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simila.Studio", "Simila.Studio\Simila.Studio.csproj", "{320B7100-A6FA-46EA-AAB3-64B42B5A6814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{C686EC60-FFE4-406B-AC9A-283903668120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C686EC60-FFE4-406B-AC9A-283903668120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C686EC60-FFE4-406B-AC9A-283903668120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320B7100-A6FA-46EA-AAB3-64B42B5A6814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320B7100-A6FA-46EA-AAB3-64B42B5A6814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320B7100-A6FA-46EA-AAB3-64B42B5A6814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320B7100-A6FA-46EA-AAB3-64B42B5A6814}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

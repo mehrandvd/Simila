@@ -1,0 +1,9 @@
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\bin\Debug\Simila.Mahan.exe.config
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\bin\Debug\Simila.Mahan.exe
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\bin\Debug\Simila.Mahan.pdb
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\obj\Debug\Simila.Mahan.MainForm.resources
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\obj\Debug\Simila.Mahan.Properties.Resources.resources
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\obj\Debug\Simila.Mahan.csproj.GenerateResource.Cache
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\obj\Debug\Simila.Mahan.exe
+c:\users\9215988\documents\visual studio 2017\Projects\Simila.Mahan\Simila.Mahan\obj\Debug\Simila.Mahan.pdb
+C:\Users\9215988\Documents\Visual Studio 2017\Projects\Simila.Mahan\Simila.Mahan\obj\Debug\Simila.Mahan.csprojResolveAssemblyReference.cache
