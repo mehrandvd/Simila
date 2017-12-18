@@ -14,7 +14,6 @@ using Microsoft.Practices.Unity;
 using Simila.Core;
 using Simila.Core.Levenstein;
 using Simila.Studio;
-using Simila = Simila.Core.Simila;
 
 namespace Simila.Studio
 {
@@ -157,9 +156,9 @@ namespace Simila.Studio
 
         }
 
-        private global::Simila.Core.Simila GetSimila()
+        private Core.Simila GetSimila()
         {
-            var simila =  new global::Simila.Core.Simila();
+            var simila =  new Core.Simila();
 
             //var resolver = simila.Resolver;
 
