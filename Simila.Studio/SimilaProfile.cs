@@ -48,7 +48,7 @@ namespace Simila.Studio
                     {
                         Left = element.Attribute("Left")?.Value,
                         Right = element.Attribute("Right")?.Value,
-                        Similarity = float.Parse(element.Attribute("Similarity")?.Value)
+                        Similarity = float.Parse(element.Attribute("Similarity")?.Value??"0")
                     }
                 ).ToList();
             }
