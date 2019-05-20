@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,10 +40,7 @@ namespace Simila.Studio
 
         private void buttonLoadFile_Click(object sender, EventArgs e)
         {
-
-
-            Log("Loading excel file...");
-
+            Log("Loading text file...");
 
             var dirtySourceDirectory = Path.Combine(Directory.GetCurrentDirectory(), @"DirtySources");
             var initDirectory =
@@ -73,18 +71,13 @@ namespace Simila.Studio
                     }
                 ).ToList();
 
-
                 similarityResultBindingSource.DataSource = similarityResults;
                 progressBarCalcStatus.Visible = true;
                 PopulateSimilarities(similarityResults);
             }
-
-
-
-
-
-            
         }
+
+        static Regex regexNumber = new Regex(@"[\d-]");
 
         private string ClearText(string originalText)
         {
@@ -96,14 +89,8 @@ namespace Simila.Studio
                 .Select(o=>o.ReplaceYK())
                 .Where(part => !CurrentProfile.DirtyWords.Contains(part));
 
-            var clearedText = string.Join(" ", parts);
+            var clearedText = regexNumber.Replace(string.Join(" ", parts), String.Empty);
             return clearedText;
-
-            //foreach (var dirtyWord in CurrentProfile.DirtyWords)
-            //{
-            //    originalText = originalText?.ReplaceYK()?.Replace(dirtyWord, "");
-            //}
-            //return originalText;
         }
 
         private void PopulateSimilarities(List<SimilarityResult> similarityResults)
