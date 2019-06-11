@@ -14,7 +14,7 @@ namespace Simila.Studio
         }
         public List<TextInstance> GetTextInstances()
         {
-            var query = from line in File.ReadLines(_filepath).Take(500)
+            var query = from line in File.ReadLines(_filepath)
                 select new TextInstance()
                 {
                     Text = line

@@ -77,19 +77,20 @@ namespace Simila.Studio
             }
         }
 
-        static Regex regexNumber = new Regex(@"[\d-]");
+        static Regex regexNumber = new Regex(@"[\d-]*[@*/\\]");
 
         private string ClearText(string originalText)
         {
             if (string.IsNullOrWhiteSpace(originalText))
                 return originalText;
 
+            originalText = regexNumber.Replace(originalText, String.Empty).ReplaceYK();
+
             var parts = originalText
                 .Split(' ')
-                .Select(o=>o.ReplaceYK())
                 .Where(part => !CurrentProfile.DirtyWords.Contains(part));
 
-            var clearedText = regexNumber.Replace(string.Join(" ", parts), String.Empty);
+            var clearedText = string.Join(" ", parts);
             return clearedText;
         }
 
@@ -102,26 +103,52 @@ namespace Simila.Studio
                 {
                     Parallel.ForEach(similarityResults, (thisSimilarityResult, state, index) =>
                     {
-                        var similarInstancesQuery =
-                            from otherSimilarityResult in similarityResults
-                            let similarityRate =
-                            simila.GetSimilarityPercent(
-                                thisSimilarityResult.Original.ClearedText,
-                                otherSimilarityResult.Original.ClearedText)
-                            where thisSimilarityResult != otherSimilarityResult
-                                  && similarityRate > 0.45
-                            orderby similarityRate descending 
-                            select new SimilarInstance()
+                        var similars = Enumerable.Range(1, 5).Select(i => new SimilarInstance() { SimilarityRate = 0 }).ToList();
+                        SimilarInstance minInstance = similars[0];
+
+                        for (var i= index+1; i<similarityResults.Count ; i++)
+                        {
+                            var otherSimilarityResult = similarityResults[(int) i];
+                            if (thisSimilarityResult == otherSimilarityResult || Math.Abs(thisSimilarityResult.OriginalCleared.Length-otherSimilarityResult.OriginalCleared.Length) > 4)
+                                continue;
+
+                            var similarityRate =
+                                simila.GetSimilarityPercent(
+                                    thisSimilarityResult.Original.ClearedText,
+                                    otherSimilarityResult.Original.ClearedText);
+
+                            if (similarityRate > 0.45 && similarityRate > minInstance.SimilarityRate)
                             {
-                                Similar = otherSimilarityResult.Original,
-                                SimilarityRate = similarityRate
-                            };
+                                minInstance.SimilarityRate = similarityRate;
+                                minInstance.Similar = otherSimilarityResult.Original;
+
+                                minInstance = similars.First(s =>
+                                    s.SimilarityRate == similars.Min(sm => sm.SimilarityRate));
+                            }
+                        }
+
+                        thisSimilarityResult.OtherSimilars.AddRange(similars.Where(s => s.Similar != null));
+
+                        //var similarInstancesQuery =
+                        //    from otherSimilarityResult in similarityResults
+                        //    let similarityRate =
+                        //    simila.GetSimilarityPercent(
+                        //        thisSimilarityResult.Original.ClearedText,
+                        //        otherSimilarityResult.Original.ClearedText)
+                        //    where thisSimilarityResult != otherSimilarityResult
+                        //          && similarityRate > 0.45
+                        //    orderby similarityRate descending
+                        //    select new SimilarInstance()
+                        //    {
+                        //        Similar = otherSimilarityResult.Original,
+                        //        SimilarityRate = similarityRate
+                        //    };
 
 
-                        thisSimilarityResult.OtherSimilars =
-                            similarInstancesQuery
-                                .Take(10)
-                                .ToList();
+                        //thisSimilarityResult.OtherSimilars =
+                        //    similarInstancesQuery
+                        //        .Take(10)
+                        //        .ToList();
 
                         var mostSimilar =
                             thisSimilarityResult.OtherSimilars.FirstOrDefault(s => s.SimilarityRate >= .7);
@@ -214,12 +241,14 @@ namespace Simila.Studio
 
         private void timerProgressUpdater_Tick(object sender, EventArgs e)
         {
-            progressBarCalcStatus.Maximum = _allRowsCount;
+            var maximum = Math.Max(_allRowsCount, _doneRowsCount);
+            progressBarCalcStatus.Maximum = maximum;
             progressBarCalcStatus.Value = _doneRowsCount;
+            labelProgress.Text = $@"{_doneRowsCount}/{_allRowsCount}";
             if (_doneRowsCount == _allRowsCount)
-                progressBarCalcStatus.Visible = false;
+                progressBarCalcStatus.Visible = labelProgress.Visible = false;
             else
-                progressBarCalcStatus.Visible = true;
+                progressBarCalcStatus.Visible = labelProgress.Visible = true;
 
             Application.DoEvents();
         }
