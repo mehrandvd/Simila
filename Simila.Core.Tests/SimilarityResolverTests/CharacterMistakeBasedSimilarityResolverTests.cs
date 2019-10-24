@@ -1,12 +1,11 @@
-﻿using System;
-using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Simila.Core.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class CharacterMistakeBasedSimilarityResolverTests
     {
-        [Test]
+        [TestMethod]
         public void CharacterMistakeBased_ShouldWork_Raw_CaseSensitive()
         {
             var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.CaseSensitive);
@@ -20,7 +19,7 @@ namespace Simila.Core.Tests
             Assert.AreEqual(0, simila.GetSimilarity('c', 'k'), "'c', 'k'");
         }
 
-        [Test]
+        [TestMethod]
         public void CharacterMistakeBased_ShouldWork_NotCaseSensitive()
         {
             var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None);
@@ -33,7 +32,7 @@ namespace Simila.Core.Tests
             Assert.AreEqual(simila.GetSimilarity('a', 'B'), 0);
         }
 
-        [Test]
+        [TestMethod]
         public void CharacterMistakeBased_ShouldWork_DefinedMistakes_CaseSensitive()
         {
             var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.CaseSensitive);
@@ -54,7 +53,7 @@ namespace Simila.Core.Tests
             Assert.AreEqual(simila.GetSimilarity('k', 'C'), 0);
         }
 
-        [Test]
+        [TestMethod]
         public void CharacterMistakeBased_ShouldWork_DefinedMistakes_NotCaseSensitive()
         {
             var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None);
@@ -75,7 +74,7 @@ namespace Simila.Core.Tests
             Assert.AreEqual( 0.7f, simila.GetSimilarity('k', 'C'));
         }
 
-        [Test]
+        [TestMethod]
         public void CharacterMistakeBased_ShouldWork_WithEmptyAndNumericInputs()
         {
             var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None) { CostOfNumeric = 0.3f };

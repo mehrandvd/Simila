@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Practices.Unity;
-using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simila.Core.Levenstein;
 using Unity;
-using Unity.Exceptions;
 
 namespace Simila.Core.Tests.SimilaStringTests
 {
-    [TestFixture]
+    [TestClass]
     public class PluggableSimilaTests
     {
-        [Test]
+        [TestMethod]
         [ExpectedException(typeof(ResolutionFailedException))]
         public void Simila_ShouldThrowException_WithNoConfig()
         {
@@ -23,7 +16,7 @@ namespace Simila.Core.Tests.SimilaStringTests
             Assert.IsTrue(simila.AreSimilar("Cat", "Kat"));
         }
 
-        [Test]
+        [TestMethod]
         public void Simila_ShouldWork_WithOverridingConfigs()
         {
             var simila = new Simila();
@@ -37,7 +30,7 @@ namespace Simila.Core.Tests.SimilaStringTests
             Assert.IsTrue(simila.AreSimilar("color", "colour"));
         }
 
-        [Test]
+        [TestMethod]
         public void Simila_ShouldWork_WithOverridingIntroducingMistakes()
         {
             var simila = new Simila();

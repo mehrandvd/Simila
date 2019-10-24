@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simila.Core.Levenstein;
 
 namespace Simila.Core.Tests.LevensteinAlgorithmTests
 {
-    [TestFixture]
+    [TestClass]
     public class WordLevensteinAlgorithmTests
     {
-        [Test]
+        [TestMethod]
         public void WordLevensteinAlgorithm_ShouldWork_Default_NotCaseSensitive()
         {
             var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault()
@@ -33,7 +28,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
 
         }
 
-        [Test]
+        [TestMethod]
         public void WordLevensteinAlgorithm_ShouldWork_Default_CaseSensitive()
         {
             var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolverDefault()
@@ -61,7 +56,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
 
         }
 
-        [Test]
+        [TestMethod]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver()
         {
             var resolver = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.CaseSensitive);
@@ -95,7 +90,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
 
         }
 
-        [Test]
+        [TestMethod]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver_NotCaseSensitive()
         {
             var resolver = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None);
@@ -119,13 +114,13 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         private void AreSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
-            Assert.Greater(similarity, 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity > 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
         }
 
         private void NotSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
-            Assert.Less(similarity, 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity < 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
         }
     }
 

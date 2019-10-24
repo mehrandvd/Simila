@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace Simila.Core.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class CatalySoftTests
     {
         readonly CatalySoftAlgorithm _catal = new CatalySoftAlgorithm();
 
-        [Test]
+        [TestMethod]
         public void SimpleSimilarityMustWork()
         {
             //AreSimilar("Mehran Davoudi", "Nehran Dawoody");
@@ -39,13 +35,13 @@ namespace Simila.Core.Tests
         private void AreSimilar(string left, string right)
         {
             var similarity = _catal.GetSimilarity(left, right);
-            Assert.Greater(similarity, 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity > 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
         }
 
         private void NotSimilar(string left, string right)
         {
             var similarity = _catal.GetSimilarity(left, right);
-            Assert.Less(similarity, 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity < 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
         }
     }
 }

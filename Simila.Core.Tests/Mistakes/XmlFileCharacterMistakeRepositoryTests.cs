@@ -1,29 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Simila.Core.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class XmlFileCharacterMistakeRepositoryTests
     {
-        [Test]
+        [TestMethod]
         public void CommonEnglishMistakesShouldLoadFromXml()
         {
+            Directory.SetCurrentDirectory(AppContext.BaseDirectory);
+
             var mistakesRepo = new XmlFileMistakeRepository<char>("CommonEnglishCharacterMistakes.xml");
             
-            CollectionAssert.IsNotEmpty(mistakesRepo.GetMistakes());
+            Assert.IsTrue(mistakesRepo.GetMistakes().Any());
         }
 
-        [Test]
+        [TestMethod]
         public void CommonPersianMistakesShouldLoadFromXml()
         {
+            Directory.SetCurrentDirectory(AppContext.BaseDirectory);
+
             var mistakesRepo = new XmlFileMistakeRepository<char>("CommonPersianCharacterMistakes.xml");
 
-            CollectionAssert.IsNotEmpty(mistakesRepo.GetMistakes());
+            Assert.IsTrue(mistakesRepo.GetMistakes().Any());
         }
     }
 }

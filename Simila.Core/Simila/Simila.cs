@@ -1,8 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using Microsoft.Practices.Unity;
 using Simila.Core.Levenstein;
 using Unity;
 

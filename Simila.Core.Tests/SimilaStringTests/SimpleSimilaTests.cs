@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Simila.Core.Tests.SimilaStringTests
 {
-    [TestFixture]
+    [TestClass]
     public class SimpleSimilaTests
     {
-        [Test]
+        [TestMethod]
         public void Simila_ShouldWork_WithNoConfig()
         {
             var simila = new Simila();
@@ -30,7 +25,7 @@ namespace Simila.Core.Tests.SimilaStringTests
             Assert.IsFalse(simila.AreSimilar("ABC DEFGH IJKLM", "XTD DDDGF LAKIN"));
         }
 
-        [Test]
+        [TestMethod]
         public void Simila_ShouldWork_WithNoConfig_NotCaseSensitive()
         {
             var simila = new Simila();
@@ -52,7 +47,7 @@ namespace Simila.Core.Tests.SimilaStringTests
             Assert.IsFalse(simila.AreSimilar("ABC DEFGH IJKLM", "XTD DDDGF LAKIN"));
         }
 
-        [Test]
+        [TestMethod]
         public void Simila_ShouldWork_WithNoConfig_CaseSensitive()
         {
             var simila = new Simila();
