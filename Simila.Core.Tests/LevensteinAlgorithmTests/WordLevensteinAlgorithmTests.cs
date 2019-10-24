@@ -59,7 +59,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [TestMethod]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver()
         {
-            var resolver = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.CaseSensitive);
+            var resolver = new CharacterSimilarityResolverDefault(StringComparisonOptions.CaseSensitive);
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);
@@ -93,7 +93,7 @@ namespace Simila.Core.Tests.LevensteinAlgorithmTests
         [TestMethod]
         public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver_NotCaseSensitive()
         {
-            var resolver = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None);
+            var resolver = new CharacterSimilarityResolverDefault(StringComparisonOptions.None);
 
             resolver.SetMistakeSimilarity('m', 'n', 0.8f);
             resolver.SetMistakeSimilarity('o', 'u', 0.7f);

@@ -8,7 +8,7 @@ namespace Simila.Core.Tests
         [TestMethod]
         public void CharacterMistakeBased_ShouldWork_Raw_CaseSensitive()
         {
-            var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.CaseSensitive);
+            var simila = new CharacterSimilarityResolverDefault(StringComparisonOptions.CaseSensitive);
 
             Assert.AreEqual(1, simila.GetSimilarity('a', 'a'), "'a', 'a'");
             Assert.AreEqual(0, simila.GetSimilarity('A', 'a'), "'A', 'a'");
@@ -22,7 +22,7 @@ namespace Simila.Core.Tests
         [TestMethod]
         public void CharacterMistakeBased_ShouldWork_NotCaseSensitive()
         {
-            var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None);
+            var simila = new CharacterSimilarityResolverDefault(StringComparisonOptions.None);
 
             Assert.AreEqual(simila.GetSimilarity('a', 'a'), 1);
             Assert.AreEqual(simila.GetSimilarity('A', 'a'), 1);
@@ -35,7 +35,7 @@ namespace Simila.Core.Tests
         [TestMethod]
         public void CharacterMistakeBased_ShouldWork_DefinedMistakes_CaseSensitive()
         {
-            var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.CaseSensitive);
+            var simila = new CharacterSimilarityResolverDefault(StringComparisonOptions.CaseSensitive);
 
             simila.SetMistakeSimilarity('c', 'k', 0.7f);
 
@@ -56,7 +56,7 @@ namespace Simila.Core.Tests
         [TestMethod]
         public void CharacterMistakeBased_ShouldWork_DefinedMistakes_NotCaseSensitive()
         {
-            var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None);
+            var simila = new CharacterSimilarityResolverDefault(StringComparisonOptions.None);
 
             simila.SetMistakeSimilarity('c', 'k', 0.7f);
 
@@ -77,7 +77,7 @@ namespace Simila.Core.Tests
         [TestMethod]
         public void CharacterMistakeBased_ShouldWork_WithEmptyAndNumericInputs()
         {
-            var simila = new CharacterSimilarityResolverDefault(null, StringComparisonOptions.None) { CostOfNumeric = 0.3f };
+            var simila = new CharacterSimilarityResolverDefault(stringComparisonOptions: StringComparisonOptions.None) { CostOfNumeric = 0.3f };
 
             Assert.AreEqual(0f, simila.GetSimilarity('c', 'k'));
             Assert.AreEqual(0f, simila.GetSimilarity(default(char), 'k'));

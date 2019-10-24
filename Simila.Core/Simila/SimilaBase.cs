@@ -4,12 +4,7 @@
     {
         public abstract ISimilarityResolver<T> Algorithm { get; }
 
-        protected SimilaBase()
-        {
-            Treshold = (int)SimilarityRate.Similar * .1f;
-        }
-
-        public float Treshold { get; set; }
+        public float Treshold { get; set; } = 0.6f;
 
         public virtual bool AreSimilar(T left, T right)
         {

@@ -1,18 +1,16 @@
 ﻿using Simila.Core.Levenstein;
-using Unity;
 
 namespace Simila.Core
 {
     public class WordSimilarityResolverDefault : MultiSimilarityResolver
     {
-        public WordSimilarityResolverDefault()
-            : this(new CharacterSimilarityResolverDefault(),
+        public WordSimilarityResolverDefault(StringComparisonOptions stringComparisonOptions = StringComparisonOptions.None)
+            : this(new CharacterSimilarityResolverDefault(stringComparisonOptions),
             new MistakeBasedSimilarityResolver<Word>(new BuiltInWordMistakeRepository()))
         {
 
         }
 
-        [InjectionConstructor]
         public WordSimilarityResolverDefault(
             ISimilarityResolver<char> characterSimilarityResolverForLevenstein,
             IMistakeBasedSimilarityResolver<Word> mistakeBasedResolver)

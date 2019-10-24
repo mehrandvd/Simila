@@ -1,21 +1,18 @@
-﻿using Unity;
-
-namespace Simila.Core
+﻿namespace Simila.Core
 {
     public class CharacterSimilarityResolverDefault : MistakeBasedSimilarityResolver<char>
     {
         public CharacterSimilarityResolverDefault()
-            : this(new BuiltInCharacterMistakeRepository(), StringComparisonOptions.None)
+            : this(StringComparisonOptions.None, new BuiltInCharacterMistakeRepository())
         {
 
         }
 
-        [InjectionConstructor]
-        public CharacterSimilarityResolverDefault(IMistakeRepository<char> mistakesRepository, StringComparisonOptions stringComparisonOptions)
+        public CharacterSimilarityResolverDefault(StringComparisonOptions? stringComparisonOptions, IMistakeRepository<char> mistakesRepository = null)
             : base(mistakesRepository)
         {
             CostOfNumeric = 0.5f;
-            StringComparisonOptions = stringComparisonOptions;
+            StringComparisonOptions = stringComparisonOptions ?? StringComparisonOptions.None;
         }
 
         public float CostOfNumeric { get; set; }

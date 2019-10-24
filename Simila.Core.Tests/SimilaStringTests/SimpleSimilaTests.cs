@@ -28,8 +28,7 @@ namespace Simila.Core.Tests.SimilaStringTests
         [TestMethod]
         public void Simila_ShouldWork_WithNoConfig_NotCaseSensitive()
         {
-            var simila = new Simila();
-            simila.SetStringComparisonOptions(StringComparisonOptions.None);
+            var simila = new Simila(stringComparisonOptions: StringComparisonOptions.None);
 
             Assert.IsTrue(simila.AreSimilar("AAAAA", "AABAA"));
             Assert.IsTrue(simila.AreSimilar("AAAAA", "aabaa"));
@@ -50,8 +49,7 @@ namespace Simila.Core.Tests.SimilaStringTests
         [TestMethod]
         public void Simila_ShouldWork_WithNoConfig_CaseSensitive()
         {
-            var simila = new Simila();
-            simila.SetStringComparisonOptions(StringComparisonOptions.CaseSensitive);
+            var simila = new Simila(stringComparisonOptions: StringComparisonOptions.CaseSensitive);
 
 
             Assert.IsTrue(simila.AreSimilar("AAAAA", "AABAA"));

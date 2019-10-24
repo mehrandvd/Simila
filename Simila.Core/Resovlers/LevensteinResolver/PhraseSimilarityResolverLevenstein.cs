@@ -1,16 +1,14 @@
-﻿using Unity;
-
+﻿
 namespace Simila.Core.Levenstein
 {
     public class PhraseSimilarityResolverLevenstein : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
     {
-        public PhraseSimilarityResolverLevenstein()
-            : this(new WordSimilarityResolverDefault())
+        public PhraseSimilarityResolverLevenstein(StringComparisonOptions stringComparisonOptions)
+            : this(new WordSimilarityResolverDefault(stringComparisonOptions))
         {
             
         }
 
-        [InjectionConstructor]
         public PhraseSimilarityResolverLevenstein(ISimilarityResolver<Word> wordSimilarityResolver)
             : base(wordSimilarityResolver)
         {
