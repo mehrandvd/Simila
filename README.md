@@ -22,7 +22,7 @@ if (simila.AreSimilar("The Candy Shop", "The Kandi Schap"));
 # How to use
 Using Simila is easy.
 
-First of all, install [Bit.Similia](https://www.nuget.org/packages/Bit.Simila/) nuget package.
+First of all, install [Bit.Simila](https://www.nuget.org/packages/Bit.Simila/) nuget package.
 
 ```c#
 var simila = new Simila();
