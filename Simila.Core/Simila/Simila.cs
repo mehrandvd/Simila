@@ -5,7 +5,7 @@ namespace Simila.Core
 {
     public class Simila //: SimilaBase<string>
     {
-        public float Threshold { get; set; };
+        public float Threshold { get; set; }
 
         public Simila(float threshold = .6f, StringComparisonOptions stringComparisonOptions = StringComparisonOptions.None)
         {
