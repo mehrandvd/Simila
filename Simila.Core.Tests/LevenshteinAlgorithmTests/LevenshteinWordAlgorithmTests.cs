@@ -4,12 +4,12 @@ using Simila.Core.Levenstein;
 namespace Simila.Core.Tests.LevenshteinAlgorithmTests
 {
     [TestClass]
-    public class WordLevensteinAlgorithmTests
+    public class LevenshteinWordAlgorithmTests
     {
         [TestMethod]
-        public void WordLevensteinAlgorithm_ShouldWork_Default_NotCaseSensitive()
+        public void LevenshteinWordAlgorithm_DefaultNotCaseSensitive_ShouldWork()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolver());
+            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolver(mistakesRepository: new BuiltInCharacterMistakeRepository()));
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             AreSimilar(algorithm, "MEHRAN", "mehran");
@@ -26,7 +26,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         }
 
         [TestMethod]
-        public void WordLevensteinAlgorithm_ShouldWork_Default_CaseSensitive()
+        public void LevenshteinWordAlgorithm_Default_CaseSensitive_ShouldWork()
         {
             var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolver(isCaseSensitive: true));
 
@@ -51,9 +51,9 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         }
 
         [TestMethod]
-        public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver()
+        public void LevenshteinWordAlgorithm_CustomCharacterSimilarityResolver_ShouldWork()
         {
-            var resolver = new CharacterSimilarityResolver();
+            var resolver = new CharacterSimilarityResolver(isCaseSensitive: true);
 
             resolver.RegisterMistake('m', 'n', 0.8f);
             resolver.RegisterMistake('o', 'u', 0.7f);
@@ -85,7 +85,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         }
 
         [TestMethod]
-        public void WordLevensteinAlgorithm_ShouldWork_CustomCharacterSimiarityResolver_NotCaseSensitive()
+        public void LevenshteinWordAlgorithm_CustomCharacterSimilarityResolverNotCaseSensitive_ShouldWork()
         {
             var resolver = new CharacterSimilarityResolver();
 
@@ -108,13 +108,13 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         private void AreSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
-            Assert.IsTrue(similarity > 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity > 0.6, $"{left}-{right} should be similar (Similarity: {similarity})");
         }
 
         private void NotSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
-            Assert.IsTrue(similarity < 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity < 0.5, $"{left}-{right} should NOT be similar (Similarity: {similarity})");
         }
     }
 

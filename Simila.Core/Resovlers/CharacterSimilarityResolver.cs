@@ -26,7 +26,7 @@ namespace Simila.Core
 
         public float NumericSimilarityRate { get; set; }
 
-        public override float GetSimilarity(char left, char right)
+        protected override float? GetSimilarityImpl(char left, char right)
         {
             if ((left == default(char)) ^ (right == default(char)))
                 return char.IsNumber((char)(left + right)) ? NumericSimilarityRate : 0f;
@@ -37,7 +37,7 @@ namespace Simila.Core
                 right = char.ToLower(right);
             }
 
-            return base.GetSimilarity(left, right);
+            return base.GetSimilarityImpl(left, right);
         }
 
         public override void RegisterMistake(char left, char right, float similarity)

@@ -11,7 +11,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         {
             var algorithm =
                 new LevensteinAlgorithm<Phrase, Word>(
-                    new WordSimilarityResolverDefault()
+                    new WordSimilarityResolver()
                 );
 
             AreSimilar(algorithm, "Mehran Davoudi", "Nehran Dawoody");

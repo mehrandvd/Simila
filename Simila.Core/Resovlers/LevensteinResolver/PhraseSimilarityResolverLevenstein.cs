@@ -4,7 +4,7 @@ namespace Simila.Core.Levenstein
     public class PhraseSimilarityResolverLevenstein : LevensteinAlgorithm<Phrase, Word>,  IStringSimilarityAlgorithm
     {
         public PhraseSimilarityResolverLevenstein(StringComparisonOptions stringComparisonOptions)
-            : this(new WordSimilarityResolverDefault(stringComparisonOptions))
+            : this(new WordSimilarityResolver())
         {
             
         }

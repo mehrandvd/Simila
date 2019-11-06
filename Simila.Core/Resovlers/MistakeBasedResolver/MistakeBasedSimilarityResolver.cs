@@ -37,14 +37,19 @@ namespace Simila.Core
         /// Returns the similarity rate of <param name="left"></param> and <param name="right"></param>
         /// </summary>
         /// <returns></returns>
-        public virtual float GetSimilarity(T left, T right)
+        public float GetSimilarity(T left, T right)
+        {
+            return GetSimilarityImpl(left, right) ?? 0;
+        }
+
+        protected virtual float? GetSimilarityImpl(T left, T right)
         {
             var Null = default(T);
 
             if (
                 (left == null || left.Equals(Null)) ^
                 (right == null || right.Equals(Null))
-                )
+            )
             {
                 return 0f;
             }
@@ -56,7 +61,7 @@ namespace Simila.Core
             if (similarity != null)
                 return similarity.Value;
 
-            return CalculateSimilarityBasedOnMistakes(left, right) ?? 0;
+            return CalculateSimilarityBasedOnMistakes(left, right);
         }
 
         /// <summary>
