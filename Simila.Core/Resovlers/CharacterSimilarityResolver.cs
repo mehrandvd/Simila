@@ -2,7 +2,7 @@
 
 namespace Simila.Core
 {
-    public class CharacterSimilarityResolver : MistakeBasedSimilarityResolver<char>
+    public class CharacterSimilarityResolver : GeneralSimilarityResolver<char>
     {
         public bool IsCaseSensitive { get; private set; }
 

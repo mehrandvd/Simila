@@ -5,9 +5,9 @@ namespace Simila.Core
 {
     public class WordSimilaritytResolverFactory
     {
-        private readonly IMistakeBasedSimilarityResolver<Word> _resolver;
+        private readonly IGeneralSimilarityResolver<Word> _resolver;
 
-        public WordSimilaritytResolverFactory(IMistakeBasedSimilarityResolver<Word> resolver)
+        public WordSimilaritytResolverFactory(IGeneralSimilarityResolver<Word> resolver)
         {
             _resolver = resolver;
         }
@@ -44,12 +44,12 @@ namespace Simila.Core
             return this;
         }
 
-        public IMistakeBasedSimilarityResolver<Word> Build()
+        public IGeneralSimilarityResolver<Word> Build()
         {
             return _resolver;
         }
 
-        public IMistakeBasedSimilarityResolver<Word> Default()
+        public IGeneralSimilarityResolver<Word> Default()
         {
             return AddEnglishCommonMistakes()
                 .AddPersianCommonMistakes()

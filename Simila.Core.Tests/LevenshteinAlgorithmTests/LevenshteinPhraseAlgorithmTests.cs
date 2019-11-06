@@ -4,10 +4,10 @@ using Simila.Core.Levenstein;
 namespace Simila.Core.Tests.LevenshteinAlgorithmTests
 {
     [TestClass]
-    class PhraseLevensteinAlgorithmTests
+    class LevenshteinPhraseAlgorithmTests
     {
         [TestMethod]
-        public void PhraseLevensteinAlgorithm_ShouldWork_Default()
+        public void LevenshteinPhraseAlgorithm_ShouldWork_Default()
         {
             var algorithm =
                 new LevensteinAlgorithm<Phrase, Word>(
@@ -25,13 +25,13 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         private void AreSimilar(LevensteinAlgorithm<Phrase, Word> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
-            Assert.IsTrue(similarity > 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity > 0.6, $"{left}-{right} should be similar (Similarity: {similarity})");
         }
 
         private void NotSimilar(LevensteinAlgorithm<Phrase, Word> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
-            Assert.IsTrue(similarity < 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
+            Assert.IsTrue(similarity < 0.5, $"{left}-{right} should NOT be similar (Similarity: {similarity})");
         }
     }
 }

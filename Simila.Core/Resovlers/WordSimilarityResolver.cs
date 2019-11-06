@@ -3,7 +3,7 @@ using Simila.Core.Levenstein;
 
 namespace Simila.Core
 {
-    public class WordSimilarityResolver : MistakeBasedSimilarityResolver<Word>
+    public class WordSimilarityResolver : GeneralSimilarityResolver<Word>
     {
         private LevensteinAlgorithm<Word, char> Algorithm { get; }
         

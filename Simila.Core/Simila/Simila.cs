@@ -3,47 +3,35 @@ using Simila.Core.Levenstein;
 
 namespace Simila.Core
 {
-    public class Simila : SimilaBase<string>
+    public class Simila //: SimilaBase<string>
     {
+        public float Treshold { get; set; };
+
         public Simila(float treshold = .6f, StringComparisonOptions stringComparisonOptions = StringComparisonOptions.None)
         {
-            StringComparisonOptions = stringComparisonOptions;
-            Algorithm = new PhraseSimilarityResolverLevenstein(stringComparisonOptions);
+            var wordSimilarityResolver = new WordSimilarityResolver(
+                characterSimilarityResolver: new CharacterSimilarityResolver(
+                    isCaseSensitive: stringComparisonOptions == StringComparisonOptions.CaseSensitive,
+                    mistakesRepository: new BuiltInCharacterMistakeRepository()
+                )
+            );
 
-            WordMistakeRepository = new BuiltInWordMistakeRepository();
-            CharacterMistakeRepository = new BuiltInCharacterMistakeRepository();
+            Algorithm = new PhraseSimilarityResolver(wordSimilarityResolver: wordSimilarityResolver);
 
             Treshold = treshold;
         }
 
-        //private static UnityContainer GetDefalutResolver()
-        //{
-        //    var resolver = new UnityContainer();
-        //    resolver.RegisterType<ISimilarityResolver<string>, PhraseSimilarityResolverLevenstein>();
-        //    resolver.RegisterType<ISimilarityResolver<Word>, WordSimilarityResolverDefault>();
-        //    resolver.RegisterType<ISimilarityResolver<char>, CharacterSimilarityResolverDefault>();
-        //    resolver.RegisterType<IMistakeBasedSimilarityResolver<Word>, MistakeBasedSimilarityResolver<Word>>();
-        //    resolver.RegisterType<IMistakeRepository<char>, BuiltInCharacterMistakeRepository>();
-        //    resolver.RegisterType<IMistakeRepository<Word>, BuiltInWordMistakeRepository>();
-        //    return resolver;
-        //}
-
-        public float GetSimilarityPercent(object left, object right)
+        public virtual bool AreSimilar(string left, string right)
         {
-            return base.GetSimilarityPercent(left.ToString(), right.ToString());
+            return GetSimilarityPercent(left, right) >= Treshold;
         }
 
-        public bool AreSimilar(object left, object right)
+        public virtual float GetSimilarityPercent(string left, string right)
         {
-            return base.AreSimilar(left.ToString(), right.ToString());
+            return Algorithm.GetSimilarity(left, right);
         }
 
-        public override ISimilarityResolver<string> Algorithm { get; }
-
-        public StringComparisonOptions StringComparisonOptions { get; private set; }
-
-        public IMistakeRepository<Word> WordMistakeRepository { get; set; }
-        public IMistakeRepository<char> CharacterMistakeRepository { get; set; }
+        public ISimilarityResolver<Phrase> Algorithm { get; }
     }
 
     [Flags]

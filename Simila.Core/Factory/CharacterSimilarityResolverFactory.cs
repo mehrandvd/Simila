@@ -4,9 +4,9 @@ namespace Simila.Core
 {
     public class CharacterSimilarityResolverFactory
     {
-        private readonly IMistakeBasedSimilarityResolver<char> _resolver;
+        private readonly IGeneralSimilarityResolver<char> _resolver;
 
-        public CharacterSimilarityResolverFactory(IMistakeBasedSimilarityResolver<char> resolver)
+        public CharacterSimilarityResolverFactory(IGeneralSimilarityResolver<char> resolver)
         {
             _resolver = resolver;
         }
