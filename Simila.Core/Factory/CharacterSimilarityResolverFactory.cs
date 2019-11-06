@@ -20,7 +20,7 @@ namespace Simila.Core
 
                 foreach (var mistake in mistakes)
                 {
-                    _resolver.SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
+                    _resolver.RegisterMistake(mistake.Left, mistake.Right, mistake.Similarity);
                 }
             }
 
@@ -36,7 +36,7 @@ namespace Simila.Core
 
                 foreach (var mistake in mistakes)
                 {
-                    _resolver.SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
+                    _resolver.RegisterMistake(mistake.Left, mistake.Right, mistake.Similarity);
                 }
             }
 

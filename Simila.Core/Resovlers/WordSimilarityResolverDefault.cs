@@ -5,7 +5,7 @@ namespace Simila.Core
     public class WordSimilarityResolverDefault : MultiSimilarityResolver
     {
         public WordSimilarityResolverDefault(StringComparisonOptions stringComparisonOptions = StringComparisonOptions.None)
-            : this(new CharacterSimilarityResolverDefault(stringComparisonOptions),
+            : this(new CharacterSimilarityResolver(),
             new MistakeBasedSimilarityResolver<Word>(new BuiltInWordMistakeRepository()))
         {
 

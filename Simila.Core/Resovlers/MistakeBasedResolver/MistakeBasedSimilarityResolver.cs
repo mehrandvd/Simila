@@ -1,29 +1,44 @@
+using System;
 using System.Collections.Generic;
 
 namespace Simila.Core
 {
+    /// <summary>
+    /// A mistake based similarity resolver uses a mistakeRepository to resolve similarities.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MistakeBasedSimilarityResolver<T> : IMistakeBasedSimilarityResolver<T>
     {
-        public MistakeBasedSimilarityResolver(IMistakeRepository<T> mistakeRepository)
+        public Func<T, T, float?> MistakeAlgorithm { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<T, Dictionary<T, float>> Mistakes { get; private set; }
+
+        /// <summary>
+        /// A mistake based similarity resolver uses a <param name="mistakeRepository"></param> to resolve similarities.
+        /// </summary>
+        public MistakeBasedSimilarityResolver(IMistakeRepository<T> mistakeRepository = null, Func<T, T, float?> mistakeAlgorithm = null)
         {
-            MistakesRepository = new Dictionary<T, Dictionary<T, float>>();
+            MistakeAlgorithm = mistakeAlgorithm;
+            Mistakes = new Dictionary<T, Dictionary<T, float>>();
 
             if (mistakeRepository != null)
             {
                 foreach (var mistake in mistakeRepository.GetMistakes())
                 {
-                    SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
+                    RegisterMistake(mistake.Left, mistake.Right, mistake.Similarity);
                 }
             }
         }
 
-        protected Dictionary<T, Dictionary<T, float>> MistakesRepository { get; set; }
-
+        /// <summary>
+        /// Returns the similarity rate of <param name="left"></param> and <param name="right"></param>
+        /// </summary>
+        /// <returns></returns>
         public virtual float GetSimilarity(T left, T right)
         {
-            if (left.Equals(right))
-                return 1;
-
             var Null = default(T);
 
             if (
@@ -34,34 +49,45 @@ namespace Simila.Core
                 return 0f;
             }
 
-            var similarityByReposiroty = GetMistakeSimlarityFromRepository(left, right);
+            if (left != null && left.Equals(right))
+                return 1;
 
-            return similarityByReposiroty ?? 0;
+            var similarity = MistakeAlgorithm?.Invoke(left, right);
+            if (similarity != null)
+                return similarity.Value;
+
+            return CalculateSimilarityBasedOnMistakes(left, right) ?? 0;
         }
 
-        public virtual void SetMistakeSimilarity(T left, T right, float similarity)
+        /// <summary>
+        /// Registers a new mistake in the resolver.
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <param name="similarity"></param>
+        public virtual void RegisterMistake(T left, T right, float similarity)
         {
-            var mistakesForLeft = GetRegisteredMistakes(left);
-            var mistakesForRight = GetRegisteredMistakes(right);
+            var mistakesForLeft = GetOrAddRelatedMistakes(left);
+            var mistakesForRight = GetOrAddRelatedMistakes(right);
 
             mistakesForLeft[right] = similarity;
             mistakesForRight[left] = similarity;
         }
 
-        private float? GetMistakeSimlarityFromRepository(T left, T right)
+        private float? CalculateSimilarityBasedOnMistakes(T left, T right)
         {
-            if (MistakesRepository.ContainsKey(left))
+            if (Mistakes.ContainsKey(left))
             {
-                var relevantMistakes = MistakesRepository[left];
+                var relevantMistakes = Mistakes[left];
                 if (relevantMistakes.ContainsKey(right))
                 {
                     return relevantMistakes[right];
                 }
             }
 
-            else if (MistakesRepository.ContainsKey(right))
+            else if (Mistakes.ContainsKey(right))
             {
-                var relevantMistakes = MistakesRepository[right];
+                var relevantMistakes = Mistakes[right];
                 if (relevantMistakes.ContainsKey(left))
                 {
                     return relevantMistakes[left];
@@ -71,17 +97,17 @@ namespace Simila.Core
             return null;
         }
 
-        private Dictionary<T, float> GetRegisteredMistakes(T left)
+        private Dictionary<T, float> GetOrAddRelatedMistakes(T left)
         {
             Dictionary<T, float> dictionary = null;
-            if (MistakesRepository.ContainsKey(left))
+            if (Mistakes.ContainsKey(left))
             {
-                dictionary = MistakesRepository[left];
+                dictionary = Mistakes[left];
             }
             else
             {
                 dictionary = new Dictionary<T, float>();
-                MistakesRepository.Add(left, dictionary);
+                Mistakes.Add(left, dictionary);
             }
             return dictionary;
         }

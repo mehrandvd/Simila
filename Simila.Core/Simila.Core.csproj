@@ -12,7 +12,7 @@
     <RepositoryType>git</RepositoryType>
     <Version>0.0.1</Version>
     <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <LangVersion>8.0</LangVersion>
     <EmbedAllSources>True</EmbedAllSources>
     <DebugType>portable</DebugType>
