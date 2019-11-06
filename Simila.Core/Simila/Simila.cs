@@ -5,9 +5,9 @@ namespace Simila.Core
 {
     public class Simila //: SimilaBase<string>
     {
-        public float Treshold { get; set; };
+        public float Threshold { get; set; };
 
-        public Simila(float treshold = .6f, StringComparisonOptions stringComparisonOptions = StringComparisonOptions.None)
+        public Simila(float threshold = .6f, StringComparisonOptions stringComparisonOptions = StringComparisonOptions.None)
         {
             var wordSimilarityResolver = new WordSimilarityResolver(
                 characterSimilarityResolver: new CharacterSimilarityResolver(
@@ -18,12 +18,12 @@ namespace Simila.Core
 
             Algorithm = new PhraseSimilarityResolver(wordSimilarityResolver: wordSimilarityResolver);
 
-            Treshold = treshold;
+            Threshold = threshold;
         }
 
         public virtual bool AreSimilar(string left, string right)
         {
-            return GetSimilarityPercent(left, right) >= Treshold;
+            return GetSimilarityPercent(left, right) >= Threshold;
         }
 
         public virtual float GetSimilarityPercent(string left, string right)
