@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Simila.Core.Resolver;
 
-namespace Simila.Core.Tests.SimilaStringTests
+namespace Simila.Core.Test.SimilaStringTests
 {
     [TestClass]
     public class SimpleSimilaTests

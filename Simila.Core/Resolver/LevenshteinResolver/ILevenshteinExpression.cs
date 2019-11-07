@@ -1,4 +1,4 @@
-﻿namespace Simila.Core.Levenstein
+﻿namespace Simila.Core.Resolver.LevenshteinResolver
 {
     public interface ILevenshteinExpression<out TElement>
     {

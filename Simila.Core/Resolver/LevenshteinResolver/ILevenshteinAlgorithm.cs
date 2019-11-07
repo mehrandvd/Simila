@@ -1,6 +1,6 @@
-namespace Simila.Core.Levenstein
+namespace Simila.Core.Resolver.LevenshteinResolver
 {
-    public interface ILevensteinAlgorithm<TExpression, TElement> : ISimilarityResolver<TExpression>
+    public interface ILevenshteinAlgorithm<in TExpression, in TElement> : ISimilarityResolver<TExpression>
     {
         /// <summary>
         /// Gets or sets the similarityResolver to use in the instance of the algorithm.

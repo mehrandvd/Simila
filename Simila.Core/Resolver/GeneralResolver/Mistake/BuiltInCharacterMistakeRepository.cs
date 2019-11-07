@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver.GeneralResolver
 {
     public class BuiltInCharacterMistakeRepository : IMistakeRepository<char>
     {

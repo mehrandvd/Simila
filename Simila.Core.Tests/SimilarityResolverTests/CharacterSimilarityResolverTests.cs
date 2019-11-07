@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Simila.Core.Resolver;
 
-namespace Simila.Core.Tests
+namespace Simila.Core.Test
 {
     [TestClass]
     public class CharacterSimilarityResolverTests

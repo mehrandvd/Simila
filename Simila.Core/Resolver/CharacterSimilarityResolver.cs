@@ -1,18 +1,13 @@
 ﻿using System;
+using Simila.Core.Resolver.GeneralResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver
 {
     public class CharacterSimilarityResolver : GeneralSimilarityResolver<char>
     {
         public bool IsCaseSensitive { get; private set; }
 
-        //public CharacterSimilarityResolver()
-        //    : this(false, new BuiltInCharacterMistakeRepository())
-        //{
-
-        //}
-
-        public CharacterSimilarityResolver(
+         public CharacterSimilarityResolver(
             bool isCaseSensitive = false,
             IMistakeRepository<char> mistakesRepository = null,
             float numericSimilarityRate = .5f,

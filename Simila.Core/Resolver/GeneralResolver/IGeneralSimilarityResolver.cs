@@ -1,4 +1,6 @@
-﻿namespace Simila.Core
+﻿using Simila.Core.Resolver;
+
+namespace Simila.Core
 {
     public interface IGeneralSimilarityResolver<in T> : ISimilarityResolver<T>
     {

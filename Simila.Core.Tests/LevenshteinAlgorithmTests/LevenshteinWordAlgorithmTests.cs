@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver;
+using Simila.Core.Resolver.GeneralResolver;
+using Simila.Core.Resolver.LevenshteinResolver;
 
-namespace Simila.Core.Tests.LevenshteinAlgorithmTests
+namespace Simila.Core.Test.LevenshteinAlgorithmTests
 {
     [TestClass]
     public class LevenshteinWordAlgorithmTests
@@ -9,7 +11,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         [TestMethod]
         public void LevenshteinWordAlgorithm_DefaultNotCaseSensitive_ShouldWork()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolver(mistakesRepository: new BuiltInCharacterMistakeRepository()));
+            var algorithm = new LevenshteinAlgorithm<Word, char>(new CharacterSimilarityResolver(mistakesRepository: new BuiltInCharacterMistakeRepository()));
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             AreSimilar(algorithm, "MEHRAN", "mehran");
@@ -28,7 +30,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         [TestMethod]
         public void LevenshteinWordAlgorithm_Default_CaseSensitive_ShouldWork()
         {
-            var algorithm = new LevensteinAlgorithm<Word, char>(new CharacterSimilarityResolver(isCaseSensitive: true));
+            var algorithm = new LevenshteinAlgorithm<Word, char>(new CharacterSimilarityResolver(isCaseSensitive: true));
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             NotSimilar(algorithm, "MEHRAN", "mehran");
@@ -62,7 +64,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
 
             resolver.RegisterMistake('X', 'A', 0.9f);
 
-            var algorithm = new LevensteinAlgorithm<Word, char>(resolver);
+            var algorithm = new LevenshteinAlgorithm<Word, char>(resolver);
 
             AreSimilar(algorithm, "XXXXX", "AAAAA");
             NotSimilar(algorithm, "xxxxx", "aaaaa");
@@ -95,7 +97,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
             resolver.RegisterMistake('c', 'k', 0.6f);
             resolver.RegisterMistake('X', 'A', 0.9f);
 
-            var algorithm = new LevensteinAlgorithm<Word, char>(resolver);
+            var algorithm = new LevenshteinAlgorithm<Word, char>(resolver);
 
             AreSimilar(algorithm, "XXXXX", "AAAAA");
             AreSimilar(algorithm, "xxxxx", "aaaaa");
@@ -105,13 +107,13 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
 
         }
 
-        private void AreSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
+        private void AreSimilar(LevenshteinAlgorithm<Word, char> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity((Word) left, (Word) right);
             Assert.IsTrue(similarity > 0.6, $"{left}-{right} should be similar (Similarity: {similarity})");
         }
 
-        private void NotSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
+        private void NotSimilar(LevenshteinAlgorithm<Word, char> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity((Word) left, (Word) right);
             Assert.IsTrue(similarity < 0.5, $"{left}-{right} should NOT be similar (Similarity: {similarity})");

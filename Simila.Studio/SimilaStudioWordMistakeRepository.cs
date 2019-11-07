@@ -7,7 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Simila.Core;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver.GeneralResolver;
+using Simila.Core.Resolver.LevenshteinResolver;
 
 namespace Simila.Studio
 {

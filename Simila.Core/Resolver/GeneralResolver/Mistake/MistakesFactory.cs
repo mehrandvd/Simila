@@ -1,4 +1,6 @@
-﻿namespace Simila.Core
+﻿using Simila.Core.Resolver.GeneralResolver;
+
+namespace Simila.Core
 {
     class MistakesFactory
     {

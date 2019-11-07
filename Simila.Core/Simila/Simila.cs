@@ -1,5 +1,6 @@
 ﻿using System;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver;
+using Simila.Core.Resolver.GeneralResolver;
 
 namespace Simila.Core
 {

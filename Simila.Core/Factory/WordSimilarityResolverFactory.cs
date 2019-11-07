@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver.LevenshteinResolver;
 
 namespace Simila.Core
 {

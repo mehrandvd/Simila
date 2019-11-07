@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver.GeneralResolver
 {
     public class XmlFileMistakeRepository<T> : IMistakeRepository<T>
     {

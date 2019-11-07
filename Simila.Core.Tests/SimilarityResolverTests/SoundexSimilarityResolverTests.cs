@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simila.Core.Resolvers;
+using Simila.Core.Resolver;
 
-namespace Simila.Core.Tests.SimilarityResolverTests
+namespace Simila.Core.Test.SimilarityResolverTests
 {
     [TestClass]
     public class SoundexSimilarityResolverTests

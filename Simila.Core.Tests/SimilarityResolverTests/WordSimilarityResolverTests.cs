@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver;
+using Simila.Core.Resolver.GeneralResolver;
+using Simila.Core.Resolver.LevenshteinResolver;
 
-namespace Simila.Core.Tests.SimilarityResolverTests
+namespace Simila.Core.Test.SimilarityResolverTests
 {
     [TestClass]
     public class WordSimilarityResolverTests

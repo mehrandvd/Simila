@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Simila.Core.Resolver.GeneralResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver.GeneralResolver
 {
     public class MistakeRepository<TElement> : IMistakeRepository<TElement>
     {

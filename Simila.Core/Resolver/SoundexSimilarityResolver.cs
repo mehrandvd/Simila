@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver.LevenshteinResolver;
 
-namespace Simila.Core.Resolvers
+namespace Simila.Core.Resolver
 {
     public class SoundexSimilarityResolver : ISimilarityResolver<string>, ISimilarityResolver<Word>
     {

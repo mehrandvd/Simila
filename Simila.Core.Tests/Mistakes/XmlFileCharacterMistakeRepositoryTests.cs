@@ -2,8 +2,9 @@
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Simila.Core.Resolver.GeneralResolver;
 
-namespace Simila.Core.Tests
+namespace Simila.Core.Test
 {
     [TestClass]
     public class XmlFileCharacterMistakeRepositoryTests

@@ -1,12 +1,12 @@
-﻿
-using System;
-using Simila.Core.Levenstein;
+﻿using System;
+using Simila.Core.Resolver.GeneralResolver;
+using Simila.Core.Resolver.LevenshteinResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver
 {
     public class PhraseSimilarityResolver : GeneralSimilarityResolver<Phrase>, ISimilarityResolver<string>
     {
-        private LevensteinAlgorithm<Phrase, Word> Algorithm { get; }
+        private LevenshteinAlgorithm<Phrase, Word> Algorithm { get; }
 
         public PhraseSimilarityResolver(
             IMistakeRepository<Phrase> mistakesRepository = null,
@@ -15,7 +15,7 @@ namespace Simila.Core
         )
             : base(mistakesRepository, mistakeAlgorithm)
         {
-            Algorithm = new LevensteinAlgorithm<Phrase, Word>(wordSimilarityResolver ?? new WordSimilarityResolver());
+            Algorithm = new LevenshteinAlgorithm<Phrase, Word>(wordSimilarityResolver ?? new WordSimilarityResolver());
         }
 
         protected  override float? GetSimilarityImpl(Phrase left, Phrase right)

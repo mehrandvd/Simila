@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver;
+using Simila.Core.Resolver.LevenshteinResolver;
 
-namespace Simila.Core.Tests.LevenshteinAlgorithmTests
+namespace Simila.Core.Test.LevenshteinAlgorithmTests
 {
     [TestClass]
     class LevenshteinPhraseAlgorithmTests
@@ -10,7 +11,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         public void LevenshteinPhraseAlgorithm_ShouldWork_Default()
         {
             var algorithm =
-                new LevensteinAlgorithm<Phrase, Word>(
+                new LevenshteinAlgorithm<Phrase, Word>(
                     new WordSimilarityResolver()
                 );
 
@@ -22,13 +23,13 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         }
 
 
-        private void AreSimilar(LevensteinAlgorithm<Phrase, Word> algorithm, string left, string right)
+        private void AreSimilar(LevenshteinAlgorithm<Phrase, Word> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
             Assert.IsTrue(similarity > 0.6, $"{left}-{right} should be similar (Similarity: {similarity})");
         }
 
-        private void NotSimilar(LevensteinAlgorithm<Phrase, Word> algorithm, string left, string right)
+        private void NotSimilar(LevenshteinAlgorithm<Phrase, Word> algorithm, string left, string right)
         {
             var similarity = algorithm.GetSimilarity(left, right);
             Assert.IsTrue(similarity < 0.5, $"{left}-{right} should NOT be similar (Similarity: {similarity})");

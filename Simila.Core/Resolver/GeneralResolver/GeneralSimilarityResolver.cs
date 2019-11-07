@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver.GeneralResolver
 {
     /// <summary>
     /// A mistake based similarity resolver uses a mistakeRepository to resolve similarities.

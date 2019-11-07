@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Simila.Core.Levenstein;
+﻿using System.Collections.Generic;
+using Simila.Core.Resolver.LevenshteinResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver.GeneralResolver
 {
     public class BuiltInWordMistakeRepository : IMistakeRepository<Word>
     {

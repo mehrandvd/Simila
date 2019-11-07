@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Simila.Core.Levenstein
+namespace Simila.Core.Resolver.LevenshteinResolver
 {
-    public class LevensteinAlgorithm<TExpression, TElement> : ILevensteinAlgorithm<TExpression, TElement>
+    public class LevenshteinAlgorithm<TExpression, TElement> : ILevenshteinAlgorithm<TExpression, TElement>
         where TExpression : ILevenshteinExpression<TElement>
     {
-        public LevensteinAlgorithm(ISimilarityResolver<TElement> elementSimilarityResolver)
+        public LevenshteinAlgorithm(ISimilarityResolver<TElement> elementSimilarityResolver)
         {
             ElementSimilarityResolver = elementSimilarityResolver;
         }

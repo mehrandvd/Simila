@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver.LevenshteinResolver;
+using Simila.Core.Resolver.GeneralResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Resolver
 {
     public class SharedPairResolver : ISimilarityResolver<string>
     {

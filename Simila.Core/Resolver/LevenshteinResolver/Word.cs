@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simila.Core.Levenstein
+namespace Simila.Core.Resolver.LevenshteinResolver
 {
     public class Word : ILevenshteinExpression<char>, IEquatable<Word>
     {
