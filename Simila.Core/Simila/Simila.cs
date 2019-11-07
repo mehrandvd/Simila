@@ -6,18 +6,25 @@ namespace Simila.Core
     public class Simila //: SimilaBase<string>
     {
         public float Threshold { get; set; }
+        public ISimilarityResolver<string> Algorithm { get; }
 
-        public Simila(float threshold = .6f, StringComparisonOptions stringComparisonOptions = StringComparisonOptions.None)
+        public Simila(float threshold = .6f, ISimilarityResolver<string> resolver = null)
         {
-            var wordSimilarityResolver = new WordSimilarityResolver(
-                characterSimilarityResolver: new CharacterSimilarityResolver(
-                    isCaseSensitive: stringComparisonOptions == StringComparisonOptions.CaseSensitive,
-                    mistakesRepository: new BuiltInCharacterMistakeRepository()
-                )
-            );
+            if (resolver == null)
+            {
+                var wordSimilarityResolver = new WordSimilarityResolver(
+                    characterSimilarityResolver: new CharacterSimilarityResolver(
+                        mistakesRepository: new BuiltInCharacterMistakeRepository()
+                    )
+                );
 
-            Algorithm = new PhraseSimilarityResolver(wordSimilarityResolver: wordSimilarityResolver);
-
+                Algorithm = new PhraseSimilarityResolver(wordSimilarityResolver: wordSimilarityResolver);
+            }
+            else
+            {
+                Algorithm = resolver;
+            }
+           
             Threshold = threshold;
         }
 
@@ -31,13 +38,5 @@ namespace Simila.Core
             return Algorithm.GetSimilarity(left, right);
         }
 
-        public ISimilarityResolver<Phrase> Algorithm { get; }
-    }
-
-    [Flags]
-    public enum StringComparisonOptions
-    {
-        None = 0,
-        CaseSensitive,    
     }
 }

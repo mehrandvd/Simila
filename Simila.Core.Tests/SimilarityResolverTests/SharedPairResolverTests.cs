@@ -3,9 +3,9 @@
 namespace Simila.Core.Tests
 {
     [TestClass]
-    public class CatalySoftTests
+    public class SharedPairResolverTests
     {
-        readonly CatalySoftAlgorithm _catal = new CatalySoftAlgorithm();
+        readonly SharedPairResolver _catal = new SharedPairResolver();
 
         [TestMethod]
         public void SimpleSimilarityMustWork()

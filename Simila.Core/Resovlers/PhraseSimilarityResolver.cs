@@ -4,7 +4,7 @@ using Simila.Core.Levenstein;
 
 namespace Simila.Core
 {
-    public class PhraseSimilarityResolver : GeneralSimilarityResolver<Phrase>//,  IStringSimilarityAlgorithm
+    public class PhraseSimilarityResolver : GeneralSimilarityResolver<Phrase>, ISimilarityResolver<string>
     {
         private LevensteinAlgorithm<Phrase, Word> Algorithm { get; }
 
@@ -24,6 +24,9 @@ namespace Simila.Core
                    ?? Algorithm.GetSimilarity(left, right);
         }
 
-        
+        public float GetSimilarity(string left, string right)
+        {
+            return GetSimilarity((Phrase) left, right);
+        }
     }
 }
