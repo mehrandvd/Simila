@@ -15,7 +15,7 @@ namespace Simila.Core
             {
                 var wordSimilarityResolver = new WordSimilarityResolver(
                     characterSimilarityResolver: new CharacterSimilarityResolver(
-                        mistakesRepository: new BuiltInCharacterMistakeRepository()
+                        mistakesRepository: new BuiltinCharacterMistakesRepository()
                     )
                 );
 

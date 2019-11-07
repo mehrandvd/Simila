@@ -8,7 +8,6 @@ namespace Simila.Core.Resolver.GeneralResolver
     public class XmlFileMistakeRepository<T> : IMistakeRepository<T>
     {
         public string Filename { get; set; }
-        private XElement _root;
         private List<Mistake<T>> _mistakes;
 
         public XmlFileMistakeRepository(string filename)
@@ -19,14 +18,14 @@ namespace Simila.Core.Resolver.GeneralResolver
 
         private void Populate()
         {
-            _root = XElement.Load(File.OpenText(Filename));
+            var root = XElement.Load(File.OpenText(Filename));
 
-            var result = from el in _root.Elements()
-                        select
-                            new Mistake<T>(
-                                el.Attribute("Left").Value,
-                                el.Attribute("Right").Value,
-                                float.Parse(el.Attribute("Similarity").Value));
+            var result = from el in root.Elements()
+                select
+                    new Mistake<T>(
+                        el.Attribute("Left")?.Value,
+                        el.Attribute("Right")?.Value,
+                        float.Parse(el.Attribute("Similarity")?.Value ?? "0"));
 
             _mistakes = result.ToList();
         }

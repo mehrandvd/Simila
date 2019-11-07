@@ -11,7 +11,7 @@ namespace Simila.Core.Test.LevenshteinAlgorithmTests
         [TestMethod]
         public void LevenshteinWordAlgorithm_DefaultNotCaseSensitive_ShouldWork()
         {
-            var algorithm = new LevenshteinAlgorithm<Word, char>(new CharacterSimilarityResolver(mistakesRepository: new BuiltInCharacterMistakeRepository()));
+            var algorithm = new LevenshteinAlgorithm<Word, char>(new CharacterSimilarityResolver(mistakesRepository: new BuiltinCharacterMistakesRepository()));
 
             AreSimilar(algorithm, "Mehran", "Nehran");
             AreSimilar(algorithm, "MEHRAN", "mehran");

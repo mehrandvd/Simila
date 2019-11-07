@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using Simila.Core.Resolver;
+using Simila.Core.Resolver.GeneralResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Factory
 {
     public class CharacterSimilarityResolverFactory
     {

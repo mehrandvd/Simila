@@ -13,7 +13,7 @@ namespace Simila.Core.Test.SimilarityResolverTests
         {
             var simila = new WordSimilarityResolver(
                 characterSimilarityResolver: new CharacterSimilarityResolver(
-                    mistakesRepository: new BuiltInCharacterMistakeRepository()
+                    mistakesRepository: new BuiltinCharacterMistakesRepository()
                 )
             );
 

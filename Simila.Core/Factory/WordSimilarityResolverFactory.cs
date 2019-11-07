@@ -1,7 +1,8 @@
 ﻿using System.IO;
+using Simila.Core.Resolver.GeneralResolver;
 using Simila.Core.Resolver.LevenshteinResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Factory
 {
     public class WordSimilarityResolverFactory
     {

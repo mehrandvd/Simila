@@ -18,7 +18,7 @@ namespace Simila.Core.Resolver
             List<string> pairsLeft = GetPhrasePairs(left.ToUpper());
             List<string> pairsRight = GetPhrasePairs(right.ToUpper());
 
-            var costResolver = new WordSimilarityResolver(mistakesRepository: new BuiltInWordMistakeRepository());
+            var costResolver = new WordSimilarityResolver();
 
             int intersection = 0;
             int union = pairsLeft.Count + pairsRight.Count;
