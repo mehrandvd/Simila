@@ -51,7 +51,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         }
 
         [TestMethod]
-        public void LevenshteinWordAlgorithm_CustomCharacterSimilarityResolver_ShouldWork()
+        public void LevenshteinWordAlgorithm_CustomCharacterSimilarityResolverCaseSensitive_ShouldWork()
         {
             var resolver = new CharacterSimilarityResolver(isCaseSensitive: true);
 
@@ -85,7 +85,7 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
         }
 
         [TestMethod]
-        public void LevenshteinWordAlgorithm_CustomCharacterSimilarityResolverNotCaseSensitive_ShouldWork()
+        public void LevenshteinWordAlgorithm_CustomCharacterSimilarityResolver_ShouldWork()
         {
             var resolver = new CharacterSimilarityResolver();
 
@@ -107,13 +107,13 @@ namespace Simila.Core.Tests.LevenshteinAlgorithmTests
 
         private void AreSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
         {
-            var similarity = algorithm.GetSimilarity(left, right);
+            var similarity = algorithm.GetSimilarity((Word) left, (Word) right);
             Assert.IsTrue(similarity > 0.6, $"{left}-{right} should be similar (Similarity: {similarity})");
         }
 
         private void NotSimilar(LevensteinAlgorithm<Word, char> algorithm, string left, string right)
         {
-            var similarity = algorithm.GetSimilarity(left, right);
+            var similarity = algorithm.GetSimilarity((Word) left, (Word) right);
             Assert.IsTrue(similarity < 0.5, $"{left}-{right} should NOT be similar (Similarity: {similarity})");
         }
     }

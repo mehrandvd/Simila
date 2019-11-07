@@ -45,7 +45,6 @@ namespace Simila.Core.Tests.SimilaStringTests
             Assert.IsFalse(simila.AreSimilar("War", "Fight"));
 
             var customSimila = new Simila(
-                threshold: 1,
                 resolver: new PhraseSimilarityResolver(
                     wordSimilarityResolver: new WordSimilarityResolver(
                         mistakesRepository: new MistakeRepository<Word>(new Mistake<Word>[]
@@ -58,7 +57,7 @@ namespace Simila.Core.Tests.SimilaStringTests
             );
 
 
-            Assert.IsTrue(customSimila.AreSimilar("Cat", "Kat"));
+            Assert.IsTrue(customSimila.AreSimilar("War", "Fight"));
 
             Assert.IsTrue(customSimila.AreSimilar("color", "colour"));
         }

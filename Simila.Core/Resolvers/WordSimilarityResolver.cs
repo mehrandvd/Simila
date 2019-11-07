@@ -23,9 +23,9 @@ namespace Simila.Core
                    ?? Algorithm.GetSimilarity(left, right);
         }
 
-        public float GetSimilarity(string left, string right)
+        float ISimilarityResolver<string>.GetSimilarity(string left, string right)
         {
-            return GetSimilarity((Word) left, right);
+            return GetSimilarity((Word) left, (Word) right);
         }
     }
 }

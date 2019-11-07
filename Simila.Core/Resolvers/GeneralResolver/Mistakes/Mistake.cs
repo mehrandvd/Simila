@@ -42,6 +42,11 @@ namespace Simila.Core
             return new Mistake<T>(input.Left, input.Right, input.Similarity);
         }
 
+        public static implicit operator Mistake<T>((string Left, string Right, float Similarity) input)
+        {
+            return new Mistake<T>(input.Left, input.Right, input.Similarity);
+        }
+
         public void Deconstruct(out T left, out T right, out float similarity)
         {
             left = Left;

@@ -150,13 +150,13 @@ namespace Simila.Core.Tests.SimilarityResolverTests
 
         private void AreSimilar(WordSimilarityResolver algorithm, string left, string right)
         {
-            var similarity = algorithm.GetSimilarity(left, right);
+            var similarity = algorithm.GetSimilarity((Word) left, (Word) right);
             Assert.IsTrue(similarity > 0.6, string.Format("{0}-{1} should be similar (Similarity: {2})", left, right, similarity));
         }
 
         private void NotSimilar(WordSimilarityResolver algorithm, string left, string right)
         {
-            var similarity = algorithm.GetSimilarity(left, right);
+            var similarity = algorithm.GetSimilarity((Word) left, (Word) right);
             Assert.IsTrue(similarity < 0.5, string.Format("{0}-{1} should NOT be similar (Similarity: {2})", left, right, similarity));
         }
     }

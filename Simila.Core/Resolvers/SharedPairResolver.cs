@@ -27,7 +27,7 @@ namespace Simila.Core
                 for (int j = 0; j < pairsRight.Count; j++)
                 {
                     //if (pairLeft == pairsRight[j])
-                    if (costResolver.GetSimilarity(pairLeft, pairsRight[j]) > 0.5)
+                    if (costResolver.GetSimilarity((Word) pairLeft, (Word) pairsRight[j]) > 0.5)
                     {
                         intersection++;
                         pairsRight.RemoveAt(j);//Must remove the match to prevent "GGGG" from appearing to match "GG" with 100% success
