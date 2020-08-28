@@ -31,7 +31,7 @@ namespace Simila.Core.Resolver.GeneralResolver
             }
             else
             {
-                throw new Exception(string.Format("{0} is not available for mistakes.", typeof(T)));
+                throw new Exception($"{typeof(T)} is not available for mistakes.");
             }
 
             Similarity = similarity;

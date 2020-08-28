@@ -8,8 +8,9 @@ namespace Simila.Core.Resolver.GeneralResolver
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class GeneralSimilarityResolver<T> : IGeneralSimilarityResolver<T>
+        where T : notnull
     {
-        public Func<T, T, float?> MistakeAlgorithm { get; }
+        public Func<T, T, float?>? MistakeAlgorithm { get; }
 
         /// <summary>
         /// 
@@ -19,7 +20,7 @@ namespace Simila.Core.Resolver.GeneralResolver
         /// <summary>
         /// A mistake based similarity resolver uses a <param name="mistakeRepository"></param> to resolve similarities.
         /// </summary>
-        public GeneralSimilarityResolver(IMistakeRepository<T> mistakeRepository = null, Func<T, T, float?> mistakeAlgorithm = null)
+        public GeneralSimilarityResolver(IMistakeRepository<T>? mistakeRepository = null, Func<T, T, float?>? mistakeAlgorithm = null)
         {
             MistakeAlgorithm = mistakeAlgorithm;
             Mistakes = new Dictionary<T, Dictionary<T, float>>();
@@ -104,7 +105,7 @@ namespace Simila.Core.Resolver.GeneralResolver
 
         private Dictionary<T, float> GetOrAddRelatedMistakes(T left)
         {
-            Dictionary<T, float> dictionary = null;
+            Dictionary<T, float> dictionary;
             if (Mistakes.ContainsKey(left))
             {
                 dictionary = Mistakes[left];

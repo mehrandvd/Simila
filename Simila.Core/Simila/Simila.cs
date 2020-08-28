@@ -9,7 +9,7 @@ namespace Simila.Core
         public float Threshold { get; set; }
         public ISimilarityResolver<string> Algorithm { get; }
 
-        public Simila(float threshold = .6f, ISimilarityResolver<string> resolver = null)
+        public Simila(float threshold = .6f, ISimilarityResolver<string>? resolver = null)
         {
             if (resolver == null)
             {

@@ -40,6 +40,28 @@ namespace Simila.Core.Test.SimilaTests
         }
 
         [TestMethod]
+        public void Simila_ShouldWork_WithSoundex()
+        {
+            var simila = new Simila(threshold: .7f);
+
+            Assert.IsFalse(simila.AreSimilar("Mehran", "Maryam"));
+            Assert.IsFalse(simila.AreSimilar("Mehran", "Mina"));
+
+            var soundex = new Simila(
+                threshold: .7f,
+                resolver: new SoundexSimilarityResolver()
+            );
+
+            Assert.IsTrue(soundex.AreSimilar("Mehran", "Maryam"));
+            Assert.IsTrue(soundex.AreSimilar("Mehran", "Mina"));
+            
+            Assert.IsFalse(soundex.AreSimilar("Mehran", "Sobhan"));
+            Assert.IsFalse(soundex.AreSimilar("Mehran", "Afshin"));
+            Assert.IsFalse(soundex.AreSimilar("Sobhan", "Afshin"));
+        }
+
+
+        [TestMethod]
         public void Simila_ShouldWork_WithOverridingIntroducingMistakes()
         {
             var simila = new Simila();

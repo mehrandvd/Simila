@@ -57,10 +57,7 @@ namespace Simila.Studio
                 (
                     from instance in instances
                     let ct = instance.ClearedText = ClearText(instance.Text)
-                    select new SimilarityResult()
-                    {
-                        Original = instance,
-                    }
+                    select new SimilarityResult(instance)
                 ).ToList();
 
                 similarityResultBindingSource.DataSource = similarityResults;
@@ -228,7 +225,7 @@ namespace Simila.Studio
 
         private void SyncProfileWithForm()
         {
-            CurrentProfile.DirtyWords = textBoxDirtyWords.Text?.Split('\r', '\n').ToList();
+            CurrentProfile.DirtyWords = textBoxDirtyWords.Text?.Split('\r', '\n').ToList() ?? new System.Collections.Generic.List<string>();
         }
 
         private void timerProgressUpdater_Tick(object sender, EventArgs e)

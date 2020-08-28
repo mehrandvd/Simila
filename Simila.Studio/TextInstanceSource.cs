@@ -15,10 +15,7 @@ namespace Simila.Studio
         public List<TextInstance> GetTextInstances()
         {
             var query = from line in File.ReadLines(_filepath)
-                select new TextInstance()
-                {
-                    Text = line
-                };
+                select new TextInstance(line);
 
             return query.ToList();
         }

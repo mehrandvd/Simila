@@ -3,7 +3,8 @@
 namespace Simila.Core.Resolver.LevenshteinResolver
 {
     public class LevenshteinAlgorithm<TExpression, TElement> : ILevenshteinAlgorithm<TExpression, TElement>
-        where TExpression : ILevenshteinExpression<TElement>
+        where TExpression : notnull, ILevenshteinExpression<TElement>
+        where TElement : notnull
     {
         public LevenshteinAlgorithm(ISimilarityResolver<TElement> elementSimilarityResolver)
         {
@@ -18,19 +19,6 @@ namespace Simila.Core.Resolver.LevenshteinResolver
         /// <returns></returns>
         public virtual float GetDistance(TExpression left, TExpression right)
         {
-            if (left == null)
-            {
-                if (right != null)
-                {
-                    return right.Length;
-                }
-                return 0;
-            }
-            else if (right == null)
-            {
-                return left.Length;
-            }
-
             int n = left.Length;
             int m = right.Length;
             var d = new float[2, m + 1];
@@ -49,7 +37,7 @@ namespace Simila.Core.Resolver.LevenshteinResolver
                 return n;
             }
 
-            //filling the first row and cloumns of the matrix
+            //filling the first row and columns of the matrix
             for (int i = 0; i < 2; d[i, 0] = i++)
             {
             }
@@ -61,14 +49,18 @@ namespace Simila.Core.Resolver.LevenshteinResolver
             // comparing
             for (int i = 1; i <= n; i++)
             {
-
                 for (int j = 1; j <= m; j++)
                 {
                     float cost = 1 - ElementSimilarityResolver.GetSimilarity(right[j - 1], left[i - 1]);
 
-                    d[newrow, j] = Math.Min(
-                    Math.Min(d[oldrow, j] + 1, d[newrow, j - 1] + 1 - ElementSimilarityResolver.GetSimilarity(left[i - 1], default(TElement))),
-                    d[oldrow, j - 1] + cost);
+                    d[newrow, j] =
+                        Math.Min(
+                            Math.Min(
+                                d[oldrow, j] + 1,
+                                d[newrow, j - 1] + 1
+                            ),
+                            d[oldrow, j - 1] + cost
+                        );
 
                 }
 
@@ -91,12 +83,10 @@ namespace Simila.Core.Resolver.LevenshteinResolver
         /// <returns></returns>        
         public virtual float GetSimilarity(TExpression left, TExpression right)
         {
-            var levenshtiendistance = GetDistance(left, right);
-            int maxlength = Math.Max(
-                left != null ? left.Length : 0,
-                right != null ? right.Length : 0);
+            var levenshtienDistance = GetDistance(left, right);
+            int maxlength = Math.Max(left.Length, right.Length);
 
-            float ratio = levenshtiendistance / maxlength;
+            float ratio = levenshtienDistance / maxlength;
             var similarityRatio = (1 - (ratio));
             return similarityRatio;
             //return levenshtiendistance;

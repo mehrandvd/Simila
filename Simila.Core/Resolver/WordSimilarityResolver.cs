@@ -9,9 +9,9 @@ namespace Simila.Core.Resolver
         private LevenshteinAlgorithm<Word, char> Algorithm { get; }
         
         public WordSimilarityResolver(
-            IMistakeRepository<Word> mistakesRepository = null,
-            Func<Word, Word, float?> mistakeAlgorithm = null,
-            ISimilarityResolver<char> characterSimilarityResolver = null
+            IMistakeRepository<Word>? mistakesRepository = null,
+            Func<Word, Word, float?>? mistakeAlgorithm = null,
+            ISimilarityResolver<char>? characterSimilarityResolver = null
             )
             : base(mistakesRepository, mistakeAlgorithm)
         {

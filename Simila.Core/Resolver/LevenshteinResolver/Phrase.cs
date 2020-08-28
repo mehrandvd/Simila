@@ -4,7 +4,7 @@ namespace Simila.Core.Resolver.LevenshteinResolver
 {
     public class Phrase : ILevenshteinExpression<Word>, IEquatable<Phrase>
     {
-        private Word[] _elements;
+        private Word[]? _elements;
 
         public Phrase(string innerText)
         {

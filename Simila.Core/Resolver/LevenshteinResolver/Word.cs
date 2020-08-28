@@ -14,12 +14,9 @@ namespace Simila.Core.Resolver.LevenshteinResolver
             return InnerText.ToCharArray();
         }
 
-        public char this[int index]
-        {
-            get { return InnerText[index]; }
-        }
+        public char this[int index] => InnerText[index];
 
-        public int Length { get { return InnerText.Length; } }
+        public int Length => InnerText.Length;
 
         public static explicit operator Word(string text)
         {

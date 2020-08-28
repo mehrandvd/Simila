@@ -9,9 +9,9 @@ namespace Simila.Core.Resolver
 
          public CharacterSimilarityResolver(
             bool isCaseSensitive = false,
-            IMistakeRepository<char> mistakesRepository = null,
+            IMistakeRepository<char>? mistakesRepository = null,
             float numericSimilarityRate = .5f,
-            Func<char, char, float?> mistakeAlgorithm = null
+            Func<char, char, float?>? mistakeAlgorithm = null
         )
             : base(mistakesRepository, mistakeAlgorithm)
         {
