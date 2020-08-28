@@ -22,8 +22,9 @@ if (simila.AreSimilar("The Candy Shop", "The Kandi Schap"));
 ```
 
 # Installing via NuGet
-    Install-Package Bit.Simila
-
+```powershell
+Install-Package Bit.Simila
+```
 # How to use
 ```c#
 var simila = new Simila();
