@@ -94,7 +94,6 @@ In this example we told Simila to consider `color` and `colour` words similar.
 ```c#
  var simila = new Simila()
  {
-     Threshold = 1,
      Resolver = new PhraseSimilarityResolver(
                   new WordSimilarityResolver(
                      new MistakeRepository<Word>(new Mistake<Word>[]
@@ -112,7 +111,6 @@ In this example we told Simila to not only consider `color` and `colour` similar
 ```c#
  var simila = new Simila()
  {
-     Threshold = 1,
      Resolver = new PhraseSimilarityResolver(
                   new WordSimilarityResolver(
                      new MistakeRepository<Word>(new Mistake<Word>[]
