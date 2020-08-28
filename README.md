@@ -1,4 +1,6 @@
-# Introducing Simila
+[![NuGet version](https://badge.fury.io/nu/Bit.Simila.svg)](https://badge.fury.io/nu/Bit.Simila)
+
+# What is Simila?
 Are **Color** and **Colour** equal? No!
 
 ```c#
@@ -19,11 +21,10 @@ if (simila.AreSimilar("The Candy Shop", "The Kandi Schap"));
    // It's true now!
 ```
 
+# Installing via NuGet
+    Install-Package Bit.Simila
+
 # How to use
-Using Simila is easy.
-
-First of all, install [Bit.Simila](https://www.nuget.org/packages/Bit.Simila/) nuget package.
-
 ```c#
 var simila = new Simila();
 
