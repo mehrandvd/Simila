@@ -62,14 +62,15 @@ similaEasy.AreSimilar("Lamborghini", "Lanborgni"); // False, Not 80% similar.
 ```
 
 ### Similarity Resolver
+Similarity Resolvers are different **algorithms** which Simila can use for similarity checking. 
+Each algorithm works fine it is being used in its proper scenario.
+
 There are 3 types of similarity resolvers available in Simila:
-    - Levenshein (Default)
-    - Soundex
-    - SharedPair
-    
- Each algorithm works fine it is being used in its proper scenario.
+ - **Levenshtein (Default)**: It works good if we need them to **look similar**. You can read more about Levenshtein here: [Levenshtein Algorithm](https://en.wikipedia.org/wiki/Levenshtein_distance)
+ - **Soundex:** It works good if we need them to **sound similar**. You can read more about Soundex here: [Soundex Algorithm](https://en.wikipedia.org/wiki/Soundex)
+ - **SharedPair:** It works good if we need them to **structured similar**.
  
- You can configure simila to use these just like:
+ You can configure simila to use a specific algorithm. We call them Resolvers.
  
  #### Using Soudex Resolver
  ```c#
