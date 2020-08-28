@@ -39,13 +39,13 @@ simila.AreSimilar("Lamborghini is some great car", "Lanborgini is some graet kar
 ## Customizing Simila 
 
 ### **Treshold**
-You set the sensivity of similarity by setting `Treshold`:
+You set the sensivity of similarity by setting `Treshold`. If not set, default value is `0.6` which means it considers similar if they are `60%` similar
 
 ```c#
 // Are similar if their at least 50% similar.
 var similaEasy = new Simila()
 {
-    Treshold=0.5 
+    Treshold = 0.5 
 };
 
 // considered as similar.
@@ -54,7 +54,7 @@ similaEasy.IsSimilar("Lamborghini", "Lanborgni"); // True, They are 50% similar.
 // Are similar if their at least 80% similar.
 var similaTough = new Simila() 
 { 
-    Treshold=0.8 
+    Treshold = 0.8 
 };
 
 // considered as NOT similar!
@@ -77,7 +77,6 @@ There are 3 types of similarity resolvers available in Simila:
 var similaSounedx = new Simila()
 {
     Resolver = new SoundexSimilarityResolver()
-    Treshold = 0.5 
 };
 ```
 
@@ -86,7 +85,6 @@ var similaSounedx = new Simila()
 var similaSharedPair = new Simila()
 {
     Resolver = new SharedPairSimilarityResolver()
-    Treshold = 0.5 
 };
 ```
 
