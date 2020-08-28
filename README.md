@@ -70,26 +70,50 @@ There are 3 types of similarity resolvers available in Simila:
  
  You can configure simila to use these just like:
  
+ #### Using Soudex Resolver
  ```c#
 var similaSounedx = new Simila()
 {
-    resolver = new SoundexSimilarityResolver()
-    Treshold = 0.5 
-};
-
-var similaSharedPair = new Simila()
-{
-    resolver = new SharedPairSimilarityResolver()
+    Resolver = new SoundexSimilarityResolver()
     Treshold = 0.5 
 };
 ```
 
-Levenshtein is even more configurable. You can set the accepted mistakes both character level and word level.
-In this example we told Simila to consider `c` and `k` similar and also, `color` and `colour` similar.
+#### Using SharedPair Resolver
 ```c#
- var simila = new Simila(
-    threshold: 1,
-    resolver: new PhraseSimilarityResolver(
+var similaSharedPair = new Simila()
+{
+    Resolver = new SharedPairSimilarityResolver()
+    Treshold = 0.5 
+};
+```
+
+#### Using Levenshtein Resolver
+Levenshtein is even more configurable. You can set the accepted mistakes both character level and word level.
+In this example we told Simila to consider `color` and `colour` words similar.
+```c#
+ var simila = new Simila()
+ {
+     Threshold = 1,
+     Resolver = new PhraseSimilarityResolver(
+                  new WordSimilarityResolver(
+                     new MistakeRepository<Word>(new Mistake<Word>[]
+                     {
+                         ("color", "colour", 1)
+                     })
+                 )
+    )
+};
+```
+
+Also you can add some **character level accepted mistakes**.
+In this example we told Simila to not only consider `color` and `colour` similar, but also consider `c` and `k` similar too.
+
+```c#
+ var simila = new Simila()
+ {
+     Threshold = 1,
+     Resolver = new PhraseSimilarityResolver(
                   new WordSimilarityResolver(
                      new MistakeRepository<Word>(new Mistake<Word>[]
                      {
@@ -103,17 +127,5 @@ In this example we told Simila to consider `c` and `k` similar and also, `color`
                      )
                  )
     )
-);
+};
 ```
-
-## Simila knows typical mistakes
-You know that `Car` is more similar to `Kar` than to `Nar`, because `C` and `K` are more mistakable than `C` and `N`.
-Also `Color` is more similar to `Colour` than "Kolor".
-Simila **is aware of common mistakes**.
-
-Also, Simila lets you to train her. 
-
-
-
-
-We studied lots of similarity scenarios in business applications and tried to design Simila as a good answer for these business scenarios.
