@@ -1,5 +1,10 @@
 [![NuGet version](https://badge.fury.io/nu/Bit.Simila.svg)](https://badge.fury.io/nu/Bit.Simila)
 
+# Installing via NuGet
+```powershell
+Install-Package Bit.Simila
+```
+
 # What is Simila?
 Are **Color** and **Colour** equal? No!
 
@@ -19,11 +24,6 @@ if (simila.AreSimilar("Color", "Colour"))
 
 if (simila.AreSimilar("The Candy Shop", "The Kandi Schap"));
    // It's true now!
-```
-
-# Installing via NuGet
-```powershell
-Install-Package Bit.Simila
 ```
 # How to use
 ```c#
