@@ -1,6 +1,4 @@
-﻿using Simila.Core.Levenstein;
-
-namespace Simila.Core
+﻿namespace Simila.Core
 {
     //public class SimilarityResolverFactory
     //{

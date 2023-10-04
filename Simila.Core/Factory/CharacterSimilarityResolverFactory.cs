@@ -1,12 +1,14 @@
 ﻿using System.IO;
+using Simila.Core.Resolver;
+using Simila.Core.Resolver.GeneralResolver;
 
-namespace Simila.Core
+namespace Simila.Core.Factory
 {
     public class CharacterSimilarityResolverFactory
     {
-        private readonly IMistakeBasedSimilarityResolver<char> _resolver;
+        private readonly IGeneralSimilarityResolver<char> _resolver;
 
-        public CharacterSimilarityResolverFactory(IMistakeBasedSimilarityResolver<char> resolver)
+        public CharacterSimilarityResolverFactory(IGeneralSimilarityResolver<char> resolver)
         {
             _resolver = resolver;
         }
@@ -20,7 +22,7 @@ namespace Simila.Core
 
                 foreach (var mistake in mistakes)
                 {
-                    _resolver.SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
+                    _resolver.RegisterMistake(mistake.Left, mistake.Right, mistake.Similarity);
                 }
             }
 
@@ -36,7 +38,7 @@ namespace Simila.Core
 
                 foreach (var mistake in mistakes)
                 {
-                    _resolver.SetMistakeSimilarity(mistake.Left, mistake.Right, mistake.Similarity);
+                    _resolver.RegisterMistake(mistake.Left, mistake.Right, mistake.Similarity);
                 }
             }
 

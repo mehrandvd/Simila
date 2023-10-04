@@ -1,139 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F1F661E-D742-42DD-AA7E-8B60A3445DF8}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Simila.Core</RootNamespace>
-    <AssemblyName>Simila.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Bit Foundation</Authors>
+    <Company>Bit Foundation</Company>
+    <Product>Bit Simila</Product>
+    <Title>Bit.Simila</Title>
+    <Description>A project for string similarities.</Description>
+    <Copyright>Copyright © Bit Foundation 2019</Copyright>
+    <RepositoryUrl>https://github.com/bit-foundation/Simila</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>0.0.1</Version>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <DocumentationFile></DocumentationFile>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>portable</DebugType>
+    <PackageTags>Bit Similia string-similarity string-distance string-matching</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
+    <PackageId>Bit.Simila</PackageId>
+    <PackageDescription>A project for string similarities.</PackageDescription>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/bit-foundation/Simila</PackageProjectUrl>
+    <PackageIconUrl>https://avatars.githubusercontent.com/u/22663390</PackageIconUrl>
+    <PackageReleaseNotes>https://github.com/bit-foundation/Simila/releases/tag/v0.0.1</PackageReleaseNotes>
+    <PackageVersion>0.0.1</PackageVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\CommonServiceLocator.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Unity.Abstractions, Version=2.4.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\Unity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Configuration, Version=5.1.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Container, Version=5.4.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\Unity.Container.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Interception, Version=5.2.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Interception.Configuration, Version=5.1.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\Unity.Interception.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RegistrationByConvention, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ServiceLocation, Version=2.0.9.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.4.0\lib\net45\Unity.ServiceLocation.dll</HintPath>
-    </Reference>
+    <PackageReference Include="SourceLink.Embed.AllSourceFiles" Version="2.8.3" PrivateAssets="all" />
+    <PackageReference Include="SourceLink.Copy.PdbFiles" Version="2.8.3" PrivateAssets="All" />
   </ItemGroup>
+  
   <ItemGroup>
-    <Compile Include="CatalySoftResolver\CatalySoftAlgorithm.cs" />
-    <Compile Include="Resovlers\LevensteinResolver\Core\ILevensteinAlgorithm.cs" />
-    <Compile Include="Resovlers\LevensteinResolver\PhraseSimilarityResolverLevenstein.cs" />
-    <Compile Include="Resovlers\CharacterSimilarityResolverDefault.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\BuiltInCharacterMistakeRepository.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\BuiltInWordMistakeRepository.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\DefaultMistakeRepository.cs" />
-    <Compile Include="Simila\ISimilarityResolver.cs" />
-    <Compile Include="Simila\MultiSimilarityResolver.cs" />
-    <Compile Include="Factory\WordSimilaritytResolverFactory.cs" />
-    <Compile Include="Factory\CharacterSimilarityResolverFactory.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\MistakeBasedSimilarityResolver.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\Mistake.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\IMistakeRepository.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\MistakesFactory.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\Mistakes\XmlFileMistakeRepository.cs" />
-    <Compile Include="Factory\SimilarityResolverFactory.cs" />
-    <Compile Include="Resovlers\MistakeBasedResolver\IMistakeBasedSimilarityResolver.cs" />
-    <Compile Include="Resovlers\LevensteinResolver\Core\ILevenshteinExpression.cs" />
-    <Compile Include="Resovlers\LevensteinResolver\Core\LevensteinAlgorithm.cs" />
-    <Compile Include="Resovlers\LevensteinResolver\Phrase.cs" />
-    <Compile Include="Resovlers\LevensteinResolver\Word.cs" />
-    <Compile Include="Resovlers\LevensteinResolver\WordSimilarityResolverLevenstein.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resovlers\WordSimilarityResolverDefault.cs" />
-    <Compile Include="Simila\IStringSimilarityAlgorithm.cs" />
-    <Compile Include="Simila\ISimila.cs" />
-    <Compile Include="Simila\SimilaBase.cs" />
-    <Compile Include="Simila\Simila.cs" />
-    <Compile Include="Simila\SimilarityRate.cs" />
-    <Compile Include="Simila\SimilaType.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CommonEnglishCharacterMistakes.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CommonPersianCharacterMistakes.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="*.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="CommonPersianWordMistakes.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CommonEnglishWordMistakes.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

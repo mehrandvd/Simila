@@ -7,7 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Simila.Core;
-using Simila.Core.Levenstein;
+using Simila.Core.Resolver.GeneralResolver;
+using Simila.Core.Resolver.LevenshteinResolver;
 
 namespace Simila.Studio
 {
@@ -21,23 +22,20 @@ namespace Simila.Studio
             _profile = profile;
         }
 
-        private List<Mistake<Word>> _mistakes;
+        private List<Mistake<Word>>? _mistakes;
 
 
         public List<Mistake<Word>> GetMistakes()
         {
-            LazyInitializer.EnsureInitialized(ref _mistakes, () =>
-            {
-                return (
-                    from mistakeInstance in _profile.CharMistakes
-                    select new Mistake<Word>
-                    (
-                        left: mistakeInstance.Left,
-                        right: mistakeInstance.Right,
-                        similarity: mistakeInstance.Similarity
-                    )
-                ).ToList();
-            });
+            LazyInitializer.EnsureInitialized(ref _mistakes, () => (
+                from mistakeInstance in _profile.CharMistakes
+                select new Mistake<Word>
+                (
+                    left: mistakeInstance.Left,
+                    right: mistakeInstance.Right,
+                    similarity: mistakeInstance.Similarity
+                )
+            ).ToList());
             return _mistakes;
 
         }
@@ -53,22 +51,19 @@ namespace Simila.Studio
             _profile = profile;
         }
 
-        private List<Mistake<char>> _mistakes;
+        private List<Mistake<char>>? _mistakes;
 
         public List<Mistake<char>> GetMistakes()
         {
-            LazyInitializer.EnsureInitialized(ref _mistakes, () =>
-            {
-                return (
-                    from mistakeInstance in _profile.WordMistakes
-                    select new Mistake<char>
-                    (
-                        left: mistakeInstance.Left[0],
-                        right: mistakeInstance.Right[0],
-                        similarity: mistakeInstance.Similarity
-                    )
-                ).ToList();
-            });
+            LazyInitializer.EnsureInitialized(ref _mistakes, () => (
+                from mistakeInstance in _profile.WordMistakes
+                select new Mistake<char>
+                (
+                    left: mistakeInstance.Left[0],
+                    right: mistakeInstance.Right[0],
+                    similarity: mistakeInstance.Similarity
+                )
+            ).ToList());
             return _mistakes;
 
         }

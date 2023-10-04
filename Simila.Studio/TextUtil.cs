@@ -10,7 +10,7 @@ namespace Simila.Studio
     {
         public static string ReplaceYK(this string text)
         {
-            return text?
+            return text
                 .Replace('ي', 'ی')
                 .Replace('ك', 'ک');
         }

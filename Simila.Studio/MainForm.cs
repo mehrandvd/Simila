@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using Microsoft.Practices.Unity;
-using Simila.Core;
-using Simila.Core.Levenstein;
-using Simila.Studio;
 
 namespace Simila.Studio
 {
@@ -65,10 +57,7 @@ namespace Simila.Studio
                 (
                     from instance in instances
                     let ct = instance.ClearedText = ClearText(instance.Text)
-                    select new SimilarityResult()
-                    {
-                        Original = instance,
-                    }
+                    select new SimilarityResult(instance)
                 ).ToList();
 
                 similarityResultBindingSource.DataSource = similarityResults;
@@ -236,7 +225,7 @@ namespace Simila.Studio
 
         private void SyncProfileWithForm()
         {
-            CurrentProfile.DirtyWords = textBoxDirtyWords.Text?.Split('\r', '\n').ToList();
+            CurrentProfile.DirtyWords = textBoxDirtyWords.Text?.Split('\r', '\n').ToList() ?? new System.Collections.Generic.List<string>();
         }
 
         private void timerProgressUpdater_Tick(object sender, EventArgs e)

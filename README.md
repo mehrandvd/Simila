@@ -1,4 +1,11 @@
-# Introducing Simila
+[![NuGet version](https://badge.fury.io/nu/Bit.Simila.svg)](https://badge.fury.io/nu/Bit.Simila)
+
+# Installing via NuGet
+```powershell
+Install-Package Bit.Simila
+```
+
+# What is Simila?
 Are **Color** and **Colour** equal? No!
 
 ```c#
@@ -18,45 +25,105 @@ if (simila.AreSimilar("Color", "Colour"))
 if (simila.AreSimilar("The Candy Shop", "The Kandi Schap"));
    // It's true now!
 ```
-
 # How to use
-Using Simila is easy.
-
 ```c#
 var simila = new Simila();
 
 // Comparing Words
-Assert.IsTrue(simila.AreSimilar("Lamborghini", "Lanborgini"));
+simila.AreSimilar("Lamborghini", "Lanborgini"); // True
 
 
 // Comparing Expressions
-Assert.IsTrue(simila.AreSimilar("Lamborghini is some great car", "Lanborgini is some graet kar"));
+simila.AreSimilar("Lamborghini is some great car", "Lanborgini is some graet kar"); // True
 ```
-## Setting Similarity **Treshold**
-You can check similarities with desired `Treshold`:
-This an easy going similarity checker:
+## Customizing Simila 
+
+### **Treshold**
+You set the sensivity of similarity by setting `Treshold`. If not set, default value is `0.6` which means it considers similar if they are `60%` similar
+
 ```c#
-// Accepts as similar if their at least 50% similar.
-var similaEasy = new Simila() { Treshold=0.5 };
+// Are similar if their at least 50% similar.
+var similaEasy = new Simila()
+{
+    Treshold = 0.5 
+};
+
 // considered as similar.
-Assert.IsTrue(similaEasy.IsSimilar("Lamborghini", "Lanborgni"));
-```
-and this is a tough one:
-``` c#
-// Accepts as similar if their at least 80% similar.
-var similaHard = new Simila() { Treshold=0.8 };
+similaEasy.IsSimilar("Lamborghini", "Lanborgni"); // True, They are 50% similar.
+
+// Are similar if their at least 80% similar.
+var similaTough = new Simila() 
+{ 
+    Treshold = 0.8 
+};
+
 // considered as NOT similar!
-Assert.IsFalse(similaEasy.AreSimilar("Lamborghini", "Lanborgni"));
+similaEasy.AreSimilar("Lamborghini", "Lanborgni"); // False, Not 80% similar.
 ```
 
-## Simila knows typical mistakes
-You know that `Car` is more similar to `Kar` than to `Nar`, because `C` and `K` are more mistakable than `C` and `N`.
-Also `Color` is more similar to `Colour` than "Kolor".
-Simila **is aware of common mistakes**.
+### Similarity Resolver
+Similarity Resolvers are different **algorithms** which Simila can use for similarity checking. 
+Each algorithm works fine it is being used in its proper scenario.
 
-Also, Simila lets you to train her. 
+There are 3 types of similarity resolvers available in Simila:
+ - **Levenshtein (Default)**: It works good if we need them to **look similar**. You can read more about Levenshtein here: [Levenshtein Algorithm](https://en.wikipedia.org/wiki/Levenshtein_distance)
+ - **Soundex:** It works good if we need them to **sound similar**. You can read more about Soundex here: [Soundex Algorithm](https://en.wikipedia.org/wiki/Soundex)
+ - **SharedPair:** It works good if we need them to **structured similar**.
+ 
+ You can configure simila to use a specific algorithm. We call them Resolvers.
+ 
+ #### Using Soudex Resolver
+ ```c#
+var similaSounedx = new Simila()
+{
+    Resolver = new SoundexSimilarityResolver()
+};
+```
 
+#### Using SharedPair Resolver
+```c#
+var similaSharedPair = new Simila()
+{
+    Resolver = new SharedPairSimilarityResolver()
+};
+```
 
+#### Using Levenshtein Resolver
+Levenshtein is even more configurable. You can set the accepted mistakes both character level and word level.
+In this example we told Simila to consider `color` and `colour` words similar.
+```c#
+ var simila = new Simila()
+ {
+     Resolver = new PhraseSimilarityResolver(
+                  new WordSimilarityResolver(
+                     new MistakeRepository<Word>(new Mistake<Word>[]
+                     {
+                         ("color", "colour", 1)
+                     })
+                 )
+    )
+};
+```
 
+Also you can add some **character level accepted mistakes**.
+In this example we told Simila to not only consider `color` and `colour` similar, but also consider `c` and `k` similar too.
 
-We studied lots of similarity scenarios in business applications and tried to design Simila as a good answer for these business scenarios.
+```c#
+ var simila = new Simila()
+ {
+     Resolver = new PhraseSimilarityResolver(
+                  new WordSimilarityResolver(
+                     new MistakeRepository<Word>(new Mistake<Word>[]
+                     {
+                         ("color", "colour", 1)
+                     }),
+                     new CharacterSimilarityResolver(
+                        new MistakeRepository<char>(new Mistake<char>[]
+                        {
+                           ('c', 'k', 1)
+                        })
+                     )
+                 )
+    )
+};
+```
